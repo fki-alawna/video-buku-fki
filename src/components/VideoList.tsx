@@ -71,7 +71,7 @@ export default function VideoList({ videos, folders }: VideoListProps) {
 
         <Link
           href="/admin/video/baru"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-800 active:bg-teal-900"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 shadow-sm"
         >
           Tambah Video
         </Link>
@@ -104,7 +104,7 @@ export default function VideoList({ videos, folders }: VideoListProps) {
           <div className="mt-4">
             <Link
               href="/admin/video/baru"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-800"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 shadow-sm"
             >
               Tambah Video Pertama
             </Link>
@@ -167,7 +167,7 @@ export default function VideoList({ videos, folders }: VideoListProps) {
                 <div className="flex flex-wrap gap-2">
                   <Link
                     href={`/admin/video/${video.id}/edit`}
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-800"
+                    className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 shadow-sm"
                   >
                     Edit / Ganti Link Drive
                   </Link>

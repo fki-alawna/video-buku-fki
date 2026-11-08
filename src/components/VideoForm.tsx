@@ -146,7 +146,7 @@ export default function VideoForm({
             <button
               type="button"
               onClick={handleFocusReplaceDrive}
-              className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-teal-700 bg-teal-50 px-3.5 py-1.5 text-sm font-semibold text-teal-900 transition-colors hover:bg-teal-100"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-blue-900 bg-blue-50 px-3.5 py-1.5 text-sm font-semibold text-blue-900 transition-colors hover:bg-blue-100"
             >
               Ganti Link Drive
             </button>
@@ -195,7 +195,7 @@ export default function VideoForm({
           name="is_active"
           type="checkbox"
           defaultChecked={initialVideo ? initialVideo.is_active : true}
-          className="h-5 w-5 rounded border-slate-300 text-teal-700"
+          className="h-5 w-5 rounded border-slate-300 text-blue-900 focus:ring-blue-900"
         />
         <label
           htmlFor="video-active"
@@ -218,7 +218,7 @@ export default function VideoForm({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-800 active:bg-teal-900 disabled:opacity-60"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 disabled:opacity-60 shadow-sm"
         >
           {isPending
             ? 'Menyimpan...'

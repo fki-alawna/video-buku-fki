@@ -50,7 +50,7 @@ function FolderEditRow({
   return (
     <form
       action={formAction}
-      className="rounded-xl border border-teal-200 bg-teal-50/40 p-4 space-y-4"
+      className="rounded-xl border border-blue-200 bg-blue-50/40 p-4 space-y-4"
     >
       <input type="hidden" name="id" value={folder.id} />
 
@@ -106,7 +106,7 @@ function FolderEditRow({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-800 disabled:opacity-60"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 disabled:opacity-60"
         >
           {isPending ? 'Menyimpan...' : 'Simpan Perubahan'}
         </button>
@@ -217,7 +217,7 @@ export default function FolderManager({ folders }: FolderManagerProps) {
           <button
             type="submit"
             disabled={isCreating}
-            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-800 active:bg-teal-900 disabled:opacity-60"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 disabled:opacity-60"
           >
             {isCreating ? 'Menyimpan...' : 'Tambah Folder'}
           </button>

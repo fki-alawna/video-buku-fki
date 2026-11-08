@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useFormStatus } from 'react-dom';
 import { logoutAction } from '@/app/admin/(dashboard)/actions';
@@ -24,7 +25,7 @@ function LogoutSubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100 active:bg-slate-200 disabled:opacity-60"
+      className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-red-200 bg-white px-4 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-700 disabled:opacity-60 cursor-pointer"
     >
       {pending ? 'Keluar...' : 'Logout'}
     </button>
@@ -47,9 +48,16 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <Link
             href="/admin"
-            className="inline-flex min-h-[44px] items-center text-lg font-bold tracking-tight text-slate-900"
+            className="inline-flex min-h-[44px] items-center gap-2.5 text-lg font-bold tracking-tight text-slate-900 hover:text-blue-900 transition-colors"
           >
-            Portal Video QR
+            <Image
+              src="/logo-alawna.png"
+              alt="Logo A'lawna"
+              width={28}
+              height={28}
+              className="w-7 h-7 object-contain"
+            />
+            <span>A&apos;lawna Admin</span>
           </Link>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -78,8 +86,8 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
                   aria-current={active ? 'page' : undefined}
                   className={
                     active
-                      ? 'inline-flex min-h-[44px] items-center rounded-xl bg-teal-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-800'
-                      : 'inline-flex min-h-[44px] items-center rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900'
+                      ? 'inline-flex min-h-[44px] items-center rounded-xl bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors shadow-xs'
+                      : 'inline-flex min-h-[44px] items-center rounded-xl border border-slate-200/80 bg-white px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900'
                   }
                 >
                   {item.label}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { createServiceClient } from '@/lib/supabase/server';
+import { Folder, Video, QrCode } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,7 +27,7 @@ export default async function AdminHomePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Dasbor Admin</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-blue-900">Dasbor</h1>
         <p className="mt-1 text-sm text-slate-600">
           Ringkasan folder, video Google Drive, dan halaman cetak QR code.
         </p>
@@ -41,45 +42,69 @@ export default async function AdminHomePage() {
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="rounded-2xl border border-slate-200 bg-white p-5">
-          <p className="text-sm font-medium text-slate-600">Total Folder</p>
-          <p className="mt-2 text-3xl font-bold text-slate-900">{folderCount}</p>
-          <div className="mt-4">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+        {/* Kartu Statistik Folder */}
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold text-slate-600">Total Folder</span>
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-900">
+                <Folder className="h-5 w-5" />
+              </div>
+            </div>
+            <p className="mt-3 text-3xl font-bold text-blue-900">{folderCount}</p>
+          </div>
+          <div className="mt-6 pt-4 border-t border-slate-100">
             <Link
               href="/admin/folder"
-              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-teal-800 hover:underline"
+              className="inline-flex min-h-[40px] items-center text-sm font-semibold text-blue-900 hover:text-blue-800 hover:underline"
             >
-              Kelola Folder
+              Kelola Folder →
             </Link>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-5">
-          <p className="text-sm font-medium text-slate-600">Total Video</p>
-          <p className="mt-2 text-3xl font-bold text-slate-900">{videoCount}</p>
-          <p className="mt-1 text-xs text-slate-600">
-            {activeVideoCount} aktif di halaman publik
-          </p>
-          <div className="mt-2">
+        {/* Kartu Statistik Video */}
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold text-slate-600">Total Video</span>
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-900">
+                <Video className="h-5 w-5" />
+              </div>
+            </div>
+            <p className="mt-3 text-3xl font-bold text-blue-900">{videoCount}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              {activeVideoCount} aktif di halaman publik
+            </p>
+          </div>
+          <div className="mt-6 pt-4 border-t border-slate-100">
             <Link
               href="/admin/video"
-              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-teal-800 hover:underline"
+              className="inline-flex min-h-[40px] items-center text-sm font-semibold text-blue-900 hover:text-blue-800 hover:underline"
             >
-              Kelola Video
+              Kelola Video →
             </Link>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-5">
-          <p className="text-sm font-medium text-slate-600">Cetak QR Code</p>
-          <p className="mt-2 text-base font-semibold text-slate-900">
-            Siap dicetak untuk semua video
-          </p>
-          <div className="mt-4">
+        {/* Kartu Cetak QR Code */}
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold text-slate-600">Cetak QR Code</span>
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-900">
+                <QrCode className="h-5 w-5" />
+              </div>
+            </div>
+            <p className="mt-3 text-base font-semibold text-slate-800">
+              Siap dicetak untuk semua video
+            </p>
+          </div>
+          <div className="mt-6 pt-4 border-t border-slate-100">
             <Link
               href="/admin/qr"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-800"
+              className="inline-flex min-h-[40px] items-center justify-center rounded-lg bg-blue-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-800 hover:shadow-md transition-all cursor-pointer"
             >
               Buka Halaman QR
             </Link>

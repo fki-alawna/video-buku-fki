@@ -57,7 +57,7 @@ export default async function AdminQrPage() {
           <div className="mt-4">
             <Link
               href="/admin/video/baru"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-800"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800"
             >
               Tambah Video
             </Link>
