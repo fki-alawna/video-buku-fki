@@ -2,13 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Users, Award, GraduationCap } from 'lucide-react';
 
 export default function Hero() {
   const stats = [
-    { number: '326+', label: 'Siswi', icon: Users },
-    { number: '24', label: 'Mustahiq/oh', icon: Award },
-    { number: '6', label: 'Tim', icon: GraduationCap },
+    { number: '326+', label: 'Siswi' },
+    { number: '24', label: 'Mustahiq/oh' },
+    { number: '6', label: 'Tim' },
   ];
 
   return (
@@ -74,25 +73,21 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* 3 Kotak Statistik Sejajar (Rata Tengah) */}
+          {/* 3 Kotak Statistik Sejajar (Rata Tengah, Tanpa Ikon / Hanya Angka & Teks) */}
           <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 border-t border-slate-100 max-w-2xl mx-auto">
-            {stats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <div
-                  key={stat.label}
-                  className="flex flex-col items-center justify-center rounded-2xl border border-slate-200/80 bg-slate-50/80 p-3 sm:p-5 text-center shadow-xs hover:border-sky-300 transition-colors"
-                >
-                  <Icon className="h-5 w-5 text-sky-600 mb-1" />
-                  <span className="text-2xl sm:text-3xl font-black text-sky-600">
-                    {stat.number}
-                  </span>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-900 mt-0.5">
-                    {stat.label}
-                  </span>
-                </div>
-              );
-            })}
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center justify-center rounded-2xl border border-slate-200/80 bg-slate-50/80 p-3 sm:p-5 text-center shadow-xs hover:border-sky-300 transition-colors"
+              >
+                <span className="text-2xl sm:text-3xl font-black text-sky-600">
+                  {stat.number}
+                </span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-900 mt-1">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
