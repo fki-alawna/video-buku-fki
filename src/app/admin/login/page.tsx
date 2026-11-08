@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { isAllowedAdminEmail } from '@/lib/auth-config';
@@ -43,33 +44,71 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-slate-50 px-4 py-12 text-slate-900">
-      <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-bold text-slate-900">Login Admin</h1>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Masuk menggunakan akun Google admin untuk mengelola folder, video, dan QR code.
-        </p>
+    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8 sm:py-12 text-slate-900">
+      <div className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col md:flex-row">
+        {/* Kolom Kiri: Form & Tombol Login */}
+        <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-between">
+          <div>
+            {/* Logo A'lawna di Pojok Kiri Atas */}
+            <div className="flex items-center gap-2.5 mb-6">
+              <Image
+                src="/logo-alawna.png"
+                alt="Logo A'lawna"
+                width={36}
+                height={36}
+                className="w-9 h-9 object-contain"
+                priority
+              />
+              <span className="text-lg font-bold tracking-tight text-slate-900">
+                A&apos;lawna
+              </span>
+            </div>
 
-        {errorBanner ? (
-          <div
-            role="alert"
-            className="mt-5 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm font-medium text-red-900"
-          >
-            {errorBanner}
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+              Portal Admin A&apos;lawna
+            </h1>
+            <p className="mt-3 text-sm leading-relaxed text-slate-500">
+              Masuk dengan akun Google yang terdaftar sebagai admin (whitelist) untuk mengelola data video dan QR code.
+            </p>
+
+            {errorBanner && (
+              <div
+                role="alert"
+                className="mt-4 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm font-medium text-red-900"
+              >
+                {errorBanner}
+              </div>
+            )}
           </div>
-        ) : null}
 
-        <div className="mt-6">
-          <GoogleLoginButton />
+          <div className="my-8">
+            <GoogleLoginButton />
+          </div>
+
+          <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <Link
+              href="/"
+              className="text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+            >
+              ← Kembali ke Beranda
+            </Link>
+            <span className="text-xs text-slate-400">
+              Khusus Admin
+            </span>
+          </div>
         </div>
 
-        <div className="mt-6 border-t border-slate-200 pt-4 text-center">
-          <Link
-            href="/"
-            className="inline-flex min-h-[44px] items-center justify-center px-3 text-sm font-medium text-slate-700 underline-offset-4 hover:text-slate-900 hover:underline"
-          >
-            Kembali ke halaman utama
-          </Link>
+        {/* Kolom Kanan: Foto Laki-laki Mengaji */}
+        <div className="relative hidden md:block md:w-1/2 min-h-[380px] bg-slate-100 overflow-hidden rounded-r-3xl">
+          <Image
+            src="/foto-login.jpg"
+            alt="Foto Login A'lawna"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 384px"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
         </div>
       </div>
     </main>
