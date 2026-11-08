@@ -25,13 +25,7 @@
   }
 }
 
-@media (min-width: 768px) {
-  .landing-cursor-scope,
-  .landing-cursor-scope * {
-    cursor: none !important;
-  }
 }
-
 @media print {
   @page {
     margin: 12mm;

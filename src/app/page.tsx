@@ -9,16 +9,12 @@ import Testimonials from '@/components/landing/Testimonials';
 import Footer from '@/components/landing/Footer';
 import LoginModal from '@/components/landing/LoginModal';
 import AIChat from '@/components/AIChat';
-import LaserCursor from '@/components/LaserCursor';
 
 export default function HomePage() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return (
-    <div className="landing-cursor-scope min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white md:cursor-none pb-24">
-      {/* Custom Laser Cursor */}
-      <LaserCursor />
-
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white pb-24">
       {/* Navbar with Login Trigger */}
       <Navbar onOpenLogin={() => setIsLoginModalOpen(true)} />
 
