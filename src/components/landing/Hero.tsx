@@ -18,15 +18,16 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Full-Width Hero Banner (Meta Style: Full-Width, Edge-to-Edge, Tanpa Bingkai & Tanpa Teks Overlay) */}
-      <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] overflow-hidden bg-slate-100">
+      {/* Full-Width Hero Banner (Uncropped Original Aspect Ratio, Full-Bleed Edge-to-Edge) */}
+      <div className="w-full overflow-hidden bg-slate-900">
         <Image
           src="/foto-hero.jpg"
           alt="A'lawna Hero Banner"
-          fill
+          width={1024}
+          height={520}
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="w-full h-auto object-contain block"
         />
       </div>
 
