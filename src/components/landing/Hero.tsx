@@ -18,7 +18,7 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Full-Width Hero Banner (Uncropped Original Aspect Ratio, Full-Bleed Edge-to-Edge) */}
+      {/* Full-Width Hero Banner (Uncropped Original Aspect Ratio, Full-Bleed Edge-to-Edge, Unoptimized High-Res) */}
       <div className="w-full overflow-hidden bg-slate-900">
         <Image
           src="/foto-hero.jpg"
@@ -26,6 +26,8 @@ export default function Hero() {
           width={1024}
           height={520}
           priority
+          unoptimized={true}
+          quality={100}
           sizes="100vw"
           className="w-full h-auto object-contain block"
         />
