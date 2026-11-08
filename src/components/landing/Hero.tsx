@@ -1,8 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const textY = useTransform(scrollY, [0, 300], [0, -100]);
+  const textOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   const stats = [
     { number: '326+', label: 'Siswi' },
     { number: '24', label: 'Mustahiq/oh' },
@@ -11,13 +15,24 @@ export default function Hero() {
 
   return (
     <section id="beranda" className="relative bg-white text-slate-900">
-      {/* Full-Width Hero Banner (Pure <img> tag, 100% original sharpness) */}
-      <div className="w-full">
+      {/* Full-Width Hero Banner with Scroll-Reveal Parallax Text Overlay */}
+      <div className="relative w-full overflow-hidden">
         <img
           src="/foto-hero.jpg"
           alt="A'lawna Hero"
           className="w-full h-auto object-contain block"
         />
+        <motion.div
+          style={{ y: textY, opacity: textOpacity }}
+          className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/25 pointer-events-none p-4"
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-widest drop-shadow-lg text-center">
+            A&apos;LAWNA
+          </h1>
+          <p className="text-sm md:text-lg lg:text-2xl font-semibold text-amber-400 uppercase tracking-widest mt-2 md:mt-4 drop-shadow-md text-center">
+            Luhur • Beradab • Bermanfaat
+          </p>
+        </motion.div>
       </div>
 
       {/* Konten Teks di Bawah Banner dengan Animasi Scroll (Framer Motion) */}
