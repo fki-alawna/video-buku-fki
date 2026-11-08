@@ -1,17 +1,24 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const description =
+  "A'lawna adalah nama yang bermakna tinggi, luhur, dan unggul, namun keunggulan tersebut bukanlah tentang kesombongan, melainkan cita-cita mulia untuk memiliki akhlak, ilmu, dan keimanan yang luhur. Nama ini merupakan wujud doa dan harapan agar senantiasa tumbuh menjadi pribadi yang beradab, tetap rendah hati, serta membawa manfaat bagi sesama, dengan esensi utama menjadi pribadi unggul melalui ilmu, adab, dan keimanan.";
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://fki-alawna.vercel.app'),
   title: "A'lawna",
-  description: "Pengelolaan video Google Drive dan QR code A'lawna.",
+  description,
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
   openGraph: {
     url: 'https://fki-alawna.vercel.app/',
     title: "A'lawna",
-    description: "Pengelolaan video Google Drive dan QR code A'lawna.",
+    description,
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://fki-alawna.vercel.app/og-image.jpg',
         width: 1200,
         height: 630,
         alt: "A'lawna",
@@ -21,8 +28,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "A'lawna",
-    description: "Pengelolaan video Google Drive dan QR code A'lawna.",
-    images: ['/og-image.jpg'],
+    description,
+    images: ['https://fki-alawna.vercel.app/og-image.jpg'],
   },
 };
 
