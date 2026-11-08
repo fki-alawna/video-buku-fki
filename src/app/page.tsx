@@ -8,6 +8,7 @@ import Features from '@/components/landing/Features';
 import Testimonials from '@/components/landing/Testimonials';
 import Footer from '@/components/landing/Footer';
 import LoginModal from '@/components/landing/LoginModal';
+import AIChat from '@/components/AIChat';
 
 export default function HomePage() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -32,7 +33,7 @@ export default function HomePage() {
         <Testimonials />
       </main>
 
-      {/* Footer with Google Maps & WhatsApp */}
+      {/* Footer with Google Maps */}
       <Footer />
 
       {/* Pop-up Modal Login Admin */}
@@ -40,6 +41,9 @@ export default function HomePage() {
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
       />
+
+      {/* AI Chatbot A'lawna Intelligent */}
+      <AIChat />
     </div>
   );
 }
