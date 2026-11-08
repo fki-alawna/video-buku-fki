@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Sparkles, Users, Award, GraduationCap } from 'lucide-react';
+import { Users, Award, GraduationCap } from 'lucide-react';
 
 export default function Hero() {
   const stats = [
@@ -23,12 +23,6 @@ export default function Hero() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Kolom Kiri: Teks & Informasi */}
           <div className="space-y-8 lg:col-span-7">
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50/80 px-4 py-1.5 text-xs sm:text-sm font-semibold text-sky-700 shadow-2xs">
-              <Sparkles className="h-4 w-4 text-sky-600" />
-              <span>MHMTQ Group • Haflah Khotmil Qur&apos;an</span>
-            </div>
-
             {/* Judul Utama */}
             <div className="space-y-2">
               <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-6xl md:text-7xl">
@@ -82,7 +76,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Kolom Kanan: Gambar Floating Card (SaaS Style) */}
+          {/* Kolom Kanan: Gambar Floating Card (SaaS Style) Bersih */}
           <div className="flex justify-center lg:col-span-5">
             <motion.div
               animate={{ y: [-8, 8, -8] }}
@@ -100,28 +94,6 @@ export default function Hero() {
                     priority
                     className="object-cover object-center"
                   />
-                  {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-
-                  {/* Floating Bottom Card */}
-                  <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-white/20 bg-white/95 p-3.5 shadow-lg backdrop-blur-md">
-                    <p className="text-xs font-bold text-sky-600 uppercase tracking-wider">
-                      Dokumentasi Utama
-                    </p>
-                    <p className="text-sm font-bold text-slate-900 mt-0.5">
-                      Haflah & Wisuda Khotmil Qur&apos;an
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Floating Top Badge */}
-              <div className="absolute -top-3 -right-3 rounded-2xl border border-slate-200 bg-white px-4 py-2 shadow-lg hidden sm:block">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-sky-600" />
-                  <span className="text-xs font-bold text-slate-900">
-                    Edisi 2026
-                  </span>
                 </div>
               </div>
             </motion.div>

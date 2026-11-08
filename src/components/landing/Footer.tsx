@@ -13,7 +13,7 @@ export default function Footer() {
               &ldquo;Menjadi pribadi yang unggul bukan dengan kesombongan, tetapi dengan ilmu, adab, dan keimanan.&rdquo;
             </p>
             <p className="text-xs sm:text-sm tracking-widest uppercase text-sky-600 font-bold pt-1">
-              Keluarga Santri & Alumni A&apos;lawna
+              Keluarga A&apos;lawna
             </p>
           </div>
 

@@ -57,17 +57,11 @@ export default function Testimonials() {
   return (
     <section id="kontak" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60 text-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-sky-600">
-            Apresiasi & Kesan Mendalam
-          </p>
+        {/* Section Header (Bersih tanpa sub-judul & deskripsi panjang) */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Kata Mereka
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            Kesan, doa, dan pengalaman berharga dari santriwati keluarga besar A&apos;lawna.
-          </p>
         </div>
 
         {/* 12 Testimonials Grid (Hanya Nama dan Teks, Tanpa Role) */}

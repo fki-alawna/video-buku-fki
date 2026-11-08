@@ -29,22 +29,16 @@ export default function Features() {
   return (
     <section id="mhmtq" className="relative bg-white py-16 sm:py-24 border-t border-slate-200/60 text-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-sky-600">
-            Makna Lambang Kebanggaan
-          </p>
+        {/* Section Header (Bersih tanpa sub-judul & deskripsi panjang) */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Filosofi Logo
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            Setiap garis dan warna pada lambang A&apos;lawna mencerminkan nilai luhur yang senantiasa dihidupkan para santri.
-          </p>
         </div>
 
-        {/* 4 Cards Grid (Light SaaS Style) */}
+        {/* 4 Cards Grid (Light SaaS Style, Ikon + Judul + Deskripsi Saja) */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {filosofiList.map((item, idx) => {
+          {filosofiList.map((item) => {
             const Icon = item.icon;
             return (
               <div
@@ -65,11 +59,6 @@ export default function Features() {
                     className="mt-2.5 text-sm leading-relaxed text-slate-600"
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   />
-                </div>
-
-                <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-sky-600">
-                  <span>Makna 0{idx + 1}</span>
-                  <div className="h-px flex-1 bg-slate-100" />
                 </div>
               </div>
             );

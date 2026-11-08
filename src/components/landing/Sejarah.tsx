@@ -39,17 +39,11 @@ export default function Sejarah() {
   return (
     <section id="wisuda" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-sky-600">
-            Arsip & Kenangan Indah
-          </p>
+        {/* Section Header (Bersih tanpa sub-judul & deskripsi panjang) */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Sejarah A&apos;lawna
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            Rangkaian kilas balik perjalanan, prosesi suci khotmil Qur&apos;an, dan ikatan kekeluargaan santriwati MHMTQ Lirboyo.
-          </p>
         </div>
 
         {/* Grid 3x3 Photos (Full-Bleed, Tanpa Teks) */}
