@@ -22,7 +22,7 @@ export default function HomePage() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white pb-24">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white pb-24 overflow-x-hidden">
       {/* Navbar with Login Trigger */}
       <Navbar onOpenLogin={() => setIsLoginModalOpen(true)} />
 

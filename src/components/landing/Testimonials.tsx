@@ -157,7 +157,7 @@ export default function Testimonials() {
           <div
             role="dialog"
             aria-modal="true"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
             {/* Backdrop */}
             <motion.div
@@ -176,7 +176,7 @@ export default function Testimonials() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 320 }}
-              className="relative w-full max-w-2xl rounded-3xl bg-white p-7 sm:p-10 shadow-2xl border border-slate-100 text-slate-900 z-10"
+              className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-100 text-slate-900 z-10"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}

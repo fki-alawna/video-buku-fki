@@ -39,7 +39,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
         >
           {/* Backdrop with Fade */}
           <motion.div
@@ -52,13 +52,13 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             aria-hidden="true"
           />
 
-          {/* Modal Card: Split-Screen 50:50 Layout with Rounded-3XL and Shadow-2XL */}
+          {/* Modal Card: Responsive 1-col on mobile, 50:50 on desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative w-full max-w-2xl lg:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 overflow-hidden grid grid-cols-1 md:grid-cols-2 z-10 text-slate-900"
+            className="relative w-full max-w-md md:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 overflow-hidden grid grid-cols-1 md:grid-cols-2 z-10 text-slate-900"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}

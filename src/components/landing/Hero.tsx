@@ -14,13 +14,13 @@ export default function Hero() {
   ];
 
   return (
-    <section id="beranda" className="relative bg-white text-slate-900">
+    <section id="beranda" className="relative bg-white text-slate-900 overflow-hidden">
       {/* Full-Width Hero Banner with Scroll-Reveal Parallax Text Overlay */}
       <div className="relative w-full overflow-hidden">
         <img
           src="/foto-hero.jpg"
           alt="A'lawna Hero"
-          className="w-full h-auto object-contain block"
+          className="w-full max-w-full h-auto object-contain block"
         />
         <motion.div
           style={{ y: textY, opacity: textOpacity }}
