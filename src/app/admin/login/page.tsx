@@ -45,9 +45,9 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8 sm:py-12 text-slate-900">
-      <div className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col md:flex-row">
-        {/* Kolom Kiri: Form & Tombol Login */}
-        <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-between">
+      <div className="relative w-full max-w-2xl lg:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-200/80 overflow-hidden grid grid-cols-1 md:grid-cols-2">
+        {/* Kolom Kiri: Form & Tombol Login (50%) */}
+        <div className="w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
           <div>
             {/* Logo A'lawna di Pojok Kiri Atas */}
             <div className="flex items-center gap-2.5 mb-6">
@@ -59,7 +59,7 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
                 className="w-9 h-9 object-contain"
                 priority
               />
-              <span className="text-lg font-bold tracking-tight text-slate-900">
+              <span className="text-xl font-black tracking-tight text-slate-900">
                 A&apos;lawna
               </span>
             </div>
@@ -67,9 +67,6 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
               Portal Admin A&apos;lawna
             </h1>
-            <p className="mt-3 text-sm leading-relaxed text-slate-500">
-              Masuk dengan akun Google yang terdaftar sebagai admin (whitelist) untuk mengelola data video dan QR code.
-            </p>
 
             {errorBanner && (
               <div
@@ -92,20 +89,19 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
             >
               ← Kembali ke Beranda
             </Link>
-            <span className="text-xs text-slate-400">
-              Khusus Admin
-            </span>
           </div>
         </div>
 
-        {/* Kolom Kanan: Foto Laki-laki Mengaji */}
-        <div className="relative hidden md:block md:w-1/2 min-h-[380px] bg-slate-100 overflow-hidden rounded-r-3xl">
+        {/* Kolom Kanan: Foto Portrait HD (50%) */}
+        <div className="relative hidden md:block w-full h-full min-h-[380px] aspect-[3/4] bg-slate-100 overflow-hidden">
           <Image
             src="/foto-login.jpg"
             alt="Foto Login A'lawna"
             fill
             priority
-            sizes="(max-width: 768px) 100vw, 384px"
+            unoptimized={true}
+            quality={100}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />

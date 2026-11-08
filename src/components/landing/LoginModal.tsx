@@ -52,13 +52,13 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             aria-hidden="true"
           />
 
-          {/* Modal Card: Split-Screen Layout with Rounded-3XL and Shadow-2XL */}
+          {/* Modal Card: Split-Screen 50:50 Layout with Rounded-3XL and Shadow-2XL */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 overflow-hidden flex flex-col md:flex-row z-10 text-slate-900"
+            className="relative w-full max-w-2xl lg:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 overflow-hidden grid grid-cols-1 md:grid-cols-2 z-10 text-slate-900"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -71,57 +71,47 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               <X className="h-5 w-5" />
             </button>
 
-            {/* Bagian Kiri: Form & Google OAuth */}
-            <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-between">
-              <div>
-                {/* Logo A'lawna di Pojok Kiri Atas */}
-                <div className="flex items-center gap-2.5 mb-6">
-                  <Image
-                    src="/logo-alawna.png"
-                    alt="Logo A'lawna"
-                    width={36}
-                    height={36}
-                    className="w-9 h-9 object-contain"
-                    priority
-                  />
-                  <span className="text-lg font-bold tracking-tight text-slate-900">
-                    A&apos;lawna
-                  </span>
-                </div>
-
-                {/* Judul Besar */}
-                <h2
-                  id="modal-title"
-                  className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900"
-                >
-                  Portal Admin A&apos;lawna
-                </h2>
-
-                {/* Sub-judul / Deskripsi Abu-abu */}
-                <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                  Masuk dengan akun Google yang terdaftar sebagai admin (whitelist) untuk mengelola data video dan QR code.
-                </p>
+            {/* Bagian Kiri: Form & Google OAuth (50%) */}
+            <div className="w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+              {/* Logo A'lawna di Pojok Kiri Atas */}
+              <div className="flex items-center gap-2.5 mb-6">
+                <Image
+                  src="/logo-alawna.png"
+                  alt="Logo A'lawna"
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 object-contain"
+                  priority
+                />
+                <span className="text-xl font-black tracking-tight text-slate-900">
+                  A&apos;lawna
+                </span>
               </div>
+
+              {/* Judul Besar */}
+              <h2
+                id="modal-title"
+                className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900"
+              >
+                Portal Admin A&apos;lawna
+              </h2>
 
               {/* Tombol Utama Login dengan Google */}
-              <div className="my-8">
+              <div className="mt-8">
                 <GoogleLoginButton />
               </div>
-
-              {/* Footer Note */}
-              <p className="text-xs text-slate-400">
-                Akses terbatas khusus administrator terdaftar.
-              </p>
             </div>
 
-            {/* Bagian Kanan: Foto Laki-laki Mengaji (Full Height & Rounded-r-3xl) */}
-            <div className="relative hidden md:block md:w-1/2 min-h-[380px] bg-slate-100 overflow-hidden rounded-r-3xl">
+            {/* Bagian Kanan: Foto Portrait HD (50%) */}
+            <div className="relative hidden md:block w-full h-full min-h-[380px] aspect-[3/4] bg-slate-100 overflow-hidden">
               <Image
                 src="/foto-login.jpg"
                 alt="Foto Login A'lawna"
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, 384px"
+                unoptimized={true}
+                quality={100}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
