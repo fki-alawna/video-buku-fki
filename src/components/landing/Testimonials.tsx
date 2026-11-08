@@ -145,9 +145,6 @@ export default function Testimonials() {
                 <h4 className="text-sm font-bold text-blue-900">
                   {item.name}
                 </h4>
-                <span className="text-[11px] font-semibold text-slate-400">
-                  Lihat Detail ↗
-                </span>
               </div>
             </div>
           ))}
