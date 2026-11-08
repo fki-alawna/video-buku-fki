@@ -1,6 +1,6 @@
 'use client';
 
-import { MapPin } from 'lucide-react';
+import { MapPin, Phone, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -42,6 +42,47 @@ export default function Footer() {
             </a>
           </div>
 
+          {/* Kontak Resmi MHMTQ & P3TQ */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+            <a
+              href="https://wa.me/6281319861992"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-2xl bg-white border border-slate-200/90 p-3.5 hover:border-blue-400 hover:shadow-md transition-all group"
+            >
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-900 group-hover:bg-blue-900 group-hover:text-white transition-colors">
+                <MessageCircle className="h-4 w-4" />
+              </div>
+              <div className="min-w-0">
+                <span className="block text-xs font-semibold text-slate-500">
+                  Kontak Resmi MHMTQ
+                </span>
+                <span className="block text-sm font-bold text-blue-900 group-hover:underline">
+                  +6281319861992
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="https://wa.me/6285795751986"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-2xl bg-white border border-slate-200/90 p-3.5 hover:border-blue-400 hover:shadow-md transition-all group"
+            >
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-900 group-hover:bg-blue-900 group-hover:text-white transition-colors">
+                <Phone className="h-4 w-4" />
+              </div>
+              <div className="min-w-0">
+                <span className="block text-xs font-semibold text-slate-500">
+                  Kontak Resmi P3TQ
+                </span>
+                <span className="block text-sm font-bold text-blue-900 group-hover:underline">
+                  +6285795751986
+                </span>
+              </div>
+            </a>
+          </div>
+
           {/* Google Maps Iframe */}
           <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-inner">
             <iframe
@@ -56,13 +97,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright & Info */}
-        <div className="pt-6 border-t border-slate-100 text-center space-y-2">
+        {/* Copyright */}
+        <div className="pt-6 border-t border-slate-100 text-center">
           <p className="text-xs sm:text-sm font-medium text-slate-500">
             © 2026 FKI A&apos;lawna / MHMTQ Group. All rights reserved.
-          </p>
-          <p className="text-xs text-slate-400">
-            Portal Manajemen Video Google Drive & Kode QR Terintegrasi.
           </p>
         </div>
       </div>
