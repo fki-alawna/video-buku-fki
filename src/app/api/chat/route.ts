@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   try {
     const { messages } = await request.json();
@@ -12,16 +15,22 @@ export async function POST(request: Request) {
     }
 
     const rawApiKey = process.env.CLOUVIA_API_KEY || '';
-    const apiKey = rawApiKey.replace(/['"]/g, '').trim();
+    const apiKey = rawApiKey
+      .replace(/['"]/g, '')
+      .replace(/^Bearer\s+/i, '')
+      .trim();
 
     if (!apiKey) {
+      console.error('Chat API Error: CLOUVIA_API_KEY is not defined in environment variables.');
       return NextResponse.json(
         { error: 'CLOUVIA_API_KEY belum dikonfigurasi' },
         { status: 500 }
       );
     }
 
-    const response = await fetch('https://router.clouvia.id/v1/chat/completions', {
+    const endpoint = 'https://router.clouvia.id/v1/chat/completions';
+
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +41,8 @@ export async function POST(request: Request) {
         messages: [
           {
             role: 'system',
-            content: "Anda adalah A'lawna Intelligent, asisten AI ramah, islami, dan sopan untuk keluarga besar A'lawna.",
+            content:
+              "Anda adalah A'lawna Intelligent, asisten AI ramah, islami, dan sopan untuk keluarga besar A'lawna. Bantu pengguna dengan ramah, penuh adab, dan doa-doa kebaikan.",
           },
           ...messages,
         ],
@@ -41,6 +51,7 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const errorText = await response.text();
+      console.error(`Clouvia API returned error (${response.status}):`, errorText);
       return NextResponse.json(
         { error: `Clouvia API error (${response.status})`, details: errorText },
         { status: response.status }
@@ -50,8 +61,8 @@ export async function POST(request: Request) {
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
+    console.error('Chat API Route Error:', error);
     const err = error as Error;
-    console.error('Chat API Route Error:', err);
     return NextResponse.json(
       { error: err?.message || 'Internal Server Error' },
       { status: 500 }
