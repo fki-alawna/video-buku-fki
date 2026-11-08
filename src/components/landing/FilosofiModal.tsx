@@ -85,10 +85,10 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
                   <h3 className="text-base sm:text-lg font-bold text-amber-400">
                     1. Filosofi Bentuk
                   </h3>
-                  {/* Pointer line ke arah logo */}
-                  <div className="hidden md:flex items-center absolute -right-6 lg:-right-8 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <div className="w-5 lg:w-7 h-[1.5px] bg-amber-400/60" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
+                  {/* Pointer line lurus pendek ke arah area kosong di atas logo */}
+                  <div className="hidden md:flex items-center absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 pointer-events-none">
+                    <div className="w-7 lg:w-8 h-[1.5px] bg-amber-400/60" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-[0_0_6px_rgba(251,191,36,0.8)] shrink-0" />
                   </div>
                 </div>
 
@@ -100,10 +100,10 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
                   <p className="mt-1.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
                     Melambangkan cita-cita tinggi, semangat yang tak pernah padam, dan pertumbuhan yang terus bergerak maju (growth).
                   </p>
-                  {/* Pointer Line mengarah ke lekukan tengah logo */}
-                  <div className="hidden md:flex items-center absolute -right-6 lg:-right-10 top-2 pointer-events-none">
-                    <div className="w-8 lg:w-14 h-[1.5px] bg-amber-400/80" />
-                    <div className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,1)] ring-2 ring-amber-400/40" />
+                  {/* Pointer Line horizontal mengarah ke lekukan logo bagian atas */}
+                  <div className="hidden md:flex items-center absolute left-[calc(100%+12px)] top-2.5 pointer-events-none">
+                    <div className="w-20 md:w-24 lg:w-28 h-[1.5px] bg-amber-400/80" />
+                    <div className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,1)] ring-2 ring-amber-400/40 shrink-0" />
                   </div>
                 </div>
 
@@ -115,10 +115,11 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
                   <p className="mt-1.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
                     Melambangkan kebijaksanaan, kedalaman ilmu, serta adab yang mengalir tenang.
                   </p>
-                  {/* Pointer Line bentuk L mengarah ke lengkungan arab bawah */}
-                  <div className="hidden md:flex flex-col items-end absolute -right-6 lg:-right-10 top-2 pointer-events-none">
-                    <div className="w-8 lg:w-14 h-8 border-r-[1.5px] border-b-[1.5px] border-amber-400/80 rounded-br-sm" />
-                    <div className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,1)] ring-2 ring-amber-400/40 -mr-1 -mb-1" />
+                  {/* Pointer Line bentuk L mengarah ke atas menuju lengkungan bawah logo */}
+                  <div className="hidden md:block absolute left-[calc(100%+12px)] -top-[54px] pointer-events-none">
+                    <div className="relative w-[72px] lg:w-[76px] h-[64px] border-r-[1.5px] border-b-[1.5px] border-amber-400/80 rounded-br-sm">
+                      <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,1)] ring-2 ring-amber-400/40" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -155,12 +156,10 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
                   <p className="mt-1.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
                     Melambangkan kefokusan, visi masa depan, dan pencapaian target tertinggi.
                   </p>
-                  {/* Pointer Line dengan target dot mengarah ke mutiara biru di puncak */}
-                  <div className="hidden md:flex items-center absolute -left-6 lg:-left-10 top-2 pointer-events-none flex-row-reverse">
-                    <div className="w-8 lg:w-14 h-[1.5px] bg-sky-400/80" />
-                    <div className="relative flex items-center justify-center -ml-1">
-                      <div className="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,1)] ring-4 ring-sky-400/30" />
-                    </div>
+                  {/* Pointer Line horizontal mengarah ke bola biru di puncak logo */}
+                  <div className="hidden md:flex items-center absolute right-[calc(100%+12px)] top-[14px] pointer-events-none">
+                    <div className="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,1)] ring-4 ring-sky-400/30 shrink-0" />
+                    <div className="w-20 md:w-24 lg:w-[110px] h-[1.5px] bg-sky-400/80" />
                   </div>
                 </div>
 
