@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, Sparkles, Loader2 } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, Loader2 } from 'lucide-react';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -114,16 +114,11 @@ export default function AIChat() {
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-blue-950 bg-blue-900 px-5 py-4 text-white">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md">
-                  <Sparkles className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold leading-tight flex items-center gap-1.5">
-                    A&apos;lawna Intelligent
-                  </h3>
-                  <p className="text-xs text-blue-200">Asisten AI Islami Ramah</p>
-                </div>
+              <div>
+                <h3 className="text-base font-bold leading-tight">
+                  A&apos;lawna Intelligent
+                </h3>
+                <p className="text-xs text-blue-200 mt-0.5">Asisten AI Islami Ramah</p>
               </div>
               <button
                 type="button"
