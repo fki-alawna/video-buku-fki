@@ -6,15 +6,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const galeriImages = [
-  '/galeri/foto-2.jpg',
-  '/galeri/foto-3.jpg',
-  '/galeri/foto-4.jpg',
-  '/galeri/foto-5.jpg',
-  '/galeri/foto-6.jpg',
-  '/galeri/foto-7.jpg',
-  '/galeri/foto-8.jpg',
-  '/galeri/foto-9.jpg',
-  '/galeri/foto-10.jpg',
+  '/galeri/foto-6.jpg', // Foto ke-5 sebelumnya (tengah baris 2)
+  '/galeri/foto-8.jpg', // Foto ke-7 sebelumnya (kiri baris 3)
+  '/galeri/foto-2.jpg', // Foto ke-1 sebelumnya
+  '/galeri/foto-3.jpg', // Foto ke-2 sebelumnya
+  '/galeri/foto-4.jpg', // Foto ke-3 sebelumnya
+  '/galeri/foto-5.jpg', // Foto ke-4 sebelumnya
+  '/galeri/foto-7.jpg', // Foto ke-6 sebelumnya
+  '/galeri/foto-9.jpg', // Foto ke-8 sebelumnya
+  '/galeri/foto-10.jpg', // Foto ke-9 sebelumnya
 ];
 
 export default function Sejarah() {
