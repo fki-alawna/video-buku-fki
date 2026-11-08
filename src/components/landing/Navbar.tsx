@@ -14,14 +14,14 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
 
   const navLinks = [
     { label: 'Beranda', href: '#beranda' },
-    { label: 'MHMTQ', href: '#mhmtq' },
+    { label: "A'lawna", href: '#mhmtq' },
     { label: 'Wisuda', href: '#wisuda' },
     { label: 'Kontak', href: '#kontak' },
     { label: 'Alamat', href: '#alamat' },
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-100 bg-white/90 backdrop-blur-md shadow-xs transition-all">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/60 backdrop-blur-md border-b border-white/20 shadow-sm transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
         {/* Brand / Logo (Polos tanpa kotak background/border) */}
         <Link href="/" className="flex items-center gap-2.5 group">
