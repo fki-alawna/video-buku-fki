@@ -87,15 +87,12 @@ export default function Testimonials() {
 
   return (
     <section id="kontak" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60 text-slate-900 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Kata Mereka
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-500">
-            Kesan dan cerita santriwati keluarga besar A&apos;lawna (Klik kartu untuk memperbesar)
-          </p>
         </div>
       </div>
 
