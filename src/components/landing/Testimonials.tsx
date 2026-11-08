@@ -5,64 +5,52 @@ import { Star, Quote } from 'lucide-react';
 export default function Testimonials() {
   const testimonials = [
     {
-      name: 'Ning Syarifah',
-      role: 'Alumni 2024',
-      quote: 'Matur nuwun sanget kagem para asatidz lan pengasuh. Sinau teng mriki mboten namung ngaos, tapi ugi sinau tata krama lan adab ingkang luhur.',
+      name: 'Siti Aminah',
+      text: "Nggak kerasa sudah 9 tahun di sini. Saking gak iso moco kitab, saiki iso wisuda. Thanks A'lawna!",
     },
     {
-      name: 'Ibu Hj. Masruroh',
-      role: 'Wali Santriwati - Kediri',
-      quote: 'Alhamdulillah sanget remen ningali putra kulo saget khotmil Quran kanthi tartil. Penataane adicara A&apos;lawna saestu nengsemaken lan khidmat.',
-    },
-    {
-      name: 'Fatimatuz Zahra',
-      role: 'Khotimat 30 Juz',
-      quote: 'Perjalanan panjang ngaos lan setoran mboten keraos awit dipun bimbing kanthi sabar. A&apos;lawna dados kenangan ingkang mboten badhe kasupen.',
-    },
-    {
-      name: 'Bpk. H. Subakir',
-      role: 'Wali Santri - Jombang',
-      quote: 'Bocah sakniki mboten gampang golek lingkungan ingkang sae. Wonten P3TQ Lirboyo, kulo ayem lan marem sanget ningali akhlake lare kulo.',
+      name: 'Fatimatus Zahro',
+      text: '9 tahun iki bukan waktu yang pendek. Ngaji, sekolah, mondok neng kene wes koyo omah dhewe. Kangen rek!',
     },
     {
       name: 'Nabila Salsabila',
-      role: 'Santriwati Mustahiqoh',
-      quote: 'Program lan kurikulum ingkang terstruktur ndadosaken sedaya santri saged istiqomah nderekaken tahfidz dumugi paripurna.',
-    },
-    {
-      name: 'Ustadzah Halimah',
-      role: 'Pembimbing Tahfidz',
-      quote: 'Mugi-mugi berkah Al-Qur&apos;an tansah nyarengi para santriwati sedaya, dados pribadi ingkang luhur lan migunani tumrap nusa lan bangsa.',
-    },
-    {
-      name: 'dr. Hendra Pratama',
-      role: 'Wali Santri - Surabaya',
-      quote: 'Sistem informasi dan dokumentasi video lewat QR sangat memudahkan kami keluarga di luar kota untuk menyimak prosesi khidmat anak kami.',
-    },
-    {
-      name: 'Siti Rohmah',
-      role: 'Alumni Angkatan 2023',
-      quote: 'Kangen suasana setoran subuh lan sholawatan bareng. Nilai adab lan disiplin ingkang dipun ajaraken saestu migunani wonten bebrayan.',
-    },
-    {
-      name: 'Ibu Nurul Hidayati',
-      role: 'Wali Santri - Tulungagung',
-      quote: 'Matur suwun dumateng poro Masyayikh. Tangis haru mboten saged kapenggak nalika ningali lare kulo dipun wisuda kanthi khidmat.',
+      text: 'Bimbingan Mustahiq niku benar-benar tulus. Mboten namung ngajeni kitab, nanging ugi ngajeni adab. Barokalloh.',
     },
     {
       name: 'Aisyah Putri',
-      role: 'Khotimat Binnadhor',
-      quote: 'Matur nuwun sedaya tim panitia A&apos;lawna. Kualitas dokumentasi lan acarane estu sae, ndadosaken tambah semangat anggenipun ngaos.',
-    },
-    {
-      name: 'Bpk. Joko Susilo',
-      role: 'Wali Santri - Malang',
-      quote: 'Alhamdulillah, sanes namung apalan Qur&apos;an mawon, nanging adab dumateng tiyang sepuh sanget katingal sae sanget.',
+      text: 'Momen paling berharga pas muhafadzoh bareng bestie. Pas hafalan mumet, saling support. Love u gengs!',
     },
     {
       name: 'Wardatun Nisa',
-      role: 'Santriwati A&apos;lawna',
-      quote: 'Bangga dados bagian saking keluarga ageng A&apos;lawna. Mugi sedaya ilmu ingkang dipun paringaken dados barokah fiddini waddunya wal akhirah.',
+      text: 'Alhamdulillah, resmi jadi alumni hari ini! Nggih mboten ngece, nanging rasane pengen nangis. Makasih doa restune semuanya.',
+    },
+    {
+      name: 'Zahra Nabila',
+      text: "Bapak-bapak Mustahiq sabar banget, koyo ngajeni anak dewe. Ilmu e berkah, akhlake barokah. A'lawna is the best!",
+    },
+    {
+      name: 'Syifa Aulia',
+      text: '9 tahun bareng terus. Dari kelas Ibtidaiyah sampai Aliyah. Susah seneng dilakoni bareng. Semoga silaturahmi gak putus yo!',
+    },
+    {
+      name: 'Kirana Putri',
+      text: 'Dedikasi ini untuk Ibu di rumah. Matur nuwun sampun nyekolahkan kulo neng panggenan sing tepat. A\'lawna forever!',
+    },
+    {
+      name: 'Nayla Syakira',
+      text: 'Praktik Ubudiyah dan Ujian Baca Kitab jadi momen paling deg-degan, tapi bapak e nggih sabar poll.',
+    },
+    {
+      name: 'Salma Azzahra',
+      text: 'Seneng banget iso sekelas karo wong-wong gokil neng kene. Pas ujian kitab kosongan, kompak banget belajare. Wehehe.',
+    },
+    {
+      name: 'Fia Alawna',
+      text: "Wajib Khidmah niku nggih capek, tapi dateng kepuasan batin. Belajar tulus ngabdi. A'lawna tempat molding karakter!",
+    },
+    {
+      name: 'Muna Alifah',
+      text: 'Matur nuwun sanget bimbinganipun para Masyayikh lan Bapak Mustahiq. Niki bukan akhir, tapi awal perjuangan. Semangat terus A\'lawna!',
     },
   ];
 
@@ -78,11 +66,11 @@ export default function Testimonials() {
             Kata Mereka
           </h2>
           <p className="text-sm sm:text-base text-slate-600">
-            Kesan, doa, dan pengalaman berharga dari santriwati, asatidz, dan wali santri keluarga besar A&apos;lawna.
+            Kesan, doa, dan pengalaman berharga dari santriwati keluarga besar A&apos;lawna.
           </p>
         </div>
 
-        {/* 12 Testimonials Grid (3 columns desktop, 1 column mobile) */}
+        {/* 12 Testimonials Grid (Hanya Nama dan Teks, Tanpa Role) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((item) => (
             <div
@@ -103,21 +91,17 @@ export default function Testimonials() {
                   <Quote className="h-5 w-5 text-slate-300" />
                 </div>
 
-                {/* Testimonial Quote */}
-                <p
-                  className="text-sm leading-relaxed text-slate-600 italic"
-                  dangerouslySetInnerHTML={{ __html: `&ldquo;${item.quote}&rdquo;` }}
-                />
+                {/* Testimonial Text */}
+                <p className="text-sm leading-relaxed text-slate-600 italic">
+                  &ldquo;{item.text}&rdquo;
+                </p>
               </div>
 
-              {/* Author Info */}
+              {/* Author Info (Hanya Nama) */}
               <div className="mt-6 pt-4 border-t border-slate-100">
                 <h4 className="text-sm font-bold text-sky-600">
                   {item.name}
                 </h4>
-                <p className="text-xs text-slate-400 font-medium mt-0.5">
-                  {item.role}
-                </p>
               </div>
             </div>
           ))}
