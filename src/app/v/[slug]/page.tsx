@@ -73,19 +73,19 @@ export default async function PublicVideoPage({ params }: VideoPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-50">
-      <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-4 py-6 sm:px-6 sm:py-10">
-        <header className="mb-4 space-y-1 sm:mb-6">
-          {video.folderName ? (
-            <p className="text-sm font-medium text-neutral-300 break-words">
-              {video.folderName}
-            </p>
-          ) : null}
-          <h1 className="text-xl font-semibold tracking-tight text-neutral-50 sm:text-2xl break-words">
-            {video.title}
-          </h1>
-        </header>
+    <div className="h-dvh w-full bg-black text-white flex flex-col overflow-hidden">
+      <header className="px-4 py-2 sm:px-6 sm:py-3 flex-shrink-0 bg-neutral-950/90 border-b border-neutral-900">
+        {video.folderName ? (
+          <p className="text-xs font-medium text-neutral-400 truncate">
+            {video.folderName}
+          </p>
+        ) : null}
+        <h1 className="text-sm sm:text-base font-semibold text-white truncate">
+          {video.title}
+        </h1>
+      </header>
 
+      <main className="flex-1 w-full h-full relative overflow-hidden bg-black flex items-center justify-center">
         <DriveVideoPlayer
           fileId={video.drive_file_id}
           title={video.title}
