@@ -23,18 +23,16 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-100 bg-white/90 backdrop-blur-md shadow-xs transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
-        {/* Brand / Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-slate-100 p-1 border border-slate-200 transition-transform group-hover:scale-105">
-            <Image
-              src="/logo-alawna.png"
-              alt="Logo A'lawna"
-              width={40}
-              height={40}
-              className="h-full w-full object-contain"
-              priority
-            />
-          </div>
+        {/* Brand / Logo (Polos tanpa kotak background/border) */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <Image
+            src="/logo-alawna.png"
+            alt="Logo A'lawna"
+            width={40}
+            height={40}
+            className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
+            priority
+          />
           <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">
             A&apos;lawna
           </span>
