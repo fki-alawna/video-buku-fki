@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/landing/Navbar';
 import Hero from '@/components/landing/Hero';
 import Sejarah from '@/components/landing/Sejarah';
@@ -9,6 +10,13 @@ import Testimonials from '@/components/landing/Testimonials';
 import Footer from '@/components/landing/Footer';
 import LoginModal from '@/components/landing/LoginModal';
 import AIChat from '@/components/AIChat';
+
+const sectionReveal = {
+  initial: { opacity: 0, y: 50 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-100px' },
+  transition: { duration: 0.8, ease: 'easeOut' as const },
+};
 
 export default function HomePage() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -24,17 +32,25 @@ export default function HomePage() {
         <Hero />
 
         {/* Sejarah & Galeri 9 Foto */}
-        <Sejarah />
+        <motion.div {...sectionReveal}>
+          <Sejarah />
+        </motion.div>
 
         {/* Filosofi Logo */}
-        <Features />
+        <motion.div {...sectionReveal}>
+          <Features />
+        </motion.div>
 
         {/* Testimoni Kata Mereka */}
-        <Testimonials />
+        <motion.div {...sectionReveal}>
+          <Testimonials />
+        </motion.div>
       </main>
 
       {/* Footer with Google Maps */}
-      <Footer />
+      <motion.div {...sectionReveal}>
+        <Footer />
+      </motion.div>
 
       {/* Pop-up Modal Login Admin */}
       <LoginModal

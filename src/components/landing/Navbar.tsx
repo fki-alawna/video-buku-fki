@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X, LogIn } from 'lucide-react';
 
 interface NavbarProps {
@@ -11,6 +12,17 @@ interface NavbarProps {
 
 export default function Navbar({ onOpenLogin }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > 100 && latest > previous) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   const navLinks = [
     { label: 'Beranda', href: '#beranda' },
@@ -21,8 +33,25 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white/60 backdrop-blur-md border-b border-white/20 shadow-sm transition-all">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+    <>
+      {/* Invisible Hover Trigger Area at the Top of Screen */}
+      <div
+        onMouseEnter={() => setHidden(false)}
+        className="fixed top-0 left-0 w-full h-5 z-50 pointer-events-auto"
+        aria-hidden="true"
+      />
+
+      <motion.header
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: '-100%' },
+        }}
+        animate={hidden && !mobileMenuOpen ? 'hidden' : 'visible'}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        onMouseEnter={() => setHidden(false)}
+        className="fixed top-0 left-0 w-full z-50 bg-white/60 backdrop-blur-md border-b border-white/20 shadow-sm"
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
         {/* Brand / Logo (Polos tanpa kotak background/border) */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <Image
@@ -102,6 +131,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
           </div>
         </div>
       )}
-    </header>
+    </motion.header>
+    </>
   );
 }

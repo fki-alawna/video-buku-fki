@@ -31,7 +31,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true, margin: '-100px' }}
           className="mx-auto max-w-3xl text-center space-y-6 sm:space-y-8"
         >
