@@ -56,7 +56,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
           <button
             type="button"
             onClick={onOpenLogin}
-            className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-sky-600/20 hover:bg-sky-700 active:scale-95 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
           >
             <LogIn className="h-4 w-4" />
             <span>Login</span>
@@ -94,7 +94,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
                 setMobileMenuOpen(false);
                 onOpenLogin();
               }}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-700"
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             >
               <LogIn className="h-4 w-4" />
               <span>Login Admin</span>

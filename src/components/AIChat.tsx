@@ -87,7 +87,7 @@ export default function AIChat() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full bg-gradient-to-r from-sky-600 to-teal-600 px-4 py-3 text-white shadow-xl shadow-sky-600/30 hover:shadow-sky-600/50 hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full bg-gradient-to-r from-sky-600 to-teal-600 px-4 py-3 text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
         aria-label="Buka AI Chatbot A'lawna Intelligent"
       >
         <div className="relative">
@@ -191,7 +191,7 @@ export default function AIChat() {
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-white hover:bg-sky-700 active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all cursor-pointer shadow-sm shadow-sky-600/20"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 cursor-pointer"
                 aria-label="Kirim pesan"
               >
                 <Send className="h-4 w-4" />

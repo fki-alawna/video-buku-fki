@@ -69,7 +69,7 @@ export default function Testimonials() {
           {testimonials.map((item) => (
             <div
               key={item.name}
-              className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:shadow-md transition-shadow"
+              className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-sky-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
               <div>
                 {/* 5 Stars Rating & Quote Icon */}
