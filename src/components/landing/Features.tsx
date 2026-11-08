@@ -54,16 +54,16 @@ export default function Features() {
             return (
               <div
                 key={item.title}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-sky-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-blue-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
                 <div>
-                  {/* Icon Container with Light Blue Circle */}
-                  <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-50 border border-sky-100 text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-all duration-300">
+                  {/* Icon Container with Dark Blue Circle */}
+                  <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100 text-blue-900 group-hover:bg-blue-900 group-hover:text-white transition-all duration-300">
                     <Icon className="h-7 w-7" />
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-900 transition-colors">
                     {item.title}
                   </h3>
                   <p

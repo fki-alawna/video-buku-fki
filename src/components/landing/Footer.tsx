@@ -11,7 +11,7 @@ export default function Footer() {
           <p className="text-lg sm:text-2xl font-semibold italic text-slate-900 leading-relaxed">
             &ldquo;Menjadi pribadi yang unggul bukan dengan kesombongan, tetapi dengan ilmu, adab, dan keimanan.&rdquo;
           </p>
-          <p className="text-xs sm:text-sm tracking-widest uppercase text-sky-600 font-bold pt-1">
+          <p className="text-xs sm:text-sm tracking-widest uppercase text-blue-900 font-bold pt-1">
             Keluarga A&apos;lawna
           </p>
         </div>
@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-600">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-900">
                 <MapPin className="h-5 w-5" />
               </div>
               <div>
@@ -36,7 +36,7 @@ export default function Footer() {
               href="https://maps.google.com/?q=Pondok+Pesantren+Putri+Tahfizhil+Quran+Lirboyo"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-white border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-sky-600 transition-colors shadow-2xs self-start sm:self-auto"
+              className="inline-flex items-center justify-center rounded-xl bg-white border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-900 transition-colors shadow-2xs self-start sm:self-auto"
             >
               Buka di Google Maps
             </a>

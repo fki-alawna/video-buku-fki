@@ -43,7 +43,7 @@ export default function GoogleLoginButton() {
         type="button"
         onClick={handleGoogleLogin}
         disabled={loading}
-        className="inline-flex min-h-[48px] w-full items-center justify-center gap-3 rounded-xl bg-teal-700 px-5 py-3 text-base font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 disabled:opacity-60 cursor-pointer"
+        className="inline-flex min-h-[48px] w-full items-center justify-center gap-3 rounded-xl bg-blue-900 hover:bg-blue-800 active:bg-blue-950 px-5 py-3 text-base font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 disabled:opacity-60 cursor-pointer"
       >
         <svg
           className="h-5 w-5 shrink-0"

@@ -14,7 +14,7 @@ export default function Hero() {
     <section id="beranda" className="relative overflow-hidden bg-white text-slate-900">
       {/* Background Soft Glow */}
       <div
-        className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-sky-100/50 blur-[140px]"
+        className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-blue-100/40 blur-[140px]"
         aria-hidden="true"
       />
 
@@ -44,7 +44,7 @@ export default function Hero() {
             <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-6xl md:text-7xl">
               A&apos;lawna
             </h1>
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-sky-600">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-blue-900">
               Luhur • Beradab • Bermanfaat
             </p>
           </div>
@@ -58,13 +58,13 @@ export default function Hero() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="#mhmtq"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-sky-600 px-8 py-3 text-base font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-blue-900 hover:bg-blue-800 px-8 py-3 text-base font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             >
               A&apos;lawna
             </a>
             <a
               href="#wisuda"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-xl border-2 border-sky-600 px-8 py-3 text-base font-semibold text-sky-700 shadow-md hover:shadow-lg hover:bg-sky-50 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-xl border-2 border-blue-900 px-8 py-3 text-base font-semibold text-blue-900 shadow-md hover:shadow-lg hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             >
               Wisuda
             </a>
@@ -75,9 +75,9 @@ export default function Hero() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center justify-center rounded-2xl border border-slate-200/80 bg-slate-50/80 p-3 sm:p-5 text-center shadow-xs hover:border-sky-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="flex flex-col items-center justify-center rounded-2xl border border-slate-200/80 bg-slate-50/80 p-3 sm:p-5 text-center shadow-xs hover:border-blue-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
-                <span className="text-2xl sm:text-3xl font-black text-sky-600">
+                <span className="text-2xl sm:text-3xl font-black text-blue-900">
                   {stat.number}
                 </span>
                 <span className="text-xs sm:text-sm font-semibold text-slate-900 mt-1">

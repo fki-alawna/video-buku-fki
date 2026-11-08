@@ -69,7 +69,7 @@ export default function Testimonials() {
           {testimonials.map((item) => (
             <div
               key={item.name}
-              className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-sky-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-blue-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
               <div>
                 {/* 5 Stars Rating & Quote Icon */}
@@ -93,7 +93,7 @@ export default function Testimonials() {
 
               {/* Author Info (Hanya Nama) */}
               <div className="mt-6 pt-4 border-t border-slate-100">
-                <h4 className="text-sm font-bold text-sky-600">
+                <h4 className="text-sm font-bold text-blue-900">
                   {item.name}
                 </h4>
               </div>

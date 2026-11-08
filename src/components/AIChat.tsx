@@ -87,14 +87,14 @@ export default function AIChat() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full bg-gradient-to-r from-sky-600 to-teal-600 px-4 py-3 text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full bg-blue-900 hover:bg-blue-800 px-4 py-3 text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
         aria-label="Buka AI Chatbot A'lawna Intelligent"
       >
         <div className="relative">
           <MessageCircle className="h-6 w-6 transition-transform group-hover:rotate-12" />
           <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-300 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-400"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-300 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-400"></span>
           </span>
         </div>
         <span className="text-sm font-bold tracking-wide pr-1">A&apos;lawna Intelligent</span>
@@ -111,7 +111,7 @@ export default function AIChat() {
             className="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 flex flex-col overflow-hidden text-slate-900"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-slate-100 bg-gradient-to-r from-sky-600 to-teal-600 px-5 py-4 text-white">
+            <div className="flex items-center justify-between border-b border-blue-950 bg-blue-900 px-5 py-4 text-white">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-md">
                   <Sparkles className="h-5 w-5 text-white" />
@@ -120,7 +120,7 @@ export default function AIChat() {
                   <h3 className="text-base font-bold leading-tight flex items-center gap-1.5">
                     A&apos;lawna Intelligent
                   </h3>
-                  <p className="text-xs text-sky-100">Asisten AI Islami Ramah</p>
+                  <p className="text-xs text-blue-200">Asisten AI Islami Ramah</p>
                 </div>
               </div>
               <button
@@ -143,14 +143,14 @@ export default function AIChat() {
                   }`}
                 >
                   {msg.role === 'assistant' && (
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600 mt-0.5">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-900 mt-0.5">
                       <Bot className="h-4 w-4" />
                     </div>
                   )}
                   <div
                     className={`rounded-2xl px-4 py-2.5 max-w-[82%] leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-sky-600 text-white rounded-tr-xs shadow-xs'
+                        ? 'bg-blue-900 text-white rounded-tr-xs shadow-xs'
                         : 'bg-white text-slate-800 rounded-tl-xs border border-slate-200/70 shadow-2xs whitespace-pre-wrap'
                     }`}
                   >
@@ -161,11 +161,11 @@ export default function AIChat() {
 
               {isLoading && (
                 <div className="flex gap-2.5 justify-start">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sky-600 mt-0.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-900 mt-0.5">
                     <Bot className="h-4 w-4" />
                   </div>
                   <div className="flex items-center gap-2 rounded-2xl rounded-tl-xs bg-white px-4 py-3 border border-slate-200/70 shadow-2xs">
-                    <Loader2 className="h-4 w-4 animate-spin text-sky-600" />
+                    <Loader2 className="h-4 w-4 animate-spin text-blue-900" />
                     <span className="text-xs text-slate-500 font-medium">
                       Sedang mengetik...
                     </span>
@@ -186,12 +186,12 @@ export default function AIChat() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Tulis pesan untuk AI..."
                 disabled={isLoading}
-                className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-sky-500 focus:bg-white focus:outline-none transition-colors disabled:opacity-60"
+                className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-900 focus:bg-white focus:outline-none transition-colors disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-600 text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 cursor-pointer"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-900 hover:bg-blue-800 text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300 cursor-pointer"
                 aria-label="Kirim pesan"
               >
                 <Send className="h-4 w-4" />

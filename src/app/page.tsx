@@ -15,7 +15,7 @@ export default function HomePage() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return (
-    <div className="landing-cursor-scope min-h-screen bg-white text-slate-900 selection:bg-sky-500 selection:text-white md:cursor-none">
+    <div className="landing-cursor-scope min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white md:cursor-none">
       {/* Custom Laser Cursor */}
       <LaserCursor />
 

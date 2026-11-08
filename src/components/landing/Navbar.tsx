@@ -33,7 +33,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
             className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
             priority
           />
-          <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">
+          <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-900 transition-colors">
             A&apos;lawna
           </span>
         </Link>
@@ -44,7 +44,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-semibold text-slate-600 hover:text-sky-600 transition-colors"
+              className="text-sm font-semibold text-slate-600 hover:text-blue-900 transition-colors"
             >
               {link.label}
             </a>
@@ -56,7 +56,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
           <button
             type="button"
             onClick={onOpenLogin}
-            className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-xl bg-blue-900 hover:bg-blue-800 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
           >
             <LogIn className="h-4 w-4" />
             <span>Login</span>
@@ -82,7 +82,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
               key={link.label}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-lg px-3 py-2 text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600 transition-colors"
+              className="block rounded-lg px-3 py-2 text-base font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
             >
               {link.label}
             </a>
@@ -94,7 +94,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
                 setMobileMenuOpen(false);
                 onOpenLogin();
               }}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-900 hover:bg-blue-800 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             >
               <LogIn className="h-4 w-4" />
               <span>Login Admin</span>
