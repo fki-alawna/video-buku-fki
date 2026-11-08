@@ -17,14 +17,15 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
     { label: 'MHMTQ', href: '#mhmtq' },
     { label: 'Wisuda', href: '#wisuda' },
     { label: 'Kontak', href: '#kontak' },
+    { label: 'Alamat', href: '#alamat' },
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-amber-500/20 bg-slate-950/85 backdrop-blur-md transition-all">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-100 bg-white/90 backdrop-blur-md shadow-xs transition-all">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
         {/* Brand / Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-amber-500/10 p-1 border border-amber-500/30 transition-transform group-hover:scale-105">
+          <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-slate-100 p-1 border border-slate-200 transition-transform group-hover:scale-105">
             <Image
               src="/logo-alawna.png"
               alt="Logo A'lawna"
@@ -34,7 +35,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
               priority
             />
           </div>
-          <span className="text-xl font-bold tracking-wider text-white group-hover:text-amber-400 transition-colors">
+          <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-sky-600 transition-colors">
             A&apos;lawna
           </span>
         </Link>
@@ -45,7 +46,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors"
+              className="text-sm font-semibold text-slate-600 hover:text-sky-600 transition-colors"
             >
               {link.label}
             </a>
@@ -57,7 +58,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
           <button
             type="button"
             onClick={onOpenLogin}
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 px-5 py-2.5 text-sm font-bold text-slate-950 shadow-lg shadow-amber-500/20 hover:from-amber-500 hover:to-amber-700 hover:shadow-amber-500/30 transition-all cursor-pointer active:scale-95"
+            className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-sky-600/20 hover:bg-sky-700 active:scale-95 transition-all cursor-pointer"
           >
             <LogIn className="h-4 w-4" />
             <span>Login</span>
@@ -68,7 +69,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
-            className="inline-flex md:hidden h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-900 transition-colors"
+            className="inline-flex md:hidden h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -77,13 +78,13 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-900 bg-slate-950/95 px-4 py-4 space-y-3">
+        <div className="md:hidden border-t border-slate-100 bg-white px-4 py-4 space-y-2 shadow-lg">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-lg px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-900 hover:text-amber-400 transition-colors"
+              className="block rounded-lg px-3 py-2 text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600 transition-colors"
             >
               {link.label}
             </a>
@@ -95,7 +96,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
                 setMobileMenuOpen(false);
                 onOpenLogin();
               }}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-600 px-5 py-2.5 text-sm font-bold text-slate-950 shadow-md"
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-700"
             >
               <LogIn className="h-4 w-4" />
               <span>Login Admin</span>

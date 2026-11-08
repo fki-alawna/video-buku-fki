@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import Navbar from '@/components/landing/Navbar';
 import Hero from '@/components/landing/Hero';
+import Sejarah from '@/components/landing/Sejarah';
 import Features from '@/components/landing/Features';
+import Testimonials from '@/components/landing/Testimonials';
 import Footer from '@/components/landing/Footer';
 import LoginModal from '@/components/landing/LoginModal';
 
@@ -11,20 +13,26 @@ export default function HomePage() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white selection:bg-amber-500 selection:text-slate-950">
-      {/* Navigation Bar */}
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-sky-500 selection:text-white">
+      {/* Navbar with Login Trigger */}
       <Navbar onOpenLogin={() => setIsLoginModalOpen(true)} />
 
-      {/* Main Content */}
+      {/* Main Sections */}
       <main>
         {/* Hero Section */}
         <Hero />
 
-        {/* Features / Nilai Keunggulan */}
+        {/* Sejarah & Galeri 9 Foto */}
+        <Sejarah />
+
+        {/* Filosofi Logo */}
         <Features />
+
+        {/* Testimoni Kata Mereka */}
+        <Testimonials />
       </main>
 
-      {/* Footer & WhatsApp Button */}
+      {/* Footer with Google Maps & WhatsApp */}
       <Footer />
 
       {/* Pop-up Modal Login Admin */}
