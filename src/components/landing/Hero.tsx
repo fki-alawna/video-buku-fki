@@ -10,15 +10,9 @@ export default function Hero() {
   ];
 
   return (
-    <section id="beranda" className="relative overflow-hidden bg-white text-slate-900">
-      {/* Background Soft Glow */}
-      <div
-        className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-blue-100/40 blur-[140px]"
-        aria-hidden="true"
-      />
-
-      {/* Full-Width Hero Banner (Raw High-Res <img> Tag, Uncompressed 100%) */}
-      <div className="w-full overflow-hidden bg-slate-900">
+    <section id="beranda" className="relative bg-white text-slate-900">
+      {/* Full-Width Hero Banner (Pure <img> tag, 100% original sharpness) */}
+      <div className="w-full">
         <img
           src="/foto-hero.jpg"
           alt="A'lawna Hero"
@@ -28,6 +22,11 @@ export default function Hero() {
 
       {/* Konten Teks di Bawah Banner dengan Animasi Scroll (Framer Motion) */}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        {/* Background Soft Glow untuk Konten Teks */}
+        <div
+          className="pointer-events-none absolute top-1/2 left-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-100/40 blur-[140px]"
+          aria-hidden="true"
+        />
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
