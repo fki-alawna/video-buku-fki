@@ -209,14 +209,9 @@ export default function Testimonials() {
 
               {/* Author Info */}
               <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
-                <div>
-                  <h4 className="text-base sm:text-lg font-bold text-blue-900">
-                    {selected.name}
-                  </h4>
-                  <p className="text-xs text-slate-500 mt-0.5">
-                    Alumni Pondok Pesantren Putri Tahfizhil Qur&apos;an Lirboyo
-                  </p>
-                </div>
+                <h4 className="text-base sm:text-lg font-bold text-blue-900">
+                  {selected.name}
+                </h4>
                 <div className="h-9 w-9 rounded-full bg-blue-50 text-blue-900 flex items-center justify-center font-bold text-sm">
                   {selected.name.charAt(0)}
                 </div>
