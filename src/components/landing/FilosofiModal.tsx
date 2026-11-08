@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface FilosofiModalProps {
   isOpen: boolean;
@@ -67,10 +67,6 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
 
             {/* Header: Judul & Sub-judul */}
             <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-3">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-400/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-amber-300 border border-amber-400/20">
-                <Sparkles className="h-3.5 w-3.5" />
-                <span>Makna & Filosofi</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
                 Filosofi Logo A&apos;lawna{' '}
                 <span className="font-serif text-amber-300">(أعلون)</span>

@@ -37,7 +37,7 @@ export default function Features() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header (Logo Besar di Atas Judul Filosofi Logo) */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="mb-6 sm:mb-8 flex justify-center">
+          <div className="mb-4 sm:mb-6 flex justify-center">
             <motion.div
               layoutId="logo-alawna"
               onClick={() => setIsModalOpen(true)}
@@ -48,15 +48,12 @@ export default function Features() {
             >
               <Image
                 src="/logo-alawna.png"
-                alt="Logo A'lawna (Klik untuk filosofi detail)"
+                alt="Logo A'lawna"
                 width={256}
                 height={256}
                 className="w-48 h-48 md:w-64 md:h-64 object-contain mx-auto drop-shadow-sm transition-transform duration-300"
                 priority
               />
-              <span className="mt-2 text-xs font-semibold text-blue-900/70 group-hover:text-blue-900 group-hover:underline transition-colors">
-                Klik logo untuk melihat filosofi lengkap
-              </span>
             </motion.div>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
