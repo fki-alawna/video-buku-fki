@@ -1,55 +1,40 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
+
+const galeriImages = [
+  '/galeri/foto-2.jpg',
+  '/galeri/foto-3.jpg',
+  '/galeri/foto-4.jpg',
+  '/galeri/foto-5.jpg',
+  '/galeri/foto-6.jpg',
+  '/galeri/foto-7.jpg',
+  '/galeri/foto-8.jpg',
+  '/galeri/foto-9.jpg',
+  '/galeri/foto-10.jpg',
+];
 
 export default function Sejarah() {
-  const galeriItems = [
-    {
-      src: '/galeri/foto-2.jpg',
-      title: 'Dokumentasi 01',
-      subtitle: 'Khidmat Khotmil Qur&apos;an',
-    },
-    {
-      src: '/galeri/foto-3.jpg',
-      title: 'Dokumentasi 02',
-      subtitle: 'Prosesi Wisuda Santriwati',
-    },
-    {
-      src: '/galeri/foto-4.jpg',
-      title: 'Dokumentasi 03',
-      subtitle: 'Majelis Khatam Al-Qur&apos;an',
-    },
-    {
-      src: '/galeri/foto-5.jpg',
-      title: 'Dokumentasi 04',
-      subtitle: 'Doa Bersama Masyayikh',
-    },
-    {
-      src: '/galeri/foto-6.jpg',
-      title: 'Dokumentasi 05',
-      subtitle: 'Keluarga Besar MHMTQ',
-    },
-    {
-      src: '/galeri/foto-7.jpg',
-      title: 'Dokumentasi 06',
-      subtitle: 'Pentas Seni & Kreasi Santri',
-    },
-    {
-      src: '/galeri/foto-8.jpg',
-      title: 'Dokumentasi 07',
-      subtitle: 'Pemberian Ijazah & Syahadah',
-    },
-    {
-      src: '/galeri/foto-9.jpg',
-      title: 'Dokumentasi 08',
-      subtitle: 'Momen Syukur & Keharuan',
-    },
-    {
-      src: '/galeri/foto-10.jpg',
-      title: 'Dokumentasi 09',
-      subtitle: 'Kebersamaan Santri A&apos;lawna',
-    },
-  ];
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+
+    if (selectedImage) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
 
   return (
     <section id="wisuda" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60">
@@ -67,39 +52,68 @@ export default function Sejarah() {
           </p>
         </div>
 
-        {/* Grid 3x3 Photos */}
+        {/* Grid 3x3 Photos (Full-Bleed, Tanpa Teks) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {galeriItems.map((item, idx) => (
+          {galeriImages.map((src, idx) => (
             <div
-              key={item.src}
-              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-300"
+              key={src}
+              onClick={() => setSelectedImage(src)}
+              className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3 rounded-lg bg-slate-900/70 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-xs">
-                  Foto {idx + 1}
-                </div>
-              </div>
-
-              <div className="p-4 sm:p-5">
-                <h3 className="text-base font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
-                  {item.title}
-                </h3>
-                <p
-                  className="mt-1 text-sm text-slate-500"
-                  dangerouslySetInnerHTML={{ __html: item.subtitle }}
-                />
-              </div>
+              <Image
+                src={src}
+                alt={`Dokumentasi Sejarah A'lawna ${idx + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+              />
             </div>
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal (Zoom Fitur) */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-10 cursor-zoom-out"
+          >
+            {/* Tombol Tutup (X) */}
+            <button
+              type="button"
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-all backdrop-blur-md cursor-pointer border border-white/20"
+              aria-label="Tutup zoom foto"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Foto Diperbesar */}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative flex items-center justify-center max-w-full max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={selectedImage}
+                alt="Dokumentasi Sejarah A'lawna Diperbesar"
+                width={1600}
+                height={1200}
+                priority
+                className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl cursor-default"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
