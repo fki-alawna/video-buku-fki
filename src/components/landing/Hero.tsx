@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
@@ -18,18 +17,12 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Full-Width Hero Banner (Responsive 40vh Cover on Mobile, Full Aspect Contain on Desktop) */}
+      {/* Full-Width Hero Banner (Raw High-Res <img> Tag, Uncompressed 100%) */}
       <div className="w-full overflow-hidden bg-slate-900">
-        <Image
+        <img
           src="/foto-hero.jpg"
-          alt="A'lawna Hero Banner"
-          width={1024}
-          height={520}
-          priority
-          unoptimized={true}
-          quality={100}
-          sizes="100vw"
-          className="w-full h-[40vh] md:h-auto object-cover md:object-contain block"
+          alt="A'lawna Hero"
+          className="w-full h-auto object-contain block"
         />
       </div>
 
