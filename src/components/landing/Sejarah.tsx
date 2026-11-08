@@ -46,13 +46,13 @@ export default function Sejarah() {
           </h2>
         </div>
 
-        {/* Grid 3x3 Photos (Full-Bleed, Tanpa Teks) */}
+        {/* Grid 3x3 Photos (Full-Bleed, Rasio 16:9 / aspect-video, Tanpa Teks) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {galeriImages.map((src, idx) => (
             <div
               key={src}
               onClick={() => setSelectedImage(src)}
-              className="relative aspect-square rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300"
+              className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <Image
                 src={src}
