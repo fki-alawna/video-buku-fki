@@ -45,21 +45,21 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8 sm:py-12 text-slate-900">
-      <div className="relative w-full max-w-2xl lg:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-200/80 overflow-hidden grid grid-cols-1 md:grid-cols-2">
-        {/* Kolom Kiri: Form & Tombol Login (50%) */}
-        <div className="w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+      <div className="relative w-full max-w-md md:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col-reverse md:flex-row">
+        {/* Kolom Form & Tombol Login (Bawah di Mobile, Kiri di Desktop) */}
+        <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-center">
           <div>
-            {/* Logo A'lawna di Pojok Kiri Atas */}
-            <div className="flex items-center gap-2.5 mb-6">
+            {/* Logo & Branding A'lawna (Left-aligned & Enlarged) */}
+            <div className="flex flex-col items-start justify-start mb-5 sm:mb-6">
               <Image
                 src="/logo-alawna.png"
                 alt="Logo A'lawna"
-                width={36}
-                height={36}
-                className="w-9 h-9 object-contain"
+                width={112}
+                height={112}
+                className="w-24 h-24 sm:w-28 sm:h-28 object-contain object-left mb-3 sm:mb-4"
                 priority
               />
-              <span className="text-xl font-black tracking-tight text-slate-900">
+              <span className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
                 A&apos;lawna
               </span>
             </div>
@@ -78,7 +78,7 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
             )}
           </div>
 
-          <div className="my-8">
+          <div className="my-6 sm:my-8">
             <GoogleLoginButton />
           </div>
 
@@ -92,8 +92,8 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
           </div>
         </div>
 
-        {/* Kolom Kanan: Foto Portrait HD (50%) */}
-        <div className="relative hidden md:block w-full h-full min-h-[380px] aspect-[3/4] bg-slate-100 overflow-hidden">
+        {/* Kolom Foto Portrait HD (Atas di Mobile, Kanan di Desktop) */}
+        <div className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-auto min-h-[190px] md:min-h-[420px] aspect-video md:aspect-auto bg-slate-100 overflow-hidden">
           <Image
             src="/foto-login.jpg"
             alt="Foto Login A'lawna"

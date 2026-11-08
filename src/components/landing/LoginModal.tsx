@@ -52,13 +52,13 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             aria-hidden="true"
           />
 
-          {/* Modal Card: Responsive 1-col on mobile, 50:50 on desktop */}
+          {/* Modal Card: Responsive flex-col-reverse on mobile (Photo on top), 50:50 on desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative w-full max-w-md md:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 overflow-hidden grid grid-cols-1 md:grid-cols-2 z-10 text-slate-900"
+            className="relative w-full max-w-md md:max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 overflow-hidden flex flex-col-reverse md:flex-row z-10 text-slate-900"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -71,19 +71,19 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               <X className="h-5 w-5" />
             </button>
 
-            {/* Bagian Kiri: Form & Google OAuth (50%) */}
-            <div className="w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+            {/* Bagian Form & Google OAuth (Bawah di Mobile, Kiri di Desktop) */}
+            <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-center">
               {/* Logo & Branding A'lawna (Left-aligned & Enlarged) */}
-              <div className="flex flex-col items-start mb-6">
+              <div className="flex flex-col items-start justify-start mb-5 sm:mb-6">
                 <Image
                   src="/logo-alawna.png"
                   alt="Logo A'lawna"
-                  width={72}
-                  height={72}
-                  className="w-16 h-16 md:w-20 md:h-20 object-contain mb-3.5"
+                  width={112}
+                  height={112}
+                  className="w-24 h-24 sm:w-28 sm:h-28 object-contain object-left mb-3 sm:mb-4"
                   priority
                 />
-                <span className="text-xl font-bold tracking-tight text-slate-900">
+                <span className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
                   A&apos;lawna
                 </span>
               </div>
@@ -97,13 +97,13 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               </h2>
 
               {/* Tombol Utama Login dengan Google */}
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 <GoogleLoginButton />
               </div>
             </div>
 
-            {/* Bagian Kanan: Foto Portrait HD (50%) */}
-            <div className="relative hidden md:block w-full h-full min-h-[380px] aspect-[3/4] bg-slate-100 overflow-hidden">
+            {/* Bagian Foto Portrait HD (Atas di Mobile, Kanan di Desktop) */}
+            <div className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-auto min-h-[190px] md:min-h-[420px] aspect-video md:aspect-auto bg-slate-100 overflow-hidden">
               <Image
                 src="/foto-login.jpg"
                 alt="Foto Login A'lawna"
