@@ -83,21 +83,23 @@ export default function AIChat() {
 
   return (
     <>
-      {/* Floating Action Button (FAB) */}
+      {/* Floating Action Button (FAB) - Responsive Capsule */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full bg-blue-900 hover:bg-blue-800 px-4 py-3 text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
+        className="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-40 h-12 px-4 md:h-14 md:px-6 rounded-full flex items-center justify-center gap-2 md:gap-3 bg-blue-900 hover:bg-blue-800 text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
         aria-label="Buka AI Chatbot A'lawna Intelligent"
       >
         <div className="relative">
-          <MessageCircle className="h-6 w-6 transition-transform group-hover:rotate-12" />
+          <MessageCircle className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:rotate-12" />
           <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-300 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-400"></span>
           </span>
         </div>
-        <span className="text-sm font-bold tracking-wide pr-1">A&apos;lawna Intelligent</span>
+        {/* Teks Singkat "AI" di Mobile, Lengkap di Desktop */}
+        <span className="text-sm font-bold tracking-wide md:hidden">AI</span>
+        <span className="hidden md:inline text-sm font-bold tracking-wide pr-1">A&apos;lawna Intelligent</span>
       </button>
 
       {/* Chatbox Window */}
@@ -108,7 +110,7 @@ export default function AIChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 flex flex-col overflow-hidden text-slate-900"
+            className="fixed bottom-34 md:bottom-24 right-4 md:right-8 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[75vh] sm:max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 flex flex-col overflow-hidden text-slate-900"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-blue-950 bg-blue-900 px-5 py-4 text-white">
