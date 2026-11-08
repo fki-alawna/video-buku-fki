@@ -46,13 +46,13 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
             aria-hidden="true"
           />
 
-          {/* Modal Container: Deep Blue, Gold Accents, Framer Motion Entry */}
+          {/* Modal Container: Deep Blue, Gold Accents, Framer Motion Entry (Poster Layout) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#0a1930] border border-amber-500/30 p-6 sm:p-8 md:p-10 shadow-[0_0_50px_rgba(10,25,48,0.9)] text-white z-10"
+            className="relative w-full max-w-4xl lg:max-w-5xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#0a1930] border border-amber-500/30 p-6 sm:p-8 md:p-10 shadow-[0_0_50px_rgba(10,25,48,0.9)] text-white z-10"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -76,53 +76,68 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
               </p>
             </div>
 
-            {/* Main Content Layout: 3 Columns on Desktop (Kiri - Logo Tengah - Kanan) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center mb-8">
-              {/* Kolom Kiri: 1. Filosofi Bentuk */}
-              <div className="space-y-5 order-2 md:order-1 text-left">
-                <div className="inline-block border-b border-amber-500/40 pb-1">
-                  <h3 className="text-base sm:text-lg font-bold text-amber-300">
+            {/* Main Content Layout: 3 Columns on Desktop (Kiri - Logo Tengah - Kanan) Tanpa Kotak Card */}
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 lg:gap-10 items-center mb-8 relative">
+              {/* Kolom Kiri: 1. Filosofi Bentuk (Rata Kanan di Desktop) */}
+              <div className="space-y-6 md:space-y-8 order-2 md:order-1 text-left md:text-right">
+                {/* Heading 1 */}
+                <div className="relative">
+                  <h3 className="text-base sm:text-lg font-bold text-amber-400">
                     1. Filosofi Bentuk
                   </h3>
+                  {/* Pointer line ke arah logo */}
+                  <div className="hidden md:flex items-center absolute -right-6 lg:-right-8 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <div className="w-5 lg:w-7 h-[1.5px] bg-amber-400/60" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
+                  </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-4 space-y-1.5 hover:border-amber-400/30 transition-colors">
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-amber-400" />
-                      3 Lekukan Menjulang
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                      Melambangkan cita-cita tinggi, semangat yang tak pernah padam, dan pertumbuhan yang terus bergerak maju (growth).
-                    </p>
+                {/* Sub-item: 3 Lekukan Menjulang */}
+                <div className="relative">
+                  <h4 className="text-sm sm:text-base font-bold text-amber-400">
+                    • 3 Lekukan Menjulang:
+                  </h4>
+                  <p className="mt-1.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    Melambangkan cita-cita tinggi, semangat yang tak pernah padam, dan pertumbuhan yang terus bergerak maju (growth).
+                  </p>
+                  {/* Pointer Line mengarah ke lekukan tengah logo */}
+                  <div className="hidden md:flex items-center absolute -right-6 lg:-right-10 top-2 pointer-events-none">
+                    <div className="w-8 lg:w-14 h-[1.5px] bg-amber-400/80" />
+                    <div className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,1)] ring-2 ring-amber-400/40" />
                   </div>
+                </div>
 
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-4 space-y-1.5 hover:border-amber-400/30 transition-colors">
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-amber-400" />
-                      Lekukan Arab di Bagian Bawah
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                      Melambangkan kebijaksanaan, kedalaman ilmu, serta adab yang mengalir tenang.
-                    </p>
+                {/* Sub-item: Lekukan Arab di Bagian Bawah */}
+                <div className="relative">
+                  <h4 className="text-sm sm:text-base font-bold text-amber-400">
+                    • Lekukan Arab di Bagian Bawah:
+                  </h4>
+                  <p className="mt-1.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    Melambangkan kebijaksanaan, kedalaman ilmu, serta adab yang mengalir tenang.
+                  </p>
+                  {/* Pointer Line bentuk L mengarah ke lengkungan arab bawah */}
+                  <div className="hidden md:flex flex-col items-end absolute -right-6 lg:-right-10 top-2 pointer-events-none">
+                    <div className="w-8 lg:w-14 h-8 border-r-[1.5px] border-b-[1.5px] border-amber-400/80 rounded-br-sm" />
+                    <div className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,1)] ring-2 ring-amber-400/40 -mr-1 -mb-1" />
                   </div>
                 </div>
               </div>
 
-              {/* Kolom Tengah: Logo Morphing Besar */}
-              <div className="flex flex-col items-center justify-center order-1 md:order-2 py-4">
+              {/* Kolom Tengah: Logo Morphing Besar & Menyala */}
+              <div className="flex flex-col items-center justify-center order-1 md:order-2 py-2 md:py-4">
                 <motion.div
                   layoutId="logo-alawna"
                   transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                  className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 flex items-center justify-center drop-shadow-[0_0_35px_rgba(251,191,36,0.35)]"
+                  className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center drop-shadow-[0_0_40px_rgba(251,191,36,0.4)]"
                 >
                   <Image
                     src="/logo-alawna.png"
                     alt="Logo A'lawna Besar"
-                    width={280}
-                    height={280}
-                    className="w-full h-full object-contain filter drop-shadow-lg"
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-contain filter drop-shadow-xl"
                     priority
+                    unoptimized={true}
                   />
                 </motion.div>
                 <span className="mt-3 text-xs font-semibold text-amber-200/80 tracking-wider uppercase">
@@ -130,43 +145,50 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
                 </span>
               </div>
 
-              {/* Kolom Kanan: 2. Arti Warna & Titik */}
-              <div className="space-y-5 order-3 text-left">
-                <div className="inline-block border-b border-amber-500/40 pb-1">
-                  <h3 className="text-base sm:text-lg font-bold text-amber-300">
-                    2. Arti Warna &amp; Titik
-                  </h3>
+              {/* Kolom Kanan: 2. Arti Warna & Titik (Rata Kiri) */}
+              <div className="space-y-6 md:space-y-8 order-3 text-left">
+                {/* Sub-item: Titik Biru di Puncak */}
+                <div className="relative">
+                  <h4 className="text-sm sm:text-base font-bold text-amber-400">
+                    • Titik Biru di Puncak:
+                  </h4>
+                  <p className="mt-1.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    Melambangkan kefokusan, visi masa depan, dan pencapaian target tertinggi.
+                  </p>
+                  {/* Pointer Line dengan target dot mengarah ke mutiara biru di puncak */}
+                  <div className="hidden md:flex items-center absolute -left-6 lg:-left-10 top-2 pointer-events-none flex-row-reverse">
+                    <div className="w-8 lg:w-14 h-[1.5px] bg-sky-400/80" />
+                    <div className="relative flex items-center justify-center -ml-1">
+                      <div className="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,1)] ring-4 ring-sky-400/30" />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-4 space-y-1.5 hover:border-amber-400/30 transition-colors">
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full bg-sky-400 ring-2 ring-sky-300/40" />
-                      Titik Biru di Puncak
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                      Melambangkan kefokusan, visi masa depan, dan pencapaian target tertinggi.
-                    </p>
-                  </div>
+                {/* Section 2: Arti Warna */}
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-amber-400 mb-3">
+                    2. Arti Warna
+                  </h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold text-amber-400 flex items-center gap-2">
+                        <span className="inline-block h-3.5 w-3.5 rounded-xs bg-blue-600 border border-blue-400 shadow-sm shrink-0" />
+                        <span>• Deep Blue (Biru):</span>
+                      </h4>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-200 leading-relaxed pl-5">
+                        Melambangkan keteduhan, ketenangan, kepercayaan, dan ketulusan.
+                      </p>
+                    </div>
 
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-4 space-y-1.5 hover:border-amber-400/30 transition-colors">
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-sm bg-blue-600 ring-2 ring-blue-500/40" />
-                      Deep Blue (Biru)
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                      Melambangkan keteduhan, ketenangan, kepercayaan, dan ketulusan.
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-white/5 border border-white/10 p-4 space-y-1.5 hover:border-amber-400/30 transition-colors">
-                    <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-sm bg-amber-400 ring-2 ring-amber-300/40" />
-                      Gold (Emas)
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                      Melambangkan kemuliaan, kejayaan, kewibawaan, dan kualitas premium.
-                    </p>
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold text-amber-400 flex items-center gap-2">
+                        <span className="inline-block h-3.5 w-3.5 rounded-xs bg-amber-400 border border-amber-200 shadow-sm shrink-0" />
+                        <span>• Gold (Emas):</span>
+                      </h4>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-200 leading-relaxed pl-5">
+                        Melambangkan kemuliaan, kejayaan, kewibawaan, dan kualitas premium.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
