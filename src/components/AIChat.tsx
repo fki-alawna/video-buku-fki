@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, Loader2 } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -31,6 +31,12 @@ export default function AIChat() {
       scrollToBottom();
     }
   }, [messages, isOpen]);
+
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-alawna-chat', handleOpen);
+    return () => window.removeEventListener('open-alawna-chat', handleOpen);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -141,7 +147,7 @@ export default function AIChat() {
                 >
                   {msg.role === 'assistant' && (
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-900 mt-0.5">
-                      <Bot className="h-4 w-4" />
+                      <MessageCircle className="h-4 w-4" />
                     </div>
                   )}
                   <div
@@ -159,7 +165,7 @@ export default function AIChat() {
               {isLoading && (
                 <div className="flex gap-2.5 justify-start">
                   <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-900 mt-0.5">
-                    <Bot className="h-4 w-4" />
+                    <MessageCircle className="h-4 w-4" />
                   </div>
                   <div className="flex items-center gap-2 rounded-2xl rounded-tl-xs bg-white px-4 py-3 border border-slate-200/70 shadow-2xs">
                     <Loader2 className="h-4 w-4 animate-spin text-blue-900" />

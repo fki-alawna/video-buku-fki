@@ -86,70 +86,77 @@ export default function Testimonials() {
   }, [selected]);
 
   return (
-    <section id="kontak" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60 text-slate-900 overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Kata Mereka
-          </h2>
-        </div>
-      </div>
-
-      {/* Auto-Scrolling Single-Row Marquee Container */}
-      <div
-        className="relative w-full overflow-hidden py-4"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+    <section id="testimoni" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60 text-slate-900 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.15 }}
       >
-        <motion.div
-          animate={isPaused ? { x: undefined } : { x: ['0%', '-50%'] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: 'loop',
-              duration: 35,
-              ease: 'linear',
-            },
-          }}
-          className="flex gap-6 w-max pl-4"
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+              Kata Mereka
+            </h2>
+          </div>
+        </div>
+
+        {/* Auto-Scrolling Single-Row Marquee Container */}
+        <div
+          className="relative w-full overflow-hidden py-4"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {marqueeItems.map((item, idx) => (
-            <div
-              key={`${item.name}-${idx}`}
-              onClick={() => setSelected(item)}
-              className="w-[320px] sm:w-[360px] shrink-0 flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-blue-400 hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
-            >
-              <div>
-                {/* 5 Stars Rating & Quote Icon */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-amber-400 text-amber-400"
-                      />
-                    ))}
+          <motion.div
+            animate={isPaused ? { x: undefined } : { x: ['0%', '-50%'] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: 'loop',
+                duration: 35,
+                ease: 'linear',
+              },
+            }}
+            className="flex gap-6 w-max pl-4"
+          >
+            {marqueeItems.map((item, idx) => (
+              <div
+                key={`${item.name}-${idx}`}
+                onClick={() => setSelected(item)}
+                className="w-[320px] sm:w-[360px] shrink-0 flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-blue-400 hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
+              >
+                <div>
+                  {/* 5 Stars Rating & Quote Icon */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-4 w-4 fill-amber-400 text-amber-400"
+                        />
+                      ))}
+                    </div>
+                    <Quote className="h-5 w-5 text-slate-300" />
                   </div>
-                  <Quote className="h-5 w-5 text-slate-300" />
+
+                  {/* Testimonial Text */}
+                  <p className="text-sm leading-relaxed text-slate-600 italic line-clamp-3">
+                    &ldquo;{item.text}&rdquo;
+                  </p>
                 </div>
 
-                {/* Testimonial Text */}
-                <p className="text-sm leading-relaxed text-slate-600 italic line-clamp-3">
-                  &ldquo;{item.text}&rdquo;
-                </p>
+                {/* Author Info */}
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <h4 className="text-sm font-bold text-blue-900">
+                    {item.name}
+                  </h4>
+                </div>
               </div>
-
-              {/* Author Info */}
-              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <h4 className="text-sm font-bold text-blue-900">
-                  {item.name}
-                </h4>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.div>
 
       {/* Pop-up Zoom Lightbox Modal */}
       <AnimatePresence>

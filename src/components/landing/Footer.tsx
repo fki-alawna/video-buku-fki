@@ -1,25 +1,31 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { MapPin, Phone, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer id="alamat" className="relative border-t border-slate-200 bg-white py-16 text-slate-900">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Quote Section */}
-        <div className="mx-auto max-w-3xl text-center space-y-2">
-          <p className="text-lg sm:text-2xl font-semibold italic text-slate-900 leading-relaxed">
-            &ldquo;Menjadi pribadi yang unggul bukan dengan kesombongan, tetapi dengan ilmu, adab, dan keimanan.&rdquo;
-          </p>
-          <p className="text-xs sm:text-sm tracking-widest uppercase text-blue-900 font-bold pt-1">
-            Keluarga A&apos;lawna
-          </p>
-        </div>
+      <motion.div
+        initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.15 }}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Quote Section */}
+          <div className="mx-auto max-w-3xl text-center space-y-2">
+            <p className="text-lg sm:text-2xl font-semibold italic text-slate-900 leading-relaxed">
+              &ldquo;Menjadi pribadi yang unggul bukan dengan kesombongan, tetapi dengan ilmu, adab, dan keimanan.&rdquo;
+            </p>
+            <p className="text-xs sm:text-sm tracking-widest uppercase text-blue-900 font-bold pt-1">
+              Keluarga A&apos;lawna
+            </p>
+          </div>
 
-        {/* Lokasi & Google Maps Embed Section */}
-        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8 shadow-xs">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-            <div className="flex items-center gap-3">
+          {/* Lokasi & Google Maps Embed Section */}
+          <div id="kontak" className="scroll-mt-28 rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8 shadow-xs">
+            <div className="flex items-center gap-3 mb-6">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-900 shrink-0">
                 <MapPin className="h-5 w-5" />
               </div>
@@ -35,15 +41,6 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-            <a
-              href="https://maps.app.goo.gl/TN4MNA2EPomm16r56"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-white border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 hover:text-blue-900 transition-colors shadow-2xs self-start sm:self-auto"
-            >
-              Buka di Google Maps ↗
-            </a>
-          </div>
 
           {/* Kontak Resmi MHMTQ & P3TQ */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
@@ -91,6 +88,7 @@ export default function Footer() {
             href="https://maps.app.goo.gl/TN4MNA2EPomm16r56"
             target="_blank"
             rel="noopener noreferrer"
+            title="Buka Lokasi di Google Maps"
             className="block w-full overflow-hidden rounded-2xl group relative shadow-md hover:shadow-xl transition-all duration-300"
           >
             <img
@@ -98,12 +96,6 @@ export default function Footer() {
               alt="Lokasi P3TQ Lirboyo"
               className="w-full h-[300px] md:h-[450px] object-cover transition-transform duration-500 group-hover:scale-105 block"
             />
-            {/* Subtle Gradient & Badge Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center gap-2 rounded-xl bg-white/95 backdrop-blur-xs px-3.5 py-2 text-xs font-bold text-slate-800 shadow-md group-hover:bg-blue-900 group-hover:text-white transition-all">
-              <MapPin className="h-4 w-4 text-blue-900 group-hover:text-white" />
-              <span>Buka di Google Maps ↗</span>
-            </div>
           </a>
         </div>
 
@@ -114,6 +106,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      </motion.div>
     </footer>
   );
 }

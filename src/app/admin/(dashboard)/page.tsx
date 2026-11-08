@@ -8,7 +8,6 @@ import {
   Plus,
   Play,
   ArrowRight,
-  Sparkles,
   ExternalLink,
 } from 'lucide-react';
 
@@ -57,8 +56,7 @@ export default async function AdminHomePage() {
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Teks Sambutan Kiri */}
           <div className="max-w-xl space-y-3.5">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-amber-300 border border-white/15">
-              <Sparkles className="h-3.5 w-3.5" />
+            <div className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-amber-300 border border-white/15">
               <span>Portal Dasbor Resmi A&apos;lawna</span>
             </div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-white">
@@ -85,14 +83,14 @@ export default async function AdminHomePage() {
             </div>
           </div>
 
-          {/* Ilustrasi Logo Kanan (SkillSet 3D Card Style) */}
+          {/* Ilustrasi Logo Kanan */}
           <div className="hidden sm:flex items-center justify-center shrink-0">
-            <div className="relative flex h-36 w-36 lg:h-44 lg:w-44 items-center justify-center rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-6 shadow-2xl">
+            <div className="relative flex h-32 w-32 lg:h-40 lg:w-40 items-center justify-center">
               <Image
                 src="/logo-alawna.png"
                 alt="Emblem A'lawna"
-                width={120}
-                height={120}
+                width={160}
+                height={160}
                 className="w-full h-full object-contain drop-shadow-[0_8px_20px_rgba(251,191,36,0.4)]"
                 priority
               />

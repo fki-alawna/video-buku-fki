@@ -36,8 +36,8 @@ export default function Hero() {
         >
           {/* Judul Utama */}
           <div className="space-y-2">
-            <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-6xl md:text-7xl">
-              A&apos;lawna
+            <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-6xl md:text-7xl uppercase">
+              A&apos;LAWNA
             </h1>
             <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-blue-900">
               Luhur • Beradab • Bermanfaat

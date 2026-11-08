@@ -12,11 +12,12 @@ import {
   QrCode,
   Search,
   LogOut,
-  ExternalLink,
   Menu,
   X,
   Radio,
+  MessageCircle,
 } from 'lucide-react';
+import AIChat from '@/components/AIChat';
 import { logoutAction } from '@/app/admin/(dashboard)/actions';
 
 interface AdminShellProps {
@@ -69,13 +70,13 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
             href="/admin"
             className="flex items-center gap-3 px-2 py-1 group"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50/80 border border-blue-100 group-hover:scale-105 transition-transform">
+            <div className="flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
               <Image
                 src="/logo-alawna.png"
                 alt="Logo A'lawna"
-                width={30}
-                height={30}
-                className="w-7 h-7 object-contain"
+                width={36}
+                height={36}
+                className="w-9 h-9 object-contain"
                 priority
               />
             </div>
@@ -117,28 +118,27 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
           </nav>
         </div>
 
-        {/* Bottom: Modern Info Card (SkillSet style banner) */}
-        <div className="space-y-3 pt-4 border-t border-slate-100">
-          <div className="rounded-2xl bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50/40 border border-blue-100/70 p-4 space-y-2.5">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-blue-900">
-                A&apos;lawna MHMTQ
-              </span>
-              <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+        {/* Bottom: Modern AI Chatbot Card */}
+        <div className="pt-4 border-t border-slate-100">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-alawna-chat'))}
+            className="w-full text-left rounded-2xl bg-blue-900 hover:bg-blue-800 text-white p-3.5 shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white border border-white/15 group-hover:bg-white/20 transition-colors">
+                <MessageCircle className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <span className="block text-sm font-bold text-white tracking-wide truncate">
+                  A&apos;lawna Intelligent
+                </span>
+                <span className="block text-xs text-blue-200 truncate">
+                  Tanya asisten AI
+                </span>
+              </div>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Sistem manajemen video &amp; cetak barcode QR Pesantren Putri Tahfizhil Qur&apos;an.
-            </p>
-            <Link
-              href="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-blue-900 hover:bg-slate-50 transition-colors shadow-2xs"
-            >
-              <span>Buka Landing Page</span>
-              <ExternalLink className="h-3 w-3" />
-            </Link>
-          </div>
+          </button>
         </div>
       </aside>
 
@@ -232,6 +232,9 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
           {children}
         </main>
       </div>
+
+      {/* Floating / Interactive AI Chatbot */}
+      <AIChat />
     </div>
   );
 }

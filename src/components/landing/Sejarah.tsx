@@ -38,33 +38,40 @@ export default function Sejarah() {
 
   return (
     <section id="wisuda" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header (Bersih tanpa sub-judul & deskripsi panjang) */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Sejarah A&apos;lawna
-          </h2>
-        </div>
+      <motion.div
+        initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        viewport={{ once: false, amount: 0.15 }}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Section Header (Bersih tanpa sub-judul & deskripsi panjang) */}
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+              Kita A&apos;lawna
+            </h2>
+          </div>
 
-        {/* Grid 3x3 Photos (Full-Bleed, Rasio 16:9 / aspect-video, Tanpa Teks) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {galeriImages.map((src, idx) => (
-            <div
-              key={src}
-              onClick={() => setSelectedImage(src)}
-              className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300"
-            >
-              <Image
-                src={src}
-                alt={`Dokumentasi Sejarah A'lawna ${idx + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-              />
-            </div>
-          ))}
+          {/* Grid 3x3 Photos (Full-Bleed, Rasio 16:9 / aspect-video, Tanpa Teks) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {galeriImages.map((src, idx) => (
+              <div
+                key={src}
+                onClick={() => setSelectedImage(src)}
+                className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                <Image
+                  src={src}
+                  alt={`Dokumentasi Sejarah A'lawna ${idx + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Lightbox Modal (Zoom Fitur) */}
       <AnimatePresence>
