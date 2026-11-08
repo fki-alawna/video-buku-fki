@@ -11,37 +11,34 @@ export default function Hero() {
   ];
 
   return (
-    <section id="beranda" className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20 text-slate-900">
+    <section id="beranda" className="relative overflow-hidden bg-white text-slate-900">
       {/* Background Soft Glow */}
       <div
-        className="pointer-events-none absolute -top-32 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-sky-100/60 blur-[130px]"
+        className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-sky-100/50 blur-[140px]"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Gambar Hero di Atas (Rata Tengah, Max-W-4XL, Rasio 16:9 / aspect-video) */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-4xl mb-10 sm:mb-14"
-        >
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-2.5 sm:p-3 shadow-xl shadow-slate-900/5">
-            <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100">
-              <Image
-                src="/foto-hero.jpg"
-                alt="Dokumentasi Utama A'lawna"
-                fill
-                sizes="(max-width: 1024px) 100vw, 896px"
-                priority
-                className="object-cover object-center"
-              />
-            </div>
-          </div>
-        </motion.div>
+      {/* Full-Width Hero Banner (Meta Style: Full-Width, Edge-to-Edge, Tanpa Bingkai & Tanpa Teks Overlay) */}
+      <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[75vh] overflow-hidden bg-slate-100">
+        <Image
+          src="/foto-hero.jpg"
+          alt="A'lawna Hero Banner"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
 
-        {/* Teks di Bawah Gambar (Rata Tengah / text-center) */}
-        <div className="mx-auto max-w-3xl text-center space-y-6 sm:space-y-8">
+      {/* Konten Teks di Bawah Banner dengan Animasi Scroll (Framer Motion) */}
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: '-100px' }}
+          className="mx-auto max-w-3xl text-center space-y-6 sm:space-y-8"
+        >
           {/* Judul Utama */}
           <div className="space-y-2">
             <h1 className="text-5xl font-black tracking-tight text-slate-900 sm:text-6xl md:text-7xl">
@@ -89,7 +86,7 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
