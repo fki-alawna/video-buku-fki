@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { TrendingUp, BookOpen, Target, Palette } from 'lucide-react';
 
 export default function Features() {
@@ -29,8 +30,18 @@ export default function Features() {
   return (
     <section id="mhmtq" className="relative bg-white py-16 sm:py-24 border-t border-slate-200/60 text-slate-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header (Bersih tanpa sub-judul & deskripsi panjang) */}
+        {/* Section Header (Logo Besar di Atas Judul Filosofi Logo) */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div className="mb-6 sm:mb-8 flex justify-center">
+            <Image
+              src="/logo-alawna.png"
+              alt="Logo A'lawna"
+              width={256}
+              height={256}
+              className="w-48 h-48 md:w-64 md:h-64 object-contain mx-auto drop-shadow-sm hover:scale-105 transition-transform duration-300"
+              priority
+            />
+          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Filosofi Logo
           </h2>
