@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { X, Shield } from 'lucide-react';
+import Image from 'next/image';
+import { X } from 'lucide-react';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 
 interface LoginModalProps {
@@ -60,12 +61,19 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
         {/* Modal Header */}
         <div className="text-center space-y-2 mb-6">
-          <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-50 border border-sky-100 text-sky-600 mb-2">
-            <Shield className="h-6 w-6" />
+          <div className="flex items-center justify-center gap-2.5">
+            <Image
+              src="/logo-alawna.png"
+              alt="Logo A'lawna"
+              width={24}
+              height={24}
+              className="w-6 h-6 object-contain"
+              priority
+            />
+            <h2 id="modal-title" className="text-2xl font-bold tracking-tight text-slate-900">
+              A&apos;lawna
+            </h2>
           </div>
-          <h2 id="modal-title" className="text-2xl font-bold tracking-tight text-slate-900">
-            Portal Admin <span className="text-sky-600">A&apos;lawna</span>
-          </h2>
           <p className="text-sm text-slate-600">
             Masuk dengan akun Google yang terdaftar sebagai admin (whitelist) untuk mengelola data video dan QR code.
           </p>
