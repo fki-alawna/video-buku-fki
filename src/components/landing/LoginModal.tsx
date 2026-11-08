@@ -73,17 +73,17 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
             {/* Bagian Kiri: Form & Google OAuth (50%) */}
             <div className="w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
-              {/* Logo A'lawna di Pojok Kiri Atas */}
-              <div className="flex items-center gap-2.5 mb-6">
+              {/* Logo & Branding A'lawna (Left-aligned & Enlarged) */}
+              <div className="flex flex-col items-start mb-6">
                 <Image
                   src="/logo-alawna.png"
                   alt="Logo A'lawna"
-                  width={36}
-                  height={36}
-                  className="w-9 h-9 object-contain"
+                  width={72}
+                  height={72}
+                  className="w-16 h-16 md:w-20 md:h-20 object-contain mb-3.5"
                   priority
                 />
-                <span className="text-xl font-black tracking-tight text-slate-900">
+                <span className="text-xl font-bold tracking-tight text-slate-900">
                   A&apos;lawna
                 </span>
               </div>
