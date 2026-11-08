@@ -1,9 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { TrendingUp, BookOpen, Target, Palette } from 'lucide-react';
+import FilosofiModal from './FilosofiModal';
 
 export default function Features() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const filosofiList = [
     {
       title: '3 Lekukan Menjulang',
@@ -33,14 +38,26 @@ export default function Features() {
         {/* Section Header (Logo Besar di Atas Judul Filosofi Logo) */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <div className="mb-6 sm:mb-8 flex justify-center">
-            <Image
-              src="/logo-alawna.png"
-              alt="Logo A'lawna"
-              width={256}
-              height={256}
-              className="w-48 h-48 md:w-64 md:h-64 object-contain mx-auto drop-shadow-sm hover:scale-105 transition-transform duration-300"
-              priority
-            />
+            <motion.div
+              layoutId="logo-alawna"
+              onClick={() => setIsModalOpen(true)}
+              className="cursor-pointer group flex flex-col items-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', damping: 20, stiffness: 350 }}
+            >
+              <Image
+                src="/logo-alawna.png"
+                alt="Logo A'lawna (Klik untuk filosofi detail)"
+                width={256}
+                height={256}
+                className="w-48 h-48 md:w-64 md:h-64 object-contain mx-auto drop-shadow-sm transition-transform duration-300"
+                priority
+              />
+              <span className="mt-2 text-xs font-semibold text-blue-900/70 group-hover:text-blue-900 group-hover:underline transition-colors">
+                Klik logo untuk melihat filosofi lengkap
+              </span>
+            </motion.div>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
             Filosofi Logo
@@ -76,6 +93,12 @@ export default function Features() {
           })}
         </div>
       </div>
+
+      {/* Interactive Morphing Modal for Logo Philosophy */}
+      <FilosofiModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
