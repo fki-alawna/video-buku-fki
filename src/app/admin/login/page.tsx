@@ -56,7 +56,7 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
                 alt="Logo A'lawna"
                 width={112}
                 height={112}
-                className="w-24 h-24 sm:w-28 sm:h-28 object-contain object-left mb-3 sm:mb-4"
+                className="w-24 h-24 sm:w-28 sm:h-28 object-contain object-left -ml-5 sm:-ml-6 mb-3 sm:mb-4"
                 priority
               />
               <span className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
