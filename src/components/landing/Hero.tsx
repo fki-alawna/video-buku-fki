@@ -6,7 +6,7 @@ export default function Hero() {
   const stats = [
     { number: '326+', label: 'Siswi' },
     { number: '24', label: 'Mustahiq/oh' },
-    { number: '6', label: 'Tim' },
+    { number: '9', label: 'Tim' },
   ];
 
   return (
@@ -53,13 +53,13 @@ export default function Hero() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href="#mhmtq"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-blue-900 hover:bg-blue-800 px-8 py-3 text-base font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-blue-900 hover:bg-blue-800 px-8 py-3 text-base font-semibold text-white shadow-md hover:shadow-md hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer"
             >
               A&apos;lawna
             </a>
             <a
               href="#wisuda"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-xl border-2 border-blue-900 px-8 py-3 text-base font-semibold text-blue-900 shadow-md hover:shadow-lg hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-xl border-2 border-blue-900 px-8 py-3 text-base font-semibold text-blue-900 shadow-md hover:shadow-md hover:bg-blue-50 hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer"
             >
               Wisuda
             </a>
