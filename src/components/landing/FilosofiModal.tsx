@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -63,9 +64,12 @@ export default function FilosofiModal({ isOpen, onClose }: FilosofiModalProps) {
             </button>
 
             {/* Poster Image */}
-            <img
+            <Image
               src="/poster-filosofi.jpg"
               alt="Poster Filosofi Logo A'lawna"
+              width={1000}
+              height={1000}
+              sizes="(max-width: 768px) 100vw, 90vw"
               className="w-full h-auto max-h-[90vh] object-contain rounded-2xl shadow-2xl"
             />
           </motion.div>

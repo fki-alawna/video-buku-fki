@@ -1,8 +1,3 @@
-import moment from 'moment-hijri';
-
-// Pastikan angka Masehi menggunakan digit standar Barat
-moment.locale('en');
-
 export const HIJRI_MONTHS = [
   'Muharram',
   'Safar',
@@ -36,17 +31,41 @@ export const MASEHI_MONTHS = [
 export const DAY_NAMES = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
 export function getHijriInfo(dateStr: string) {
-  const m = moment(dateStr);
-  const iDate = m.iDate();
-  const iMonthIndex = m.iMonth();
-  const iMonthName = HIJRI_MONTHS[iMonthIndex] || `Bulan ${iMonthIndex + 1}`;
-  const iYear = m.iYear();
-  return {
-    day: iDate,
-    month: iMonthName,
-    year: iYear,
-    fullText: `${iDate} ${iMonthName} ${iYear} H`,
-  };
+  try {
+    const parts = dateStr.split('-');
+    const dateObj = new Date(
+      Date.UTC(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]), 12, 0, 0)
+    );
+    const formatter = new Intl.DateTimeFormat('id-u-ca-islamic-umalqura', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+    });
+    let day = 1;
+    let monthIndex = 0;
+    let year = 1448;
+
+    for (const part of formatter.formatToParts(dateObj)) {
+      if (part.type === 'day') day = parseInt(part.value, 10);
+      if (part.type === 'month') monthIndex = parseInt(part.value, 10) - 1;
+      if (part.type === 'year') year = parseInt(part.value, 10);
+    }
+
+    const monthName = HIJRI_MONTHS[monthIndex] || `Bulan ${monthIndex + 1}`;
+    return {
+      day,
+      month: monthName,
+      year,
+      fullText: `${day} ${monthName} ${year} H`,
+    };
+  } catch {
+    return {
+      day: 1,
+      month: HIJRI_MONTHS[0],
+      year: 1448,
+      fullText: `1 ${HIJRI_MONTHS[0]} 1448 H`,
+    };
+  }
 }
 
 export function checkIsPingDay(dateStr: string, lastPingTime: string | null): boolean {

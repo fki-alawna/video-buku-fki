@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, MessageCircle } from 'lucide-react';
 
@@ -88,9 +89,12 @@ export default function Footer() {
             title="Buka Lokasi di Google Maps"
             className="block w-full overflow-hidden rounded-2xl group relative shadow-md hover:shadow-xl transition-all duration-300"
           >
-            <img
+            <Image
               src="/foto-lokasi.jpg"
               alt="Lokasi P3TQ Lirboyo"
+              width={1200}
+              height={450}
+              sizes="(max-width: 768px) 100vw, 1200px"
               className="w-full h-[300px] md:h-[450px] object-cover transition-transform duration-500 group-hover:scale-105 block"
             />
           </a>

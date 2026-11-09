@@ -96,17 +96,9 @@ export default function Testimonials() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <motion.div
-            animate={isPaused ? { x: undefined } : { x: ['0%', '-50%'] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 35,
-                ease: 'linear',
-              },
-            }}
-            className="flex gap-6 w-max pl-4"
+          <div
+            style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
+            className="flex gap-6 w-max pl-4 animate-marquee will-change-transform"
           >
             {marqueeItems.map((item, idx) => (
               <div
@@ -142,7 +134,7 @@ export default function Testimonials() {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.div>
 

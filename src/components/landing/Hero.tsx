@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
@@ -13,9 +14,13 @@ export default function Hero() {
     <section id="beranda" className="relative bg-white text-slate-900 overflow-hidden">
       {/* Full-Width Hero Banner */}
       <div className="relative w-full overflow-hidden">
-        <img
-          src="/foto-hero.jpg?v=4"
+        <Image
+          src="/foto-hero.jpg"
           alt="A'lawna Hero"
+          width={1920}
+          height={977}
+          priority
+          sizes="100vw"
           className="w-full max-w-full h-auto object-contain block"
         />
       </div>

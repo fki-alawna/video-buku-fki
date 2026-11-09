@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { AnimatePresence, useAnimate } from 'framer-motion';
 
 interface SplashScreenProps {
@@ -82,9 +83,12 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           style={{ clipPath: 'inset(0 100% 0 0)' }}
           className="relative flex flex-col items-center justify-center pointer-events-none"
         >
-          <img
+          <Image
             src="/logo-alawna.png"
             alt="Logo A'lawna"
+            width={160}
+            height={160}
+            priority
             className="h-32 w-32 sm:h-40 sm:w-40 object-contain drop-shadow-md"
           />
           <span className="mt-4 text-xs sm:text-sm font-bold uppercase tracking-widest text-blue-900">
