@@ -8,6 +8,7 @@ import {
 } from '@/app/admin/(dashboard)/video-actions';
 import type { ActionState } from '@/lib/action-types';
 import type { Folder, VideoWithFolder } from '@/lib/types';
+import VideoListItem from '@/components/VideoListItem';
 
 interface VideoListProps {
   videos: VideoWithFolder[];
@@ -126,112 +127,16 @@ export default function VideoList({ videos, folders }: VideoListProps) {
       ) : (
         <div className="space-y-3">
           {filteredVideos.map((video) => (
-            <article
+            <VideoListItem
               key={video.id}
-              className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5"
-            >
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                <div className="min-w-0 space-y-1.5">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="text-base font-semibold text-slate-900 break-words">
-                      {video.title}
-                    </h2>
-                    <span
-                      className={
-                        video.is_active
-                          ? 'inline-flex items-center rounded-md border border-emerald-300 bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-900'
-                          : 'inline-flex items-center rounded-md border border-slate-300 bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700'
-                      }
-                    >
-                      {video.is_active ? 'Aktif' : 'Nonaktif'}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600">
-                    <span>
-                      Folder:{' '}
-                      <strong className="font-medium text-slate-800">
-                        {video.folders?.name ?? 'Tanpa Folder'}
-                      </strong>
-                    </span>
-                    <span>
-                      Slug:{' '}
-                      <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-800 break-all">
-                        /v/{video.slug}
-                      </code>
-                    </span>
-                    <span>Urutan: {video.sort_order}</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <Link
-                    href={`/admin/video/${video.id}/edit`}
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 shadow-sm"
-                  >
-                    Edit / Ganti Link Drive
-                  </Link>
-
-                  <Link
-                    href={`/v/${video.slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100"
-                  >
-                    Lihat Player
-                  </Link>
-
-                  <button
-                    type="button"
-                    disabled={isPending}
-                    onClick={() => handleToggleActive(video.id, video.is_active)}
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100 disabled:opacity-60"
-                  >
-                    {video.is_active ? 'Nonaktifkan' : 'Aktifkan'}
-                  </button>
-
-                  <button
-                    type="button"
-                    disabled={isPending}
-                    onClick={() => setConfirmDeleteId(video.id)}
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-red-300 bg-red-50 px-4 py-2 text-sm font-medium text-red-800 transition-colors hover:bg-red-100 disabled:opacity-60"
-                  >
-                    Hapus
-                  </button>
-                </div>
-              </div>
-
-              {confirmDeleteId === video.id ? (
-                <div
-                  role="alertdialog"
-                  aria-label={`Konfirmasi hapus video ${video.title}`}
-                  className="mt-4 rounded-xl border border-red-300 bg-red-50 p-3.5"
-                >
-                  <p className="text-sm text-red-900">
-                    Hapus video <strong>{video.title}</strong>? QR code dengan slug{' '}
-                    <span className="font-mono">/v/{video.slug}</span> tidak akan bisa dibuka lagi.
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <button
-                      type="button"
-                      disabled={isPending}
-                      onClick={() => handleDelete(video.id)}
-                      className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-red-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-800 disabled:opacity-60"
-                    >
-                      {isPending ? 'Menghapus...' : 'Ya, Hapus Video'}
-                    </button>
-                    <button
-                      type="button"
-                      disabled={isPending}
-                      onClick={() => setConfirmDeleteId(null)}
-                      className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100"
-                    >
-                      Batal
-                    </button>
-                  </div>
-                </div>
-              ) : null}
-            </article>
+              video={video}
+              isPending={isPending}
+              confirmDeleteId={confirmDeleteId}
+              onToggleActive={handleToggleActive}
+              onConfirmDelete={setConfirmDeleteId}
+              onCancelDelete={() => setConfirmDeleteId(null)}
+              onDelete={handleDelete}
+            />
           ))}
         </div>
       )}

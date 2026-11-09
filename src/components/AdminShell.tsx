@@ -9,6 +9,7 @@ import {
   Video,
   Calendar,
   QrCode,
+  MessageCircle,
 } from 'lucide-react';
 import AIChatAdminModal from '@/components/AIChatAdminModal';
 import AdminDesktopSidebar, {
@@ -98,6 +99,20 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
         >
           {children}
         </main>
+      </div>
+
+      {/* FAB AI Khusus Mobile (Kanan Bawah) - Hilang di Desktop */}
+      <div className="block md:hidden fixed bottom-6 right-6 z-40 print:hidden">
+        <button
+          type="button"
+          onClick={() => setIsAdminChatOpen(true)}
+          title="Buka A'lawna Intelligence"
+          aria-label="Buka A'lawna Intelligence"
+          className="flex items-center gap-2 rounded-full bg-blue-900 text-white px-4 py-3 shadow-xl hover:bg-blue-800 active:scale-95 transition-all border border-blue-700 cursor-pointer"
+        >
+          <MessageCircle className="h-5 w-5" />
+          <span className="text-xs font-bold">A&apos;lawna Intelligence</span>
+        </button>
       </div>
 
       {/* Command Center Modal Agen Panitia */}

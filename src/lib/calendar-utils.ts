@@ -48,3 +48,22 @@ export function getHijriInfo(dateStr: string) {
     fullText: `${iDate} ${iMonthName} ${iYear} H`,
   };
 }
+
+export function checkIsPingDay(dateStr: string, lastPingTime: string | null): boolean {
+  if (!lastPingTime) return false;
+  const lastPingMidnight = new Date(lastPingTime);
+  lastPingMidnight.setHours(0, 0, 0, 0);
+
+  const checkDate = new Date(dateStr);
+  checkDate.setHours(0, 0, 0, 0);
+
+  const diffMs = checkDate.getTime() - lastPingMidnight.getTime();
+  const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+  return diffDays % 6 === 0;
+}
+
+export function checkIsLastPingDay(dateStr: string, lastPingTime: string | null): boolean {
+  if (!lastPingTime) return false;
+  const lastPingStr = new Date(lastPingTime).toISOString().split('T')[0];
+  return dateStr === lastPingStr;
+}

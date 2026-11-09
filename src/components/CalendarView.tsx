@@ -1,12 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar as CalendarIcon,
-  X,
-} from 'lucide-react';
+import { X, ListFilter, Grid } from 'lucide-react';
 import {
   addCalendarNote,
   deleteCalendarNote,
@@ -14,12 +9,15 @@ import {
   type CalendarNote,
 } from '@/app/admin/(dashboard)/kalender/actions';
 import {
-  MASEHI_MONTHS,
   getHijriInfo,
+  checkIsPingDay,
+  checkIsLastPingDay,
 } from '@/lib/calendar-utils';
 import CalendarKeepAliveBanner from '@/components/calendar/CalendarKeepAliveBanner';
+import CalendarHeaderControls from '@/components/calendar/CalendarHeaderControls';
 import CalendarNoteModal from '@/components/calendar/CalendarNoteModal';
 import CalendarDayGrid from '@/components/calendar/CalendarDayGrid';
+import CalendarMobileAgenda from '@/components/calendar/CalendarMobileAgenda';
 
 interface CalendarViewProps {
   initialNotes: CalendarNote[];
@@ -34,6 +32,7 @@ export default function CalendarView({
   const [notes, setNotes] = useState<CalendarNote[]>(initialNotes);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [noteInput, setNoteInput] = useState('');
+  const [mobileTab, setMobileTab] = useState<'grid' | 'agenda'>('grid');
   const [isPending, startTransition] = useTransition();
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
@@ -46,36 +45,8 @@ export default function CalendarView({
   const daysInPrevMonth = new Date(year, month, 0).getDate();
   const todayStr = new Date().toISOString().split('T')[0];
 
-  function prevMonth() {
-    setCurrentDate(new Date(year, month - 1, 1));
-  }
-
-  function nextMonth() {
-    setCurrentDate(new Date(year, month + 1, 1));
-  }
-
-  function goToToday() {
-    setCurrentDate(new Date());
-  }
-
-  function isPingDay(dateStr: string): boolean {
-    if (!lastPingTime) return false;
-    const lastPingMidnight = new Date(lastPingTime);
-    lastPingMidnight.setHours(0, 0, 0, 0);
-
-    const checkDate = new Date(dateStr);
-    checkDate.setHours(0, 0, 0, 0);
-
-    const diffMs = checkDate.getTime() - lastPingMidnight.getTime();
-    const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-    return diffDays % 6 === 0;
-  }
-
-  function isLastPingDay(dateStr: string): boolean {
-    if (!lastPingTime) return false;
-    const lastPingStr = new Date(lastPingTime).toISOString().split('T')[0];
-    return dateStr === lastPingStr;
-  }
+  const isPingDay = (d: string) => checkIsPingDay(d, lastPingTime);
+  const isLastPingDay = (d: string) => checkIsLastPingDay(d, lastPingTime);
 
   async function handleAddNote(e: React.FormEvent) {
     e.preventDefault();
@@ -127,6 +98,7 @@ export default function CalendarView({
 
   const midMonthStr = `${year}-${String(month + 1).padStart(2, '0')}-15`;
   const midMonthHijri = getHijriInfo(midMonthStr);
+  const hijriText = `${midMonthHijri.month} ${midMonthHijri.year} H`;
 
   return (
     <div className="space-y-6">
@@ -152,64 +124,89 @@ export default function CalendarView({
         </div>
       )}
 
-      {/* Grid Kalender */}
-      <section className="rounded-3xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-[8px_8px_20px_rgba(0,0,0,0.04),-8px_-8px_20px_rgba(255,255,255,0.9)]">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-5 border-b border-slate-100">
-          <div>
-            <div className="flex items-center gap-2">
-              <CalendarIcon className="h-5 w-5 text-blue-900" />
-              <h3 className="text-xl font-bold text-slate-900">
-                {MASEHI_MONTHS[month]} {year}
-              </h3>
-            </div>
-            <p className="text-sm font-semibold text-blue-900/80 mt-0.5">
-              {midMonthHijri.month} {midMonthHijri.year} H
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={goToToday}
-              className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
-            >
-              Hari Ini
-            </button>
-            <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50 p-1">
-              <button
-                type="button"
-                onClick={prevMonth}
-                title="Bulan sebelumnya"
-                aria-label="Bulan sebelumnya"
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-600 hover:bg-white hover:text-blue-900 transition-all cursor-pointer"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={nextMonth}
-                title="Bulan berikutnya"
-                aria-label="Bulan berikutnya"
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-600 hover:bg-white hover:text-blue-900 transition-all cursor-pointer"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <CalendarDayGrid
+      {/* Grid Kalender Container */}
+      <section className="rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-[8px_8px_20px_rgba(0,0,0,0.04),-8px_-8px_20px_rgba(255,255,255,0.9)]">
+        <CalendarHeaderControls
           year={year}
           month={month}
-          startOffset={startOffset}
-          daysInPrevMonth={daysInPrevMonth}
-          daysInMonth={daysInMonth}
-          todayStr={todayStr}
-          notes={notes}
-          isPingDay={isPingDay}
-          isLastPingDay={isLastPingDay}
-          onSelectDate={setSelectedDate}
+          hijriText={hijriText}
+          onGoToToday={() => setCurrentDate(new Date())}
+          onPrevMonth={() => setCurrentDate(new Date(year, month - 1, 1))}
+          onNextMonth={() => setCurrentDate(new Date(year, month + 1, 1))}
         />
+
+        {/* Tab Switcher Khusus Mobile (HP) */}
+        <div className="flex md:hidden items-center justify-center p-1 bg-slate-100/80 rounded-xl my-3">
+          <button
+            type="button"
+            onClick={() => setMobileTab('grid')}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-bold rounded-lg transition-all ${
+              mobileTab === 'grid'
+                ? 'bg-white text-blue-900 shadow-xs'
+                : 'text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            <Grid className="h-3.5 w-3.5" />
+            <span>Kalender Grid</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab('agenda')}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-bold rounded-lg transition-all ${
+              mobileTab === 'agenda'
+                ? 'bg-white text-blue-900 shadow-xs'
+                : 'text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            <ListFilter className="h-3.5 w-3.5" />
+            <span>Agenda / List</span>
+          </button>
+        </div>
+
+        {/* Desktop: Selalu Grid */}
+        <div className="hidden md:block">
+          <CalendarDayGrid
+            year={year}
+            month={month}
+            startOffset={startOffset}
+            daysInPrevMonth={daysInPrevMonth}
+            daysInMonth={daysInMonth}
+            todayStr={todayStr}
+            notes={notes}
+            isPingDay={isPingDay}
+            isLastPingDay={isLastPingDay}
+            onSelectDate={setSelectedDate}
+          />
+        </div>
+
+        {/* Mobile: Grid Ramping atau List Agenda */}
+        <div className="block md:hidden">
+          {mobileTab === 'grid' ? (
+            <CalendarDayGrid
+              year={year}
+              month={month}
+              startOffset={startOffset}
+              daysInPrevMonth={daysInPrevMonth}
+              daysInMonth={daysInMonth}
+              todayStr={todayStr}
+              notes={notes}
+              isPingDay={isPingDay}
+              isLastPingDay={isLastPingDay}
+              onSelectDate={setSelectedDate}
+            />
+          ) : (
+            <CalendarMobileAgenda
+              year={year}
+              month={month}
+              daysInMonth={daysInMonth}
+              todayStr={todayStr}
+              notes={notes}
+              isPingDay={isPingDay}
+              isLastPingDay={isLastPingDay}
+              onSelectDate={setSelectedDate}
+            />
+          )}
+        </div>
       </section>
 
       <CalendarNoteModal
