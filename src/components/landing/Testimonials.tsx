@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Quote, X } from 'lucide-react';
 
@@ -12,56 +12,21 @@ interface TestimonialItem {
 export default function Testimonials() {
   const [selected, setSelected] = useState<TestimonialItem | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const testimonials: TestimonialItem[] = [
-    {
-      name: 'Siti Aminah',
-      text: "Nggak kerasa sudah 9 tahun di sini. Saking gak iso moco kitab, saiki iso wisuda. Thanks A'lawna!",
-    },
-    {
-      name: 'Fatimatus Zahro',
-      text: '9 tahun iki bukan waktu yang pendek. Ngaji, sekolah, mondok neng kene wes koyo omah dhewe. Kangen rek!',
-    },
-    {
-      name: 'Nabila Salsabila',
-      text: 'Bimbingan Mustahiq niku benar-benar tulus. Mboten namung ngajeni kitab, nanging ugi ngajeni adab. Barokalloh.',
-    },
-    {
-      name: 'Aisyah Putri',
-      text: 'Momen paling berharga pas muhafadzoh bareng bestie. Pas hafalan mumet, saling support. Love u gengs!',
-    },
-    {
-      name: 'Wardatun Nisa',
-      text: 'Alhamdulillah, resmi jadi alumni hari ini! Nggih mboten ngece, nanging rasane pengen nangis. Makasih doa restune semuanya.',
-    },
-    {
-      name: 'Zahra Nabila',
-      text: "Bapak-bapak Mustahiq sabar banget, koyo ngajeni anak dewe. Ilmu e berkah, akhlake barokah. A'lawna is the best!",
-    },
-    {
-      name: 'Syifa Aulia',
-      text: '9 tahun bareng terus. Dari kelas Ibtidaiyah sampai Aliyah. Susah seneng dilakoni bareng. Semoga silaturahmi gak putus yo!',
-    },
-    {
-      name: 'Kirana Putri',
-      text: 'Dedikasi ini untuk Ibu di rumah. Matur nuwun sampun nyekolahkan kulo neng panggenan sing tepat. A\'lawna forever!',
-    },
-    {
-      name: 'Nayla Syakira',
-      text: 'Praktik Ubudiyah dan Ujian Baca Kitab jadi momen paling deg-degan, tapi bapak e nggih sabar poll.',
-    },
-    {
-      name: 'Salma Azzahra',
-      text: 'Seneng banget iso sekelas karo wong-wong gokil neng kene. Pas ujian kitab kosongan, kompak banget belajare. Wehehe.',
-    },
-    {
-      name: 'Fia Alawna',
-      text: "Wajib Khidmah niku nggih capek, tapi dateng kepuasan batin. Belajar tulus ngabdi. A'lawna tempat molding karakter!",
-    },
-    {
-      name: 'Muna Alifah',
-      text: 'Matur nuwun sanget bimbinganipun para Masyayikh lan Bapak Mustahiq. Niki bukan akhir, tapi awal perjuangan. Semangat terus A\'lawna!',
-    },
+    { name: 'Siti Aminah', text: "Nggak kerasa sudah 9 tahun di sini. Saking gak iso moco kitab, saiki iso wisuda. Thanks A'lawna!" },
+    { name: 'Fatimatus Zahro', text: '9 tahun iki bukan waktu yang pendek. Ngaji, sekolah, mondok neng kene wes koyo omah dhewe. Kangen rek!' },
+    { name: 'Nabila Salsabila', text: 'Bimbingan Mustahiq niku benar-benar tulus. Mboten namung ngajeni kitab, nanging ugi ngajeni adab. Barokalloh.' },
+    { name: 'Aisyah Putri', text: 'Momen paling berharga pas muhafadzoh bareng bestie. Pas hafalan mumet, saling support. Love u gengs!' },
+    { name: 'Wardatun Nisa', text: 'Alhamdulillah, resmi jadi alumni hari ini! Nggih mboten ngece, nanging rasane pengen nangis. Makasih doa restune semuanya.' },
+    { name: 'Zahra Nabila', text: "Bapak-bapak Mustahiq sabar banget, koyo ngajeni anak dewe. Ilmu e berkah, akhlake barokah. A'lawna is the best!" },
+    { name: 'Syifa Aulia', text: '9 tahun bareng terus. Dari kelas Ibtidaiyah sampai Aliyah. Susah seneng dilakoni bareng. Semoga silaturahmi gak putus yo!' },
+    { name: 'Kirana Putri', text: 'Dedikasi ini untuk Ibu di rumah. Matur nuwun sampun nyekolahkan kulo neng panggenan sing tepat. A\'lawna forever!' },
+    { name: 'Nayla Syakira', text: 'Praktik Ubudiyah dan Ujian Baca Kitab jadi momen paling deg-degan, tapi bapak e nggih sabar poll.' },
+    { name: 'Salma Azzahra', text: 'Seneng banget iso sekelas karo wong-wong gokil neng kene. Pas ujian kitab kosongan, kompak banget belajare. Wehehe.' },
+    { name: 'Fia Alawna', text: "Wajib Khidmah niku nggih capek, tapi dateng kepuasan batin. Belajar tulus ngabdi. A'lawna tempat molding karakter!" },
+    { name: 'Muna Alifah', text: 'Matur nuwun sanget bimbinganipun para Masyayikh lan Bapak Mustahiq. Niki bukan akhir, tapi awal perjuangan. Semangat terus A\'lawna!' },
   ];
 
   // Duplikasi 2x untuk seamless infinite loop
@@ -85,6 +50,28 @@ export default function Testimonials() {
     };
   }, [selected]);
 
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+        setIsPaused(true);
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => setIsPaused(false), 2000);
+      }
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <section id="testimoni" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60 text-slate-900 overflow-hidden">
       <motion.div
@@ -102,9 +89,10 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Auto-Scrolling Single-Row Marquee Container */}
+        {/* Auto-Scrolling Single-Row Marquee Container with Horizontal Mouse Wheel */}
         <div
-          className="relative w-full overflow-hidden py-4"
+          ref={scrollContainerRef}
+          className="relative w-full overflow-x-auto scroll-smooth py-4 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -124,7 +112,7 @@ export default function Testimonials() {
               <div
                 key={`${item.name}-${idx}`}
                 onClick={() => setSelected(item)}
-                className="w-[320px] sm:w-[360px] shrink-0 flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-blue-400 hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
+                className="w-[320px] sm:w-[360px] shrink-0 flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-blue-400 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer select-none"
               >
                 <div>
                   {/* 5 Stars Rating & Quote Icon */}
