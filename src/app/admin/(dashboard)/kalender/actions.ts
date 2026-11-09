@@ -100,6 +100,9 @@ export async function deleteCalendarNote(
   }
 }
 
+// Alias for compatibility
+export const removeCalendarNote = deleteCalendarNote;
+
 export async function triggerManualPing(): Promise<CalendarActionState> {
   try {
     await assertAdminSession();

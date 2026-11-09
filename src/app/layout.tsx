@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   title: "A'lawna",
   description,
   icons: {
-    icon: '/icon.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
     apple: '/icon.png',
   },
   openGraph: {

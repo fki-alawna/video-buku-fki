@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { useRouter } from 'next/navigation';
 import { X, ListFilter, Grid } from 'lucide-react';
 import {
   addCalendarNote,
@@ -71,17 +72,18 @@ export default function CalendarView({
     });
   }
 
+  const router = useRouter();
+
   async function handleDeleteNote(id: string) {
-    startTransition(async () => {
-      const res = await deleteCalendarNote(id);
-      if (res.success) {
-        setNotes((prev) => prev.filter((n) => n.id !== id));
-        setStatusMessage('Catatan berhasil dihapus.');
-        setTimeout(() => setStatusMessage(null), 3000);
-      } else if (res.error) {
-        setStatusMessage(res.error);
-      }
-    });
+    const res = await deleteCalendarNote(id);
+    if (res.success) {
+      setNotes((prev) => prev.filter((n) => n.id !== id));
+      setStatusMessage('Catatan berhasil dihapus.');
+      setTimeout(() => setStatusMessage(null), 3000);
+      router.refresh();
+    } else if (res.error) {
+      setStatusMessage(res.error);
+    }
   }
 
   async function handleManualPing() {

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Trash2, Clock, Radio, Loader2 } from 'lucide-react';
 import type { CalendarNote } from '@/app/admin/(dashboard)/kalender/actions';
@@ -14,7 +15,7 @@ interface CalendarNoteModalProps {
   onClose: () => void;
   onNoteInputChange: (val: string) => void;
   onAddNote: (e: React.FormEvent) => void;
-  onDeleteNote: (id: string) => void;
+  onDeleteNote: (id: string) => void | Promise<void>;
 }
 
 export default function CalendarNoteModal({
@@ -28,10 +29,36 @@ export default function CalendarNoteModal({
   onAddNote,
   onDeleteNote,
 }: CalendarNoteModalProps) {
+  const [isDeleting, setIsDeleting] = useState<string | null>(null);
+
+  // Listener tombol Escape untuk menutup modal
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!selectedDate) return null;
 
   const dateNotes = notes.filter((n) => n.date === selectedDate);
   const hijri = getHijriInfo(selectedDate);
+
+  async function handleDelete(id: string) {
+    if (typeof window !== 'undefined' && !window.confirm('Apakah Anda yakin ingin menghapus catatan ini?')) {
+      return;
+    }
+
+    try {
+      setIsDeleting(id);
+      await onDeleteNote(id);
+    } finally {
+      setIsDeleting(null);
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -168,13 +195,17 @@ export default function CalendarNoteModal({
 
                     <button
                       type="button"
-                      onClick={() => onDeleteNote(item.id)}
-                      disabled={isPending}
+                      onClick={() => handleDelete(item.id)}
+                      disabled={isPending || isDeleting === item.id}
                       title="Hapus catatan"
                       aria-label="Hapus catatan"
-                      className="text-slate-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition-colors cursor-pointer shrink-0"
+                      className="text-slate-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition-colors cursor-pointer shrink-0 disabled:opacity-50"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      {isDeleting === item.id ? (
+                        <Loader2 className="h-4 w-4 animate-spin text-red-600" />
+                      ) : (
+                        <Trash2 className="h-4 w-4" />
+                      )}
                     </button>
                   </div>
                 ))}
