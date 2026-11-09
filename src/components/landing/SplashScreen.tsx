@@ -48,7 +48,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       // Fase 3 (Zoom Out ke Panggung): Bulan mengecil ke tengah panggung dan splash memudar
       animate(
         '#splash-moon',
-        { scale: 0.1, opacity: 0, y: -20 },
+        { scale: 0.1, opacity: 0, y: 50 },
         { duration: 1.1, ease: [0.4, 0, 0.2, 1] }
       );
 
