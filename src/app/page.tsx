@@ -10,6 +10,7 @@ import Testimonials from '@/components/landing/Testimonials';
 import Footer from '@/components/landing/Footer';
 import LoginModal from '@/components/landing/LoginModal';
 import AIChat from '@/components/AIChat';
+import SplashScreen from '@/components/landing/SplashScreen';
 
 const sectionReveal = {
   initial: { opacity: 0, y: 50 },
@@ -20,9 +21,14 @@ const sectionReveal = {
 
 export default function HomePage() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSplashDone, setIsSplashDone] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white pb-24 overflow-x-hidden">
+    <div className="relative min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white pb-24 overflow-x-hidden">
+      {/* Intro Animation (Splash Screen) */}
+      {!isSplashDone && (
+        <SplashScreen onComplete={() => setIsSplashDone(true)} />
+      )}
       {/* Navbar with Login Trigger */}
       <Navbar onOpenLogin={() => setIsLoginModalOpen(true)} />
 
