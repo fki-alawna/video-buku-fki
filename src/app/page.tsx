@@ -58,7 +58,7 @@ export default function HomePage() {
         onClose={() => setIsLoginModalOpen(false)}
       />
 
-      {/* AI Chatbot A'lawna Intelligent */}
+      {/* AI Chatbot A'lawna Intelligence */}
       <AIChat />
     </div>
   );

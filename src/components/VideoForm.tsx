@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { useActionState, useRef, useState } from 'react';
+import { Loader2 } from 'lucide-react';
 import {
   createVideoAction,
   updateVideoAction,
-  type ActionState,
-} from '@/app/admin/(dashboard)/actions';
+} from '@/app/admin/(dashboard)/video-actions';
+import type { ActionState } from '@/lib/action-types';
 import { extractDriveFileId } from '@/lib/drive';
 import type { Folder, Video } from '@/lib/types';
 
@@ -218,13 +219,18 @@ export default function VideoForm({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 disabled:opacity-60 shadow-sm"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
         >
-          {isPending
-            ? 'Menyimpan...'
-            : mode === 'create'
-              ? 'Simpan Video'
-              : 'Simpan Perubahan'}
+          {isPending ? (
+            <>
+              <Loader2 className="animate-spin w-4 h-4 mr-2" />
+              <span>Menyimpan...</span>
+            </>
+          ) : mode === 'create' ? (
+            'Simpan Video'
+          ) : (
+            'Simpan Perubahan'
+          )}
         </button>
 
         <Link

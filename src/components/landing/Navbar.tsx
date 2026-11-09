@@ -59,10 +59,10 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
             alt="Logo A'lawna"
             width={40}
             height={40}
-            className="w-10 h-10 object-contain transition-transform group-hover:scale-105"
+            className="w-10 h-10 object-contain transition-transform group-hover:scale-105 translate-y-0.5 sm:translate-y-1"
             priority
           />
-          <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-900 transition-colors">
+          <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-900 transition-colors leading-none">
             A&apos;lawna
           </span>
         </Link>

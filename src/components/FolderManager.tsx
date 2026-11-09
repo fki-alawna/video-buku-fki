@@ -1,119 +1,21 @@
 'use client';
 
-import { useActionState, useEffect, useState, useTransition } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { Reorder } from 'framer-motion';
-import { GripVertical } from 'lucide-react';
+import { GripVertical, Loader2 } from 'lucide-react';
 import {
-  createFolderAction,
   deleteFolderAction,
-  updateFolderAction,
   updateFolderOrder,
   type ActionState,
 } from '@/app/admin/(dashboard)/actions';
-import type { Folder } from '@/lib/types';
-
-interface FolderWithCount extends Folder {
-  videoCount: number;
-}
+import FolderEditRow, { type FolderWithCount } from '@/components/FolderEditRow';
+import FolderCreateForm from '@/components/FolderCreateForm';
 
 interface FolderManagerProps {
   folders: FolderWithCount[];
 }
 
-const INITIAL_STATE: ActionState = { error: null, success: null };
-
-function FolderEditRow({
-  folder,
-  onDone,
-}: {
-  folder: FolderWithCount;
-  onDone: () => void;
-}) {
-  const [state, formAction, isPending] = useActionState(
-    updateFolderAction,
-    INITIAL_STATE
-  );
-
-  useEffect(() => {
-    if (state.success) {
-      onDone();
-    }
-  }, [state.success, onDone]);
-
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        onDone();
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onDone]);
-
-  return (
-    <form
-      action={formAction}
-      className="rounded-xl border border-blue-200 bg-blue-50/40 p-4 space-y-4"
-    >
-      <input type="hidden" name="id" value={folder.id} />
-
-      <div>
-        <label
-          htmlFor={`edit-folder-name-${folder.id}`}
-          className="block text-sm font-medium text-slate-800"
-        >
-          Nama Folder
-        </label>
-        <input
-          id={`edit-folder-name-${folder.id}`}
-          name="name"
-          type="text"
-          required
-          defaultValue={folder.name}
-          className="mt-1.5 block min-h-[44px] w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-900"
-        />
-      </div>
-
-      <p className="text-xs text-slate-600">
-        Slug tetap: <span className="font-mono text-slate-800">{folder.slug}</span>
-      </p>
-
-      {state.error ? (
-        <p
-          role="alert"
-          className="rounded-lg border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-800"
-        >
-          {state.error}
-        </p>
-      ) : null}
-
-      <div className="flex flex-wrap gap-2">
-        <button
-          type="submit"
-          disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 disabled:opacity-60"
-        >
-          {isPending ? 'Menyimpan...' : 'Simpan Perubahan'}
-        </button>
-        <button
-          type="button"
-          onClick={onDone}
-          disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100"
-        >
-          Batal
-        </button>
-      </div>
-    </form>
-  );
-}
-
 export default function FolderManager({ folders }: FolderManagerProps) {
-  const [createState, createAction, isCreating] = useActionState(
-    createFolderAction,
-    INITIAL_STATE
-  );
-  const [nameInput, setNameInput] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const [actionFeedback, setActionFeedback] = useState<ActionState | null>(null);
@@ -125,12 +27,6 @@ export default function FolderManager({ folders }: FolderManagerProps) {
   useEffect(() => {
     setFolderList(folders);
   }, [folders]);
-
-  useEffect(() => {
-    if (createState.success) {
-      setNameInput('');
-    }
-  }, [createState.success]);
 
   function handleReorder(newOrder: FolderWithCount[]) {
     setFolderList(newOrder);
@@ -153,57 +49,7 @@ export default function FolderManager({ folders }: FolderManagerProps) {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
-        <h2 className="text-lg font-semibold text-slate-900">Tambah Folder</h2>
-
-        <form action={createAction} className="mt-4 space-y-4">
-          <div>
-            <label
-              htmlFor="folder-name"
-              className="block text-sm font-medium text-slate-800"
-            >
-              Nama Folder
-            </label>
-            <input
-              id="folder-name"
-              name="name"
-              type="text"
-              required
-              value={nameInput}
-              onChange={(e) => setNameInput(e.target.value)}
-              placeholder="Contoh: Dokumentasi Kegiatan"
-              className="mt-1.5 block min-h-[44px] w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-900 placeholder:text-slate-500"
-            />
-          </div>
-
-          {createState.error ? (
-            <p
-              role="alert"
-              className="rounded-xl border border-red-300 bg-red-50 px-3.5 py-2.5 text-sm text-red-800"
-            >
-              {createState.error}
-            </p>
-          ) : null}
-
-          {createState.success ? (
-            <p
-              role="status"
-              aria-live="polite"
-              className="rounded-xl border border-emerald-300 bg-emerald-50 px-3.5 py-2.5 text-sm text-emerald-900"
-            >
-              {createState.success}
-            </p>
-          ) : null}
-
-          <button
-            type="submit"
-            disabled={isCreating}
-            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 disabled:opacity-60"
-          >
-            {isCreating ? 'Menyimpan...' : 'Tambah Folder'}
-          </button>
-        </form>
-      </section>
+      <FolderCreateForm />
 
       <section className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -332,9 +178,16 @@ export default function FolderManager({ folders }: FolderManagerProps) {
                             type="button"
                             disabled={isDeleting}
                             onClick={() => handleDelete(folder.id)}
-                            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-red-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-800 disabled:opacity-60 cursor-pointer"
+                            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-red-700 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-800 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                           >
-                            {isDeleting ? 'Menghapus...' : 'Ya, Hapus Folder'}
+                            {isDeleting ? (
+                              <>
+                                <Loader2 className="animate-spin w-4 h-4 mr-2" />
+                                <span>Menghapus...</span>
+                              </>
+                            ) : (
+                              'Ya, Hapus Folder'
+                            )}
                           </button>
                           <button
                             type="button"

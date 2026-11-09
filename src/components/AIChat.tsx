@@ -16,7 +16,7 @@ export default function AIChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: "Assalamu'alaikum! Saya A'lawna Intelligent, asisten AI keluarga besar A'lawna. Ada yang bisa saya bantu seputar Haflah, kegiatan pesantren, atau doa dan salam?",
+      content: "Assalamu'alaikum! Saya A'lawna Intelligence, asisten AI keluarga besar A'lawna. Ada yang bisa saya bantu seputar Haflah, kegiatan pesantren, atau doa dan salam?",
     },
   ]);
 
@@ -94,7 +94,7 @@ export default function AIChat() {
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-40 h-12 px-4 md:h-14 md:px-6 rounded-full flex items-center justify-center gap-2 md:gap-3 bg-blue-900 hover:bg-blue-800 text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
-        aria-label="Buka AI Chatbot A'lawna Intelligent"
+        aria-label="Buka AI Chatbot A'lawna Intelligence"
       >
         <div className="relative">
           <MessageCircle className="h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:rotate-12" />
@@ -105,7 +105,7 @@ export default function AIChat() {
         </div>
         {/* Teks Singkat "AI" di Mobile, Lengkap di Desktop */}
         <span className="text-sm font-bold tracking-wide md:hidden">AI</span>
-        <span className="hidden md:inline text-sm font-bold tracking-wide pr-1">A&apos;lawna Intelligent</span>
+        <span className="hidden md:inline text-sm font-bold tracking-wide pr-1">A&apos;lawna Intelligence</span>
       </button>
 
       {/* Chatbox Window */}
@@ -122,7 +122,7 @@ export default function AIChat() {
             <div className="flex items-center justify-between border-b border-blue-950 bg-blue-900 px-5 py-4 text-white">
               <div>
                 <h3 className="text-base font-bold leading-tight">
-                  A&apos;lawna Intelligent
+                  A&apos;lawna Intelligence
                 </h3>
                 <p className="text-xs text-blue-200 mt-0.5">Asisten AI Islami Ramah</p>
               </div>

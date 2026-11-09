@@ -5,8 +5,8 @@ import { useState, useTransition } from 'react';
 import {
   deleteVideoAction,
   toggleVideoActiveAction,
-  type ActionState,
-} from '@/app/admin/(dashboard)/actions';
+} from '@/app/admin/(dashboard)/video-actions';
+import type { ActionState } from '@/lib/action-types';
 import type { Folder, VideoWithFolder } from '@/lib/types';
 
 interface VideoListProps {

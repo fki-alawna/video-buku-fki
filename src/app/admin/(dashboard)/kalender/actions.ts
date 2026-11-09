@@ -32,13 +32,24 @@ export async function addCalendarNote(
       return { error: 'Catatan tidak boleh kosong.', success: null };
     }
 
+    // Pastikan format tanggal sesuai tipe data DATE (YYYY-MM-DD)
+    const dateMatch = cleanDate.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!dateMatch) {
+      return {
+        error: 'Format tanggal tidak valid. Gunakan format YYYY-MM-DD.',
+        success: null,
+      };
+    }
+    const normalizedDate = `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
+
     const service = createServiceClient();
     const { error } = await service.from('calendar_notes').insert({
-      date: cleanDate,
+      date: normalizedDate,
       note: cleanNote,
     });
 
     if (error) {
+      console.error('Supabase insert calendar_notes error:', error);
       return { error: `Gagal menyimpan catatan: ${error.message}`, success: null };
     }
 
@@ -46,12 +57,16 @@ export async function addCalendarNote(
     revalidatePath('/admin/kalender');
     return { error: null, success: 'Catatan agenda berhasil disimpan.' };
   } catch (err) {
+    console.error('Error in addCalendarNote / saveCalendarNote:', err);
     return {
       error: err instanceof Error ? err.message : 'Terjadi kesalahan saat menyimpan catatan.',
       success: null,
     };
   }
 }
+
+// Alias function for compatibility
+export const saveCalendarNote = addCalendarNote;
 
 export async function deleteCalendarNote(
   noteId: string
@@ -69,6 +84,7 @@ export async function deleteCalendarNote(
       .eq('id', noteId);
 
     if (error) {
+      console.error('Supabase delete calendar_notes error:', error);
       return { error: `Gagal menghapus catatan: ${error.message}`, success: null };
     }
 
@@ -76,6 +92,7 @@ export async function deleteCalendarNote(
     revalidatePath('/admin/kalender');
     return { error: null, success: 'Catatan berhasil dihapus.' };
   } catch (err) {
+    console.error('Error in deleteCalendarNote:', err);
     return {
       error: err instanceof Error ? err.message : 'Terjadi kesalahan saat menghapus catatan.',
       success: null,
@@ -100,6 +117,7 @@ export async function triggerManualPing(): Promise<CalendarActionState> {
     revalidatePath('/admin/kalender');
     return { error: null, success: 'Server Supabase berhasil diping (Keep-Alive diperbarui).' };
   } catch (err) {
+    console.error('Error in triggerManualPing:', err);
     return {
       error: err instanceof Error ? err.message : 'Gagal melakukan ping ke database.',
       success: null,
