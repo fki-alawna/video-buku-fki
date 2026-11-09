@@ -44,6 +44,23 @@ export const ADMIN_TOOLS = [
       },
     },
   },
+  {
+    type: 'function',
+    function: {
+      name: 'delete_calendar_note',
+      description: 'Menghapus catatan agenda panitia pada tanggal tertentu.',
+      parameters: {
+        type: 'object',
+        properties: {
+          date: {
+            type: 'string',
+            description: 'Format tanggal YYYY-MM-DD (contoh: 2026-11-15)',
+          },
+        },
+        required: ['date'],
+      },
+    },
+  },
 ];
 
 export async function executeAdminTool(
@@ -108,6 +125,54 @@ export async function executeAdminTool(
       id: noteData?.id,
       date: rawDate,
       note: rawNote,
+    };
+  }
+
+  if (functionName === 'delete_calendar_note') {
+    const rawDate = String(functionArgs.date || '').trim();
+
+    if (!rawDate) {
+      return {
+        success: false,
+        error: 'Tanggal catatan yang ingin dihapus wajib disertakan.',
+      };
+    }
+
+    const { data: existingNotes, error: checkError } = await service
+      .from('calendar_notes')
+      .select('id')
+      .eq('date', rawDate);
+
+    if (checkError) {
+      return {
+        success: false,
+        error: checkError.message,
+      };
+    }
+
+    if (!existingNotes || existingNotes.length === 0) {
+      return {
+        success: false,
+        message: 'Tidak ada catatan pada tanggal tersebut.',
+      };
+    }
+
+    const { error: deleteError } = await service
+      .from('calendar_notes')
+      .delete()
+      .eq('date', rawDate);
+
+    if (deleteError) {
+      return {
+        success: false,
+        error: deleteError.message,
+      };
+    }
+
+    return {
+      success: true,
+      message: `Catatan untuk tanggal ${rawDate} telah berhasil dihapus.`,
+      date: rawDate,
     };
   }
 
