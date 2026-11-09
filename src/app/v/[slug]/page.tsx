@@ -74,7 +74,7 @@ export default async function PublicVideoPage({ params }: VideoPageProps) {
 
   return (
     <div className="h-dvh w-full bg-black text-white flex flex-col overflow-hidden">
-      <header className="px-4 py-2 sm:px-6 sm:py-3 flex-shrink-0 bg-neutral-950/90 border-b border-neutral-900">
+      <header className="px-4 py-2 sm:px-6 sm:py-3 flex-shrink-0 bg-neutral-950/90 border-b border-neutral-900 landscape:hidden lg:landscape:block">
         {video.folderName ? (
           <p className="text-xs font-medium text-neutral-400 truncate">
             {video.folderName}
