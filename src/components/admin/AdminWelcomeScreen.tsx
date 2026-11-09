@@ -32,14 +32,14 @@ export default function AdminWelcomeScreen({ onComplete }: AdminWelcomeScreenPro
         clearInterval(interval);
         setIsDone(true);
 
-        // Tunggu 1.5 detik setelah pengetikan selesai sebelum transisi fade-out
+        // Tunggu 400ms setelah pengetikan selesai sebelum transisi fade-out
         setTimeout(() => {
           setIsVisible(false);
           router.replace('/admin');
           if (onComplete) {
             onComplete();
           }
-        }, 1500);
+        }, 400);
       }
     }, 100);
 
@@ -54,7 +54,7 @@ export default function AdminWelcomeScreen({ onComplete }: AdminWelcomeScreenPro
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="fixed inset-0 z-[999] bg-white flex flex-col items-center justify-center overflow-hidden"
           role="status"
           aria-live="polite"
