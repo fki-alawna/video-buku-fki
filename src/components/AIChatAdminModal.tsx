@@ -7,7 +7,6 @@ import AdminChatMessageItem, {
   type ChatMessage,
 } from '@/components/admin/AdminChatMessageItem';
 import AdminChatHeader from '@/components/admin/AdminChatHeader';
-import AdminChatQuickActions from '@/components/admin/AdminChatQuickActions';
 
 interface AIChatAdminModalProps {
   isOpen: boolean;
@@ -17,14 +16,8 @@ interface AIChatAdminModalProps {
 const INITIAL_GREETING: ChatMessage = {
   role: 'assistant',
   content:
-    "Assalamu'alaikum Warahmatullahi Wabarakatuh! Saya A'lawna Intelligence, Agen AI Panitia.\n\nSaya memiliki akses langsung ke database sistem untuk:\n1. Mengambil laporan total folder dan video sistem (ketik misal: 'Tolong beri laporan sistem').\n2. Membuat catatan agenda ke kalender panitia (ketik misal: 'Buat catatan tanggal 20 Desember 2026: Rapat Evaluasi Panitia').\n\nAda yang bisa saya bantu sekarang?",
+    "Assalamu'alaikum Warahmatullahi Wabarakatuh! Saya A'lawna Intelligence, Agen AI Panitia.\n\nSaya memiliki akses langsung ke database sistem untuk:\n1. Mengambil laporan total folder dan video sistem (ketik misal: 'Tolong beri laporan sistem').\n2. Membuat catatan agenda ke kalender panitia (ketik misal: 'Buat catatan tanggal 20 Desember 2026: Rapat Evaluasi Panitia').\n3. Menghapus catatan agenda kalender (ketik misal: 'Hapus catatan tanggal 20 Desember 2026').\n\nAda yang bisa saya bantu sekarang?",
 };
-
-const QUICK_ACTIONS = [
-  'Tolong berikan laporan total folder dan video.',
-  'Buat catatan tanggal 20 Desember 2026: Rapat Evaluasi Panitia',
-  'Apa saja fungsi yang dapat Anda jalankan?',
-];
 
 export default function AIChatAdminModal({
   isOpen,
@@ -174,12 +167,6 @@ export default function AIChatAdminModal({
               <div ref={messagesEndRef} />
             </div>
 
-            <AdminChatQuickActions
-              actions={QUICK_ACTIONS}
-              isLoading={isLoading}
-              onSelectAction={sendMessage}
-            />
-
             <footer className="p-4 bg-white border-t border-slate-100 shrink-0">
               <form
                 onSubmit={(e) => {
@@ -196,7 +183,7 @@ export default function AIChatAdminModal({
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDownInput}
                     disabled={isLoading}
-                    placeholder="Ketik pesan atau instruksi (contoh: 'Tolong buat catatan tanggal 20 Desember 2026: Rapat Panitia')..."
+                    placeholder="Tanya A'lawna Intelligence..."
                     className="w-full min-h-[48px] max-h-32 resize-none rounded-2xl border border-slate-300 bg-slate-50/70 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-900/20 focus:bg-white focus:border-blue-900 transition-all leading-normal"
                   />
                 </div>
@@ -214,9 +201,6 @@ export default function AIChatAdminModal({
                   )}
                 </button>
               </form>
-              <p className="mt-1.5 text-[11px] text-slate-400 hidden sm:block">
-                Tekan <kbd className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-600">Enter</kbd> untuk mengirim, <kbd className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-600">Shift + Enter</kbd> untuk baris baru.
-              </p>
             </footer>
           </motion.div>
         </div>
