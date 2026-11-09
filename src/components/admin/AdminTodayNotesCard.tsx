@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Calendar, StickyNote, ArrowRight } from 'lucide-react';
 
@@ -13,6 +16,11 @@ interface AdminTodayNotesCardProps {
 }
 
 export default function AdminTodayNotesCard({ todayNotes }: AdminTodayNotesCardProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   if (todayNotes.length === 0) {
     return (
       <div className="rounded-2xl border border-slate-200/80 bg-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 shadow-xs">
@@ -52,12 +60,14 @@ export default function AdminTodayNotesCard({ todayNotes }: AdminTodayNotesCardP
               Catatan &amp; Agenda Hari Ini ({todayNotes.length})
             </h2>
             <p className="text-xs text-amber-800" suppressHydrationWarning>
-              {new Date().toLocaleDateString('id-ID', {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
+              {mounted
+                ? new Date().toLocaleDateString('id-ID', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })
+                : 'Hari ini'}
             </p>
           </div>
         </div>

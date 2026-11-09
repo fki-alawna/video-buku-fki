@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { RotateCw, Radio } from 'lucide-react';
 
 interface CalendarKeepAliveBannerProps {
@@ -13,6 +14,11 @@ export default function CalendarKeepAliveBanner({
   isPending,
   onManualPing,
 }: CalendarKeepAliveBannerProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <section className="rounded-3xl border border-blue-100 bg-gradient-to-r from-blue-900 to-indigo-950 p-5 sm:p-6 text-white shadow-[8px_8px_20px_rgba(0,0,0,0.06)] relative overflow-hidden">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 relative z-10">
@@ -45,11 +51,13 @@ export default function CalendarKeepAliveBanner({
           <span suppressHydrationWarning>
             Ping Terakhir:{' '}
             <strong className="text-white" suppressHydrationWarning>
-              {lastPingTime
+              {mounted && lastPingTime
                 ? new Date(lastPingTime).toLocaleString('id-ID', {
                     dateStyle: 'medium',
                     timeStyle: 'short',
                   })
+                : lastPingTime
+                ? 'Tercatat'
                 : 'Belum tercatat'}
             </strong>
           </span>

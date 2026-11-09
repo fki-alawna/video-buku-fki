@@ -30,6 +30,11 @@ export default function CalendarNoteModal({
   onDeleteNote,
 }: CalendarNoteModalProps) {
   const [isDeleting, setIsDeleting] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Listener tombol Escape untuk menutup modal
   useEffect(() => {
@@ -89,12 +94,14 @@ export default function CalendarNoteModal({
                 Agenda Panitia & Catatan
               </span>
               <h3 className="text-lg font-bold text-slate-900 mt-0.5" suppressHydrationWarning>
-                {new Date(selectedDate).toLocaleDateString('id-ID', {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
+                {mounted
+                  ? new Date(selectedDate).toLocaleDateString('id-ID', {
+                      weekday: 'long',
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    })
+                  : selectedDate}
               </h3>
               <p className="text-xs font-semibold text-blue-900/80 mt-0.5">
                 {hijri.fullText}
@@ -185,10 +192,12 @@ export default function CalendarNoteModal({
                       <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
                         <Clock className="h-3 w-3" />
                         <span suppressHydrationWarning>
-                          {new Date(item.created_at).toLocaleTimeString('id-ID', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
+                          {mounted
+                            ? new Date(item.created_at).toLocaleTimeString('id-ID', {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })
+                            : ''}
                         </span>
                       </div>
                     </div>

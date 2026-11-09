@@ -14,6 +14,7 @@ export interface CalendarNote {
 export interface CalendarActionState {
   error: string | null;
   success: string | null;
+  data?: CalendarNote | null;
 }
 
 export async function addCalendarNote(
@@ -43,10 +44,14 @@ export async function addCalendarNote(
     const normalizedDate = `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
 
     const service = createServiceClient();
-    const { error } = await service.from('calendar_notes').insert({
-      date: normalizedDate,
-      note: cleanNote,
-    });
+    const { data, error } = await service
+      .from('calendar_notes')
+      .insert({
+        date: normalizedDate,
+        note: cleanNote,
+      })
+      .select('id, date, note, created_at')
+      .single();
 
     if (error) {
       console.error('Supabase insert calendar_notes error:', error);
@@ -55,7 +60,11 @@ export async function addCalendarNote(
 
     revalidatePath('/admin');
     revalidatePath('/admin/kalender');
-    return { error: null, success: 'Catatan agenda berhasil disimpan.' };
+    return {
+      error: null,
+      success: 'Catatan agenda berhasil disimpan.',
+      data: data as CalendarNote,
+    };
   } catch (err) {
     console.error('Error in addCalendarNote / saveCalendarNote:', err);
     return {

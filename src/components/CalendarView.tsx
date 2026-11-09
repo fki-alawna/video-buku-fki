@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { X, ListFilter, Grid } from 'lucide-react';
 import {
@@ -36,6 +36,11 @@ export default function CalendarView({
   const [mobileTab, setMobileTab] = useState<'grid' | 'agenda'>('grid');
   const [isPending, startTransition] = useTransition();
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -44,7 +49,7 @@ export default function CalendarView({
   const startOffset = (firstDayOfMonth + 6) % 7;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const daysInPrevMonth = new Date(year, month, 0).getDate();
-  const todayStr = new Date().toISOString().split('T')[0];
+  const todayStr = mounted ? new Date().toISOString().split('T')[0] : '';
 
   const isPingDay = (d: string) => checkIsPingDay(d, lastPingTime);
   const isLastPingDay = (d: string) => checkIsLastPingDay(d, lastPingTime);
@@ -55,17 +60,17 @@ export default function CalendarView({
 
     startTransition(async () => {
       const res = await addCalendarNote(selectedDate, noteInput);
-      if (res.success) {
-        const newNote: CalendarNote = {
-          id: `temp-${Date.now()}`,
-          date: selectedDate,
-          note: noteInput.trim(),
-          created_at: new Date().toISOString(),
-        };
-        setNotes((prev) => [newNote, ...prev]);
+      if (res.success && res.data) {
+        setNotes((prev) => [res.data!, ...prev]);
         setNoteInput('');
         setStatusMessage('Catatan berhasil ditambahkan.');
         setTimeout(() => setStatusMessage(null), 3000);
+        router.refresh();
+      } else if (res.success) {
+        setNoteInput('');
+        setStatusMessage('Catatan berhasil ditambahkan.');
+        setTimeout(() => setStatusMessage(null), 3000);
+        router.refresh();
       } else if (res.error) {
         setStatusMessage(res.error);
       }
