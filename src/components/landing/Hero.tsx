@@ -14,7 +14,7 @@ export default function Hero() {
       {/* Full-Width Hero Banner */}
       <div className="relative w-full overflow-hidden">
         <img
-          src="/foto-hero.jpg?v=2"
+          src="/foto-hero.jpg?v=4"
           alt="A'lawna Hero"
           className="w-full max-w-full h-auto object-contain block"
         />
