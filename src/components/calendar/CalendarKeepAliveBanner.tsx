@@ -36,7 +36,7 @@ export default function CalendarKeepAliveBanner({
             type="button"
             onClick={onManualPing}
             disabled={isPending}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl bg-white text-blue-900 px-4 py-2.5 text-sm font-bold shadow-md hover:bg-blue-50 active:scale-95 transition-all disabled:opacity-60 cursor-pointer"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl bg-white text-blue-900 px-4 py-2.5 text-sm font-bold shadow-md hover:bg-blue-50 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300 disabled:opacity-60 cursor-pointer"
           >
             <RotateCw className={`h-4 w-4 ${isPending ? 'animate-spin' : ''}`} />
             <span>{isPending ? 'Memproses...' : 'Ping Sekarang'}</span>

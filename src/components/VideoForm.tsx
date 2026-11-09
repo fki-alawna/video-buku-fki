@@ -219,7 +219,7 @@ export default function VideoForm({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 active:bg-blue-950 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
         >
           {isPending ? (
             <>
@@ -235,7 +235,7 @@ export default function VideoForm({
 
         <Link
           href="/admin/video"
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-100 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300"
         >
           Batal
         </Link>

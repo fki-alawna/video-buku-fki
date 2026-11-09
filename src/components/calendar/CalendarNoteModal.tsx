@@ -149,7 +149,7 @@ export default function CalendarNoteModal({
               <button
                 type="submit"
                 disabled={isPending || !noteInput.trim()}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shrink-0"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer shrink-0"
               >
                 {isPending ? (
                   <>
@@ -227,7 +227,7 @@ export default function CalendarNoteModal({
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-slate-200 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+              className="inline-flex min-h-[40px] items-center justify-center rounded-xl border border-slate-200 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300 cursor-pointer"
             >
               Tutup
             </button>

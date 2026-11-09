@@ -27,14 +27,14 @@ export default function AdminHeroBanner() {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
               href="/admin/video/baru"
-              className="inline-flex items-center gap-2 rounded-xl bg-white text-blue-950 hover:bg-amber-400 hover:text-blue-950 font-bold px-5 py-2.5 text-sm transition-all shadow-md active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl bg-white text-blue-950 hover:bg-amber-400 hover:text-blue-950 font-bold px-5 py-2.5 text-sm shadow-md hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300"
             >
               <Plus className="h-4 w-4" />
               <span>Tambah Video Baru</span>
             </Link>
             <Link
               href="/admin/qr"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-2.5 text-sm transition-all backdrop-blur-xs active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/30 hover:border-white bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-2.5 text-sm backdrop-blur-xs hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300"
             >
               <QrCode className="h-4 w-4" />
               <span>Buka Cetak QR</span>

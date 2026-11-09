@@ -39,7 +39,7 @@ export default function AdminTodayNotesCard({ todayNotes }: AdminTodayNotesCardP
         </div>
         <Link
           href="/admin/kalender"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-900 hover:underline shrink-0"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-900 hover:underline hover:scale-[1.02] active:scale-95 transition-all duration-300 shrink-0"
         >
           <span>+ Buat Catatan di Kalender</span>
           <ArrowRight className="h-3.5 w-3.5" />
@@ -73,7 +73,7 @@ export default function AdminTodayNotesCard({ todayNotes }: AdminTodayNotesCardP
         </div>
         <Link
           href="/admin/kalender"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-900 hover:text-blue-950 hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-900 hover:text-blue-950 hover:underline hover:scale-[1.02] active:scale-95 transition-all duration-300"
         >
           <span>Buka Kalender</span>
           <ArrowRight className="h-3.5 w-3.5" />

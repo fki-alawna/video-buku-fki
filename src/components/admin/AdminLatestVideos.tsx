@@ -45,7 +45,7 @@ export default function AdminLatestVideos({ latestVideos }: AdminLatestVideosPro
           <div className="mt-4">
             <Link
               href="/admin/video/baru"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-blue-900 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-800 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-blue-900 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-800 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300"
             >
               <Plus className="h-3.5 w-3.5" />
               <span>Tambah Video</span>
@@ -63,7 +63,7 @@ export default function AdminLatestVideos({ latestVideos }: AdminLatestVideosPro
             return (
               <div
                 key={vid.id}
-                className="group rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="group rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-2xs hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Visual Card Cover / Thumbnail Placeholder */}

@@ -74,7 +74,7 @@ export default function Features() {
               return (
                 <div
                   key={item.title}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-blue-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-blue-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <div>
                     {/* Icon Container with Dark Blue Circle */}

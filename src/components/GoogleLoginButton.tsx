@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 export default function GoogleLoginButton() {
@@ -43,18 +44,22 @@ export default function GoogleLoginButton() {
         type="button"
         onClick={handleGoogleLogin}
         disabled={loading}
-        className="inline-flex min-h-[48px] w-full items-center justify-center gap-3 rounded-xl bg-teal-700 hover:bg-teal-800 active:bg-teal-900 px-5 py-3 text-base font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 disabled:opacity-60 cursor-pointer"
+        className="inline-flex min-h-[48px] w-full items-center justify-center gap-3 rounded-xl bg-teal-700 hover:bg-teal-800 active:bg-teal-900 px-5 py-3 text-base font-semibold text-white shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
       >
-        <svg
-          className="h-5 w-5 shrink-0"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27c3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10c5.35 0 9.25-3.67 9.25-9.09c0-1.15-.15-1.81-.15-1.81Z"
-          />
-        </svg>
+        {loading ? (
+          <Loader2 className="w-5 h-5 animate-spin shrink-0" />
+        ) : (
+          <svg
+            className="h-5 w-5 shrink-0"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27c3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10c5.35 0 9.25-3.67 9.25-9.09c0-1.15-.15-1.81-.15-1.81Z"
+            />
+          </svg>
+        )}
         <span>{loading ? 'Mengarahkan ke Google...' : 'Login dengan Google'}</span>
       </button>
 

@@ -68,7 +68,7 @@ export default function FolderCreateForm() {
         <button
           type="submit"
           disabled={isCreating}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 active:bg-blue-950 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 active:bg-blue-950 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {isCreating ? (
             <>

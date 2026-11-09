@@ -85,7 +85,7 @@ export default function Navbar({ onOpenLogin }: NavbarProps) {
           <button
             type="button"
             onClick={onOpenLogin}
-            className="inline-flex items-center gap-2 rounded-xl bg-blue-900 hover:bg-blue-800 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-xl bg-blue-900 hover:bg-blue-800 px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-md hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer"
           >
             <LogIn className="h-4 w-4" />
             <span>Login</span>

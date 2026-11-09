@@ -83,7 +83,7 @@ export default function FolderEditRow({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-blue-900 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {isPending ? (
             <>
@@ -98,7 +98,7 @@ export default function FolderEditRow({
           type="button"
           onClick={onDone}
           disabled={isPending}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100 cursor-pointer"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-100 hover:scale-[1.02] active:scale-95 hover:shadow-md transition-all duration-300 cursor-pointer"
         >
           Batal
         </button>
