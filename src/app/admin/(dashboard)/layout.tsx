@@ -1,6 +1,5 @@
-import { Suspense } from 'react';
 import AdminShell from '@/components/AdminShell';
-import AdminWelcomeScreen from '@/components/admin/AdminWelcomeScreen';
+import AdminWelcomeTrigger from '@/components/admin/AdminWelcomeTrigger';
 import { requireAdminUser } from '@/lib/admin-auth';
 
 export const dynamic = 'force-dynamic';
@@ -14,9 +13,7 @@ export default async function AdminDashboardLayout({
 
   return (
     <AdminShell userEmail={user.email ?? ''}>
-      <Suspense fallback={null}>
-        <AdminWelcomeScreen />
-      </Suspense>
+      <AdminWelcomeTrigger />
       {children}
     </AdminShell>
   );

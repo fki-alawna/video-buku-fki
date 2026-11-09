@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const TARGET_TEXT = "Welcome to A'lawna";
@@ -12,17 +11,11 @@ interface AdminWelcomeScreenProps {
 }
 
 export default function AdminWelcomeScreen({ onComplete }: AdminWelcomeScreenProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const isWelcomeParam = searchParams.get('welcome') === 'true';
-
-  const [isVisible, setIsVisible] = useState(isWelcomeParam);
+  const [isVisible, setIsVisible] = useState(true);
   const [typedText, setTypedText] = useState('');
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    if (!isWelcomeParam) return;
-
     let currentIndex = 0;
     const interval = setInterval(() => {
       currentIndex += 1;
@@ -35,7 +28,6 @@ export default function AdminWelcomeScreen({ onComplete }: AdminWelcomeScreenPro
         // Tunggu 400ms setelah pengetikan selesai sebelum transisi fade-out
         setTimeout(() => {
           setIsVisible(false);
-          router.replace('/admin');
           if (onComplete) {
             onComplete();
           }
@@ -44,9 +36,7 @@ export default function AdminWelcomeScreen({ onComplete }: AdminWelcomeScreenPro
     }, 100);
 
     return () => clearInterval(interval);
-  }, [isWelcomeParam, onComplete, router]);
-
-  if (!isWelcomeParam && !isVisible) return null;
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
