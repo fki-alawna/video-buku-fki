@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(`${redirectBase}/admin/login?error=forbidden`);
     }
 
-    return NextResponse.redirect(`${redirectBase}/admin`);
+    return NextResponse.redirect(`${redirectBase}/admin?welcome=true`);
   } catch {
     return NextResponse.redirect(`${redirectBase}/admin/login?error=auth_failed`);
   }
