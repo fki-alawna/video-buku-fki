@@ -48,10 +48,10 @@ export default function AdminTodayNotesCard({ todayNotes }: AdminTodayNotesCardP
             <StickyNote className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-amber-950">
+            <h2 className="text-base font-bold text-amber-950" suppressHydrationWarning>
               Catatan &amp; Agenda Hari Ini ({todayNotes.length})
             </h2>
-            <p className="text-xs text-amber-800">
+            <p className="text-xs text-amber-800" suppressHydrationWarning>
               {new Date().toLocaleDateString('id-ID', {
                 weekday: 'long',
                 day: 'numeric',

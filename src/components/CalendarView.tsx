@@ -127,7 +127,10 @@ export default function CalendarView({
       )}
 
       {/* Grid Kalender Container */}
-      <section className="rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-[8px_8px_20px_rgba(0,0,0,0.04),-8px_-8px_20px_rgba(255,255,255,0.9)]">
+      <section
+        suppressHydrationWarning
+        className="rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-[8px_8px_20px_rgba(0,0,0,0.04),-8px_-8px_20px_rgba(255,255,255,0.9)]"
+      >
         <CalendarHeaderControls
           year={year}
           month={month}

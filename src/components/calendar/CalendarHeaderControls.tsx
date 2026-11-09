@@ -23,11 +23,11 @@ export default function CalendarHeaderControls({
       <div>
         <div className="flex items-center gap-2">
           <CalendarIcon className="h-5 w-5 text-blue-900" />
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900">
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900" suppressHydrationWarning>
             {MASEHI_MONTHS[month]} {year}
           </h3>
         </div>
-        <p className="text-xs sm:text-sm font-semibold text-blue-900/80 mt-0.5">
+        <p className="text-xs sm:text-sm font-semibold text-blue-900/80 mt-0.5" suppressHydrationWarning>
           {hijriText}
         </p>
       </div>

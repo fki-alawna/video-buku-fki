@@ -74,6 +74,7 @@ export default function CalendarDayGrid({
             <div
               key={dateStr}
               onClick={() => onSelectDate(dateStr)}
+              suppressHydrationWarning
               className={`group min-h-[52px] sm:min-h-[85px] md:min-h-[105px] rounded-xl sm:rounded-2xl p-1 sm:p-2 md:p-2.5 flex flex-col justify-between transition-all duration-200 cursor-pointer border ${
                 isToday
                   ? 'border-blue-900 bg-blue-50/50 shadow-sm'

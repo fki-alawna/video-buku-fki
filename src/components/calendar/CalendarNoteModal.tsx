@@ -88,7 +88,7 @@ export default function CalendarNoteModal({
               <span className="text-xs font-bold uppercase tracking-wider text-blue-900">
                 Agenda Panitia & Catatan
               </span>
-              <h3 className="text-lg font-bold text-slate-900 mt-0.5">
+              <h3 className="text-lg font-bold text-slate-900 mt-0.5" suppressHydrationWarning>
                 {new Date(selectedDate).toLocaleDateString('id-ID', {
                   weekday: 'long',
                   day: 'numeric',
@@ -184,7 +184,7 @@ export default function CalendarNoteModal({
                       </p>
                       <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
                         <Clock className="h-3 w-3" />
-                        <span>
+                        <span suppressHydrationWarning>
                           {new Date(item.created_at).toLocaleTimeString('id-ID', {
                             hour: '2-digit',
                             minute: '2-digit',

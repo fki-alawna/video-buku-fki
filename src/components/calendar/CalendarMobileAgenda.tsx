@@ -1,5 +1,5 @@
 import { Plus, StickyNote, Radio } from 'lucide-react';
-import { getHijriInfo } from '@/lib/calendar-utils';
+import { DAY_NAMES, getHijriInfo } from '@/lib/calendar-utils';
 import type { CalendarNote } from '@/app/admin/(dashboard)/kalender/actions';
 
 interface CalendarMobileAgendaProps {
@@ -29,7 +29,7 @@ export default function CalendarMobileAgenda({
       dayNum
     ).padStart(2, '0')}`;
     const dateObj = new Date(year, month, dayNum);
-    const dayName = dateObj.toLocaleDateString('id-ID', { weekday: 'long' });
+    const dayName = DAY_NAMES[(dateObj.getDay() + 6) % 7];
     const isToday = dateStr === todayStr;
     const hijri = getHijriInfo(dateStr);
     const pingDay = isPingDay(dateStr);
@@ -56,6 +56,7 @@ export default function CalendarMobileAgenda({
         return (
           <div
             key={day.dateStr}
+            suppressHydrationWarning
             className={`rounded-2xl p-3.5 transition-all border ${
               day.isToday
                 ? 'border-blue-900 bg-blue-50/60 shadow-xs'

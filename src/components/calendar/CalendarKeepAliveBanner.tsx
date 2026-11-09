@@ -42,9 +42,9 @@ export default function CalendarKeepAliveBanner({
       <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap items-center gap-4 text-xs text-blue-200">
         <div className="flex items-center gap-2">
           <Radio className="h-3.5 w-3.5 text-emerald-400 animate-pulse" />
-          <span>
+          <span suppressHydrationWarning>
             Ping Terakhir:{' '}
-            <strong className="text-white">
+            <strong className="text-white" suppressHydrationWarning>
               {lastPingTime
                 ? new Date(lastPingTime).toLocaleString('id-ID', {
                     dateStyle: 'medium',
