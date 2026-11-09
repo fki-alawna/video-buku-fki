@@ -22,12 +22,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem('alawna-theme') as Theme | null;
-      if (saved === 'dark' || saved === 'light') {
-        setThemeState(saved);
-        document.documentElement.classList.toggle('dark', saved === 'dark');
-      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      if (saved === 'dark') {
         setThemeState('dark');
         document.documentElement.classList.add('dark');
+      } else {
+        setThemeState('light');
+        document.documentElement.classList.remove('dark');
       }
     } catch {
       // localStorage may fail in restricted browser contexts
