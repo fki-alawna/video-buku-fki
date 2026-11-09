@@ -116,7 +116,7 @@ export default function AIChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-34 md:bottom-24 right-4 md:right-8 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[75vh] sm:max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 flex flex-col overflow-hidden text-slate-900"
+            className="fixed bottom-34 md:bottom-24 right-4 md:right-8 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[75vh] sm:max-h-[80vh] bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-50 flex flex-col overflow-hidden text-slate-900 dark:text-slate-100 transition-colors duration-300"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-blue-950 bg-blue-900 px-5 py-4 text-white">
@@ -137,7 +137,7 @@ export default function AIChat() {
             </div>
 
             {/* Messages Container */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-slate-50/60 text-sm">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-slate-50/60 dark:bg-slate-950/60 text-sm">
               {messages.map((msg, index) => (
                 <div
                   key={index}
@@ -146,7 +146,7 @@ export default function AIChat() {
                   }`}
                 >
                   {msg.role === 'assistant' && (
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-900 mt-0.5">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 dark:bg-slate-800 text-blue-900 dark:text-blue-400 mt-0.5">
                       <MessageCircle className="h-4 w-4" />
                     </div>
                   )}
@@ -154,7 +154,7 @@ export default function AIChat() {
                     className={`rounded-2xl px-4 py-2.5 max-w-[82%] leading-relaxed ${
                       msg.role === 'user'
                         ? 'bg-blue-900 text-white rounded-tr-xs shadow-xs'
-                        : 'bg-white text-slate-800 rounded-tl-xs border border-slate-200/70 shadow-2xs whitespace-pre-wrap'
+                        : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-xs border border-slate-200/70 dark:border-slate-700 shadow-2xs whitespace-pre-wrap'
                     }`}
                   >
                     {msg.content}
@@ -164,12 +164,12 @@ export default function AIChat() {
 
               {isLoading && (
                 <div className="flex gap-2.5 justify-start">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-900 mt-0.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 dark:bg-slate-800 text-blue-900 dark:text-blue-400 mt-0.5">
                     <MessageCircle className="h-4 w-4" />
                   </div>
-                  <div className="flex items-center gap-2 rounded-2xl rounded-tl-xs bg-white px-4 py-3 border border-slate-200/70 shadow-2xs">
-                    <Loader2 className="h-4 w-4 animate-spin text-blue-900" />
-                    <span className="text-xs text-slate-500 font-medium">
+                  <div className="flex items-center gap-2 rounded-2xl rounded-tl-xs bg-white dark:bg-slate-800 px-4 py-3 border border-slate-200/70 dark:border-slate-700 shadow-2xs">
+                    <Loader2 className="h-4 w-4 animate-spin text-blue-900 dark:text-blue-400" />
+                    <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                       Sedang mengetik...
                     </span>
                   </div>
@@ -181,7 +181,7 @@ export default function AIChat() {
             {/* Input Form */}
             <form
               onSubmit={handleSubmit}
-              className="border-t border-slate-200/80 bg-white p-3 flex items-center gap-2"
+              className="border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 flex items-center gap-2"
             >
               <input
                 type="text"
@@ -189,7 +189,7 @@ export default function AIChat() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Tulis pesan untuk AI..."
                 disabled={isLoading}
-                className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-900 focus:bg-white focus:outline-none transition-colors disabled:opacity-60"
+                className="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3.5 py-2.5 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-blue-900 dark:focus:border-blue-400 focus:bg-white dark:focus:bg-slate-800 focus:outline-none transition-colors disabled:opacity-60"
               />
               <button
                 type="submit"

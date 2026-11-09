@@ -139,26 +139,26 @@ export default function AIChatAdminModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="relative w-full max-w-4xl h-[80vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 z-10 font-sans"
+            className="relative w-full max-w-4xl h-[80vh] bg-white dark:bg-slate-900 rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800 z-10 font-sans transition-colors duration-300"
           >
             <AdminChatHeader onClose={onClose} />
 
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-slate-50/60">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-slate-50/60 dark:bg-slate-950/60">
               {messages.map((msg, index) => (
                 <AdminChatMessageItem key={index} message={msg} />
               ))}
 
               {isLoading && (
                 <div className="flex flex-col items-start space-y-1.5">
-                  <div className="inline-flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-900 border border-blue-200">
-                    <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-700" />
+                  <div className="inline-flex items-center gap-2 rounded-xl bg-blue-50 dark:bg-blue-950/50 px-3 py-1.5 text-xs font-semibold text-blue-900 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                    <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-700 dark:text-blue-400" />
                     <span>Agen sedang memproses instruksi &amp; database...</span>
                   </div>
-                  <div className="rounded-2xl rounded-tl-xs bg-white border border-slate-200 px-4 py-3 shadow-xs">
+                  <div className="rounded-2xl rounded-tl-xs bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-3 shadow-xs">
                     <div className="flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-blue-900/40 animate-bounce" />
-                      <span className="h-2 w-2 rounded-full bg-blue-900/60 animate-bounce [animation-delay:0.2s]" />
-                      <span className="h-2 w-2 rounded-full bg-blue-900 animate-bounce [animation-delay:0.4s]" />
+                      <span className="h-2 w-2 rounded-full bg-blue-900/40 dark:bg-blue-400/40 animate-bounce" />
+                      <span className="h-2 w-2 rounded-full bg-blue-900/60 dark:bg-blue-400/60 animate-bounce [animation-delay:0.2s]" />
+                      <span className="h-2 w-2 rounded-full bg-blue-900 dark:bg-blue-400 animate-bounce [animation-delay:0.4s]" />
                     </div>
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export default function AIChatAdminModal({
               <div ref={messagesEndRef} />
             </div>
 
-            <footer className="p-4 bg-white border-t border-slate-100 shrink-0">
+            <footer className="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 shrink-0">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -184,7 +184,7 @@ export default function AIChatAdminModal({
                     onKeyDown={handleKeyDownInput}
                     disabled={isLoading}
                     placeholder="Tanya A'lawna Intelligence..."
-                    className="w-full min-h-[48px] max-h-32 resize-none rounded-2xl border border-slate-300 bg-slate-50/70 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-900/20 focus:bg-white focus:border-blue-900 transition-all leading-normal"
+                    className="w-full min-h-[48px] max-h-32 resize-none rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800 px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-900/20 focus:bg-white dark:focus:bg-slate-800 focus:border-blue-900 dark:focus:border-blue-400 transition-all leading-normal"
                   />
                 </div>
                 <button

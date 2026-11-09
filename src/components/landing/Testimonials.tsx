@@ -83,7 +83,7 @@ export default function Testimonials() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
               Kata Mereka
             </h2>
           </div>
@@ -104,7 +104,7 @@ export default function Testimonials() {
               <div
                 key={`${item.name}-${idx}`}
                 onClick={() => setSelected(item)}
-                className="w-[320px] sm:w-[360px] shrink-0 flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-blue-400 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer select-none"
+                className="w-[320px] sm:w-[360px] shrink-0 flex flex-col justify-between rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xs hover:border-blue-400 dark:hover:border-blue-500 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer select-none"
               >
                 <div>
                   {/* 5 Stars Rating & Quote Icon */}
@@ -117,18 +117,18 @@ export default function Testimonials() {
                         />
                       ))}
                     </div>
-                    <Quote className="h-5 w-5 text-slate-300" />
+                    <Quote className="h-5 w-5 text-slate-300 dark:text-slate-600" />
                   </div>
 
                   {/* Testimonial Text */}
-                  <p className="text-sm leading-relaxed text-slate-600 italic line-clamp-3">
+                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300 italic line-clamp-3">
                     &ldquo;{item.text}&rdquo;
                   </p>
                 </div>
 
                 {/* Author Info */}
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <h4 className="text-sm font-bold text-blue-900">
+                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <h4 className="text-sm font-bold text-blue-900 dark:text-blue-400">
                     {item.name}
                   </h4>
                 </div>
@@ -163,7 +163,7 @@ export default function Testimonials() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 320 }}
-              className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-100 text-slate-900 z-10"
+              className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-2xl border border-slate-100 dark:border-slate-800 text-slate-900 dark:text-slate-100 z-10"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -171,7 +171,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={() => setSelected(null)}
                 aria-label="Tutup testimoni"
-                className="absolute top-5 right-5 inline-flex h-10 w-10 items-center justify-center rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+                className="absolute top-5 right-5 inline-flex h-10 w-10 items-center justify-center rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -186,17 +186,17 @@ export default function Testimonials() {
                     />
                   ))}
                 </div>
-                <Quote className="h-7 w-7 text-blue-900/20" />
+                <Quote className="h-7 w-7 text-blue-900/20 dark:text-blue-400/20" />
               </div>
 
               {/* Full Testimonial Text */}
-              <blockquote className="text-lg sm:text-xl md:text-2xl font-medium text-slate-800 leading-relaxed italic mb-8">
+              <blockquote className="text-lg sm:text-xl md:text-2xl font-medium text-slate-800 dark:text-slate-200 leading-relaxed italic mb-8">
                 &ldquo;{selected.text}&rdquo;
               </blockquote>
 
               {/* Author Info */}
-              <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
-                <h4 className="text-base sm:text-lg font-bold text-blue-900">
+              <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <h4 className="text-base sm:text-lg font-bold text-blue-900 dark:text-blue-400">
                   {selected.name}
                 </h4>
                 <div className="h-9 w-9 rounded-full bg-blue-50 text-blue-900 flex items-center justify-center font-bold text-sm">

@@ -33,7 +33,7 @@ export default function Features() {
   ];
 
   return (
-    <section id="mhmtq" className="relative bg-white py-16 sm:py-24 border-t border-slate-200/60 text-slate-900">
+    <section id="mhmtq" className="relative bg-white dark:bg-slate-950 py-16 sm:py-24 border-t border-slate-200/60 dark:border-slate-800 text-slate-900 dark:text-slate-100 transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
         whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -62,7 +62,7 @@ export default function Features() {
                 />
               </motion.div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
               Filosofi Logo
             </h2>
           </div>
@@ -74,20 +74,20 @@ export default function Features() {
               return (
                 <div
                   key={item.title}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:border-blue-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 shadow-xs hover:border-blue-300 dark:hover:border-blue-500 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <div>
                     {/* Icon Container with Dark Blue Circle */}
-                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 border border-blue-100 text-blue-900 group-hover:bg-blue-900 group-hover:text-white transition-all duration-300">
+                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-blue-900 dark:text-blue-400 group-hover:bg-blue-900 group-hover:text-white transition-all duration-300">
                       <Icon className="h-7 w-7" />
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-900 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-400 transition-colors">
                       {item.title}
                     </h3>
                     <p
-                      className="mt-2.5 text-sm leading-relaxed text-slate-600"
+                      className="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-slate-300"
                       dangerouslySetInnerHTML={{ __html: item.description }}
                     />
                   </div>

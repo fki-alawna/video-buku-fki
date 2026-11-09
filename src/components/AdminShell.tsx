@@ -50,7 +50,7 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
   }
 
   return (
-    <div className="flex h-screen w-full bg-slate-100 text-slate-900 overflow-hidden font-sans print:h-auto print:overflow-visible print:bg-white">
+    <div className="flex h-screen w-full bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 overflow-hidden font-sans transition-colors duration-300 print:h-auto print:overflow-visible print:bg-white">
       {/* Sidebar Desktop */}
       <AdminDesktopSidebar
         navItems={NAV_ITEMS}
@@ -61,7 +61,7 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col h-screen min-w-0 overflow-hidden bg-slate-50">
+      <div className="flex-1 flex flex-col h-screen min-w-0 overflow-hidden bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
         <AdminTopHeader
           userEmail={userEmail}
           mobileMenuOpen={mobileMenuOpen}
@@ -70,7 +70,7 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-200 px-4 py-3 space-y-1.5 shadow-lg z-20">
+          <div className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3 space-y-1.5 shadow-lg z-20">
             {NAV_ITEMS.map((item) => {
               const active = isActive(item.href);
               const Icon = item.icon;
@@ -82,7 +82,7 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                     active
                       ? 'bg-blue-900 text-white font-bold'
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                      : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <Icon className="h-4 w-4" />

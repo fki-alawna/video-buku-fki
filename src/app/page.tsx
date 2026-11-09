@@ -24,7 +24,7 @@ export default function HomePage() {
   const [isSplashDone, setIsSplashDone] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-white text-slate-900 selection:bg-blue-900 selection:text-white pb-24 overflow-x-hidden">
+    <div className="relative min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-900 selection:text-white pb-24 overflow-x-hidden transition-colors duration-300">
       {/* Intro Animation (Splash Screen) */}
       {!isSplashDone && (
         <SplashScreen onComplete={() => setIsSplashDone(true)} />

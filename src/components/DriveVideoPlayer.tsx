@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 // Menampilkan video Google Drive via endpoint /preview.
-// Tombol download TIDAK dijamin hilang dari sisi kode —
+// Tombol download TIDAK dijamin hilang dari sisi kode -
 // wajib dimatikan dari setelan sharing Drive oleh pemilik
 // akun (fkialawna@gmail.com) dengan mode Viewer.
 

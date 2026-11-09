@@ -37,7 +37,7 @@ export default function Sejarah() {
   }, [selectedImage]);
 
   return (
-    <section id="wisuda" className="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200/60">
+    <section id="wisuda" className="relative bg-slate-50 dark:bg-slate-900/50 py-16 sm:py-24 border-t border-slate-200/60 dark:border-slate-800 transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
         whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -47,7 +47,7 @@ export default function Sejarah() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Section Header (Bersih tanpa sub-judul & deskripsi panjang) */}
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
               Kita A&apos;lawna
             </h2>
           </div>
@@ -58,7 +58,7 @@ export default function Sejarah() {
               <div
                 key={src}
                 onClick={() => setSelectedImage(src)}
-                className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300"
+                className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer group shadow-sm dark:border dark:border-slate-800 hover:shadow-xl transition-all duration-300"
               >
                 <Image
                   src={src}
