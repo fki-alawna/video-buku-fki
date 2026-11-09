@@ -1,6 +1,7 @@
 import { useFormStatus } from 'react-dom';
 import { Search, Radio, LogOut, Menu, X } from 'lucide-react';
 import { logoutAction } from '@/app/admin/(dashboard)/actions';
+import { useTheme } from '@/components/ThemeProvider';
 
 interface AdminTopHeaderProps {
   userEmail: string;
@@ -29,6 +30,8 @@ export default function AdminTopHeader({
   mobileMenuOpen,
   onToggleMobileMenu,
 }: AdminTopHeaderProps) {
+  const { toggleTheme } = useTheme();
+
   return (
     <header className="h-18 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 shrink-0 z-20 transition-colors duration-300 print:hidden">
       {/* Mobile Menu Toggle & Brand */}
@@ -41,7 +44,17 @@ export default function AdminTopHeader({
         >
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-        <span className="font-bold text-base text-blue-900 dark:text-blue-400">A&apos;lawna</span>
+        <button
+          type="button"
+          onClick={() => {
+            toggleTheme();
+            if (mobileMenuOpen) onToggleMobileMenu();
+          }}
+          className="cursor-pointer text-left"
+          title="Ganti tema A'lawna"
+        >
+          <span className="font-bold text-base text-blue-900 dark:text-blue-400">A&apos;lawna</span>
+        </button>
       </div>
 
       {/* Search Bar Visual */}

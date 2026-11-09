@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
@@ -16,6 +17,7 @@ import AdminDesktopSidebar, {
   type NavItem,
 } from '@/components/admin/AdminDesktopSidebar';
 import AdminTopHeader from '@/components/admin/AdminTopHeader';
+import { useTheme } from '@/components/ThemeProvider';
 
 interface AdminShellProps {
   userEmail: string;
@@ -32,6 +34,7 @@ const NAV_ITEMS: NavItem[] = [
 
 export default function AdminShell({ userEmail, children }: AdminShellProps) {
   const pathname = usePathname();
+  const { toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isAdminChatOpen, setIsAdminChatOpen] = useState(false);
@@ -70,27 +73,60 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3 space-y-1.5 shadow-lg z-20">
-            {NAV_ITEMS.map((item) => {
-              const active = isActive(item.href);
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  prefetch={true}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-                    active
-                      ? 'bg-blue-900 text-white font-bold'
-                      : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
+          <div className="md:hidden relative bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3 space-y-2 shadow-lg z-20 pointer-events-auto">
+            {/* Logo & Brand Header with Theme Toggle */}
+            <div className="pb-2.5 border-b border-slate-100 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => {
+                  toggleTheme();
+                  setMobileMenuOpen(false);
+                }}
+                className="flex items-center gap-3 px-2 py-1.5 w-full rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer group pointer-events-auto"
+                title="Ganti tema A'lawna"
+              >
+                <div className="flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                  <Image
+                    src="/logo-alawna.png"
+                    alt="Logo A'lawna"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
+                <div className="overflow-hidden">
+                  <span className="block text-base font-black tracking-tight text-blue-900 dark:text-blue-400 leading-tight">
+                    A&apos;lawna
+                  </span>
+                  <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                    Admin Panel
+                  </span>
+                </div>
+              </button>
+            </div>
+
+            <nav aria-label="Navigasi Menu Mobile" className="space-y-1.5">
+              {NAV_ITEMS.map((item) => {
+                const active = isActive(item.href);
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    prefetch={true}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                      active
+                        ? 'bg-blue-900 text-white font-bold'
+                        : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </nav>
           </div>
         )}
 
