@@ -93,6 +93,7 @@ export default function AdminDesktopSidebar({
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={true}
                 title={item.label}
                 aria-current={active ? 'page' : undefined}
                 className={`group flex items-center rounded-2xl text-sm font-semibold transition-all duration-200 ${

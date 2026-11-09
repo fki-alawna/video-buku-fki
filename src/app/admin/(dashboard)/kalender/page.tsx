@@ -16,7 +16,7 @@ export default async function AdminKalenderPage() {
   try {
     const { data: notesData, error: notesError } = await service
       .from('calendar_notes')
-      .select('*')
+      .select('id, date, note, created_at')
       .order('created_at', { ascending: false });
 
     if (!notesError && notesData) {

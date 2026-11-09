@@ -15,9 +15,7 @@ export default async function AdminQrPage() {
       .order('sort_order', { ascending: true }),
     service
       .from('videos')
-      .select(
-        'id, folder_id, title, drive_file_id, slug, sort_order, is_active, created_at'
-      )
+      .select('id, folder_id, title, slug, sort_order, is_active, created_at')
       .order('sort_order', { ascending: true })
       .order('created_at', { ascending: true }),
   ]);

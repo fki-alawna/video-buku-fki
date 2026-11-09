@@ -78,6 +78,7 @@ export default function AdminShell({ userEmail, children }: AdminShellProps) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={true}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                     active
