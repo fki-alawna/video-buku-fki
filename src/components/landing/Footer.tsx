@@ -25,18 +25,15 @@ export default function Footer() {
 
           {/* Lokasi & Google Maps Embed Section */}
           <div id="kontak" className="scroll-mt-28 rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8 shadow-xs">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-900 shrink-0">
+            <div className="flex items-start sm:items-center gap-3 mb-6">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-900 shrink-0 mt-0.5 sm:mt-0">
                 <MapPin className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-base sm:text-lg font-bold text-slate-900">
-                  Lokasi Kami
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                <p className="text-xs sm:text-sm text-slate-700 font-semibold">
                   Pondok Pesantren Putri Tahfizhil Qur&apos;an (P3TQ) Lirboyo, Kota Kediri, Jawa Timur
                 </p>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
                   5XJQ+4WP, Jl. KH. Abdul Karim, Lirboyo, Mojoroto, Kec. Mojoroto, Kabupaten Kediri, Jawa Timur 64116
                 </p>
               </div>
